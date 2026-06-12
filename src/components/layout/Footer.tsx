@@ -1,0 +1,138 @@
+'use client'
+
+import Link from 'next/link'
+import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
+import { BRAND_ORANGE } from '@/lib/utils'
+
+const COMPANY_LINKS = [
+  { label: 'About Us',  href: '/about'   },
+  { label: 'Our Work',  href: '/work'    },
+  { label: 'Services',  href: '/services'},
+  { label: 'Contact',   href: '/contact' },
+]
+
+const SERVICE_LINKS = [
+  { label: 'Design & Planning',     href: '/services' },
+  { label: 'Construction',          href: '/services' },
+  { label: 'Interior Finishing',    href: '/services' },
+  { label: 'Handover & After Care', href: '/services' },
+]
+
+const CONTACT = [
+  { icon: Phone,  text: '+91 98765 43210'            },
+  { icon: Mail,   text: 'hello@cornerbrick9.com'     },
+  { icon: MapPin, text: 'Chennai · Avadi · Thiruvallur' },
+]
+
+export default function Footer() {
+  return (
+    <footer style={{ backgroundColor: '#0d0d0d' }} className="text-white">
+      {/* CTA band */}
+      <div className="py-16 border-b border-white/8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <h2
+            className="font-bold text-center lg:text-left text-display-md text-white"
+            style={{ lineHeight: 1.2 }}
+          >
+            Let's Build Something
+            <br />
+            <span style={{ color: BRAND_ORANGE }}>Great Together.</span>
+          </h2>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-3 px-10 py-4 text-sm font-semibold tracking-widest uppercase text-white shrink-0 transition-colors"
+            style={{ backgroundColor: BRAND_ORANGE }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
+          >
+            Start a Project <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Columns */}
+      <div className="py-16 border-b border-white/8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="flex flex-col gap-5">
+            <Link href="/" className="font-bold text-xl tracking-tight text-white">
+              Corner<span style={{ color: BRAND_ORANGE }}>Brick</span>9
+            </Link>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Turnkey construction solutions from concept to completion. Elegance in every corner.
+            </p>
+            <div className="flex flex-col gap-3 mt-2">
+              {CONTACT.map(({ icon: Icon, text }) => (
+                <div key={text} className="flex items-center gap-3 text-white/50 text-sm">
+                  <Icon className="w-4 h-4 shrink-0" style={{ color: BRAND_ORANGE }} />
+                  {text}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
+              Company
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {COMPANY_LINKS.map(l => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-white/50 text-sm hover:text-white transition-colors duration-200">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
+              Services
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {SERVICE_LINKS.map(l => (
+                <li key={l.label}>
+                  <Link href={l.href} className="text-white/50 text-sm hover:text-white transition-colors duration-200">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tagline */}
+          <div className="flex flex-col justify-between">
+            <p
+              className="text-4xl font-bold leading-tight select-none"
+              style={{ color: 'rgba(255,255,255,0.04)' }}
+            >
+              ELEGANCE IN EVERY CORNER
+            </p>
+            <p className="text-white/25 text-xs tracking-widest uppercase mt-auto pt-8">
+              Licensed &amp; Insured<br />IS-Standard Compliant
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom */}
+      <div className="py-6">
+        <div className="mx-auto max-w-7xl px-6 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/30 text-xs">
+            © {new Date().getFullYear()} Corner Brick 9. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            {['Privacy Policy', 'Terms of Service'].map(t => (
+              <a key={t} href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors">
+                {t}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
