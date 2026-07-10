@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
 import { MapPin, PencilRuler, Building2, Wrench, Video } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
-import CardSwap, { Card } from '@/components/ui/CardSwap'
+import CardSwapScroll, { Card } from '@/components/ui/CardSwapScroll'
 
 const T = DARK_SECTION
 
@@ -46,19 +46,20 @@ const STEPS = [
 ] as const
 
 export default function ProcessSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [active, setActive] = useState(0)
+
   return (
-    <section className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: T.bg }}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-16">
+    <section
+      ref={sectionRef}
+      className="min-h-screen flex items-center overflow-hidden"
+      style={{ backgroundColor: T.bg }}
+    >
+      <div className="mx-auto max-w-7xl w-full px-6 lg:px-16 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
 
-          {/* Left — copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-            className="max-w-xl"
-          >
+          {/* Left — copy + live step index */}
+          <div className="max-w-xl">
             <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
               How We Build
             </p>
@@ -68,37 +69,53 @@ export default function ProcessSection() {
               <span style={{ color: BRAND_ORANGE }}>Not a Promise.</span>
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: T.textMuted }}>
-              Five stages, one accountable team. Every home we build moves through the same
-              documented pipeline — from the first soil test to the final walkthrough on video.
+              Five stages, one accountable team. Scroll through each stage — from the first
+              soil test to the final walkthrough on video.
             </p>
 
-            {/* Step index list */}
-            <ul className="flex flex-col gap-3">
-              {STEPS.map(({ num, title }) => (
-                <li key={num} className="flex items-center gap-4">
-                  <span
-                    className="text-xs font-bold tabular-nums w-8 h-8 flex items-center justify-center border shrink-0"
-                    style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}30`, backgroundColor: `${BRAND_ORANGE}08` }}
+            {/* Step index list — highlights the active card */}
+            <ul className="flex flex-col gap-2">
+              {STEPS.map(({ num, title }, i) => {
+                const isActive = i === active
+                return (
+                  <li
+                    key={num}
+                    className="flex items-center gap-4 py-1.5 transition-all duration-300"
+                    style={{ opacity: isActive ? 1 : 0.45 }}
                   >
-                    {num}
-                  </span>
-                  <span className="text-sm font-medium" style={{ color: T.textMuted }}>{title}</span>
-                </li>
-              ))}
+                    <span
+                      className="text-xs font-bold tabular-nums w-8 h-8 flex items-center justify-center border shrink-0 transition-all duration-300"
+                      style={{
+                        color: isActive ? '#ffffff' : BRAND_ORANGE,
+                        borderColor: isActive ? BRAND_ORANGE : `${BRAND_ORANGE}30`,
+                        backgroundColor: isActive ? BRAND_ORANGE : `${BRAND_ORANGE}08`,
+                      }}
+                    >
+                      {num}
+                    </span>
+                    <span
+                      className="text-sm font-medium transition-all duration-300"
+                      style={{ color: isActive ? T.text : T.textMuted }}
+                    >
+                      {title}
+                    </span>
+                  </li>
+                )
+              })}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Right — swapping cards */}
+          {/* Right — scroll-driven swapping cards */}
           <div className="relative h-[420px] lg:h-[520px] w-full">
-            <CardSwap
+            <CardSwapScroll
+              pinTargetRef={sectionRef}
               width={440}
               height={300}
               cardDistance={56}
-              verticalDistance={64}
-              delay={4000}
-              pauseOnHover
+              verticalDistance={60}
               skewAmount={5}
-              easing="elastic"
+              scrollPerCard={480}
+              onActiveChange={setActive}
             >
               {STEPS.map(({ num, icon: Icon, title, body, badge }) => (
                 <Card key={num}>
@@ -133,7 +150,7 @@ export default function ProcessSection() {
                   </div>
                 </Card>
               ))}
-            </CardSwap>
+            </CardSwapScroll>
           </div>
         </div>
       </div>

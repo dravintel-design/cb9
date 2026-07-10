@@ -93,7 +93,9 @@ const ScrollStack = ({
       if (blurAmount) {
         let topCardIndex = 0
         for (let j = 0; j < cardsRef.current.length; j++) {
-          const jCardTop = cardsRef.current[j].getBoundingClientRect().top + window.scrollY
+          const jCard = cardsRef.current[j]
+          if (!jCard) continue
+          const jCardTop = jCard.getBoundingClientRect().top + window.scrollY
           const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j
           if (scrollTop >= jTriggerStart) topCardIndex = j
         }
