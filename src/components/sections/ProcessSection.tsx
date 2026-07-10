@@ -1,37 +1,44 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { MapPin, PencilRuler, Building2, Wrench, Video } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
+import CardSwap, { Card } from '@/components/ui/CardSwap'
 
 const T = DARK_SECTION
 
 const STEPS = [
   {
     num: '01',
+    icon: MapPin,
     title: 'Site Visit & Honest Scope',
     body: 'We walk the site, run soil checks, and give you a realistic scope — no inflated estimates to win the deal.',
     badge: 'Stage-wise payment schedule locked upfront',
   },
   {
     num: '02',
+    icon: PencilRuler,
     title: 'Design & Permits',
     body: 'Our in-house civil engineers produce structural drawings and handle every government approval.',
     badge: 'Structural drawings + all approvals handled',
   },
   {
     num: '03',
+    icon: Building2,
     title: 'Foundation & Structure',
     body: 'Concrete is cube-tested to IS standards. Every pour is recorded. Nothing is skipped for speed.',
     badge: 'Soil test + concrete cube tested to IS standards',
   },
   {
     num: '04',
+    icon: Wrench,
     title: 'MEP & Interior Finishing',
     body: 'Mechanical, electrical, and plumbing work done entirely by our own team — zero outsourcing.',
     badge: 'All our workers — zero subcontractors',
   },
   {
     num: '05',
+    icon: Video,
     title: 'Video-Documented Handover',
     body: 'You get the keys, a walkthrough video of every system, and a full warranty pack.',
     badge: 'Keys + walkthrough video + warranty pack',
@@ -39,91 +46,94 @@ const STEPS = [
 ] as const
 
 export default function ProcessSection() {
-
   return (
-    <section className="py-24 lg:py-32" style={{ backgroundColor: T.bg }}>
+    <section className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: T.bg }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl mb-20"
-        >
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
-            How We Build
-          </p>
-          <h2 className="font-bold leading-tight text-display-lg" style={{ color: T.text }}>
-            Precision Is a Process,
-            <br />
-            <span style={{ color: BRAND_ORANGE }}>Not a Promise.</span>
-          </h2>
-        </motion.div>
+          {/* Left — copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+            className="max-w-xl"
+          >
+            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+              How We Build
+            </p>
+            <h2 className="font-bold leading-tight text-display-lg mb-6" style={{ color: T.text }}>
+              Precision Is a Process,
+              <br />
+              <span style={{ color: BRAND_ORANGE }}>Not a Promise.</span>
+            </h2>
+            <p className="text-base leading-relaxed mb-8" style={{ color: T.textMuted }}>
+              Five stages, one accountable team. Every home we build moves through the same
+              documented pipeline — from the first soil test to the final walkthrough on video.
+            </p>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Vertical connector line */}
-          <div className="absolute left-[2.25rem] top-0 bottom-0 w-px hidden md:block" style={{ backgroundColor: T.border }} />
-
-          <div className="flex flex-col gap-0">
-            {STEPS.map(({ num, title, body, badge }, i) => (
-              <motion.div
-                key={num}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: 0, ease: [0.4, 0, 0.2, 1] }}
-                className="relative flex gap-8 md:gap-12 pb-12 last:pb-0 group"
-              >
-                {/* Animated left border reveal on scroll */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
-                  className="absolute left-[2.25rem] top-[72px] bottom-0 w-px origin-top hidden md:block"
-                  style={{ backgroundColor: BRAND_ORANGE, opacity: i === STEPS.length - 1 ? 0 : 0.25 }}
-                />
-
-                {/* Number bubble */}
-                <div className="relative z-10 flex-shrink-0">
-                  <motion.div
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.45, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-                    className="w-[72px] h-[72px] flex items-center justify-center border text-lg font-bold"
-                    style={{ borderColor: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}10`, color: BRAND_ORANGE }}
+            {/* Step index list */}
+            <ul className="flex flex-col gap-3">
+              {STEPS.map(({ num, title }) => (
+                <li key={num} className="flex items-center gap-4">
+                  <span
+                    className="text-xs font-bold tabular-nums w-8 h-8 flex items-center justify-center border shrink-0"
+                    style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}30`, backgroundColor: `${BRAND_ORANGE}08` }}
                   >
                     {num}
-                  </motion.div>
-                </div>
+                  </span>
+                  <span className="text-sm font-medium" style={{ color: T.textMuted }}>{title}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.55, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                  className="flex-1 pt-4"
-                >
-                  <h3 className="font-bold text-xl mb-2" style={{ color: T.text }}>{title}</h3>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: T.textMuted }}>{body}</p>
-                  <motion.span
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.4, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                    className="inline-block text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border"
-                    style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
-                  >
-                    Output → {badge}
-                  </motion.span>
-                </motion.div>
-              </motion.div>
-            ))}
+          {/* Right — swapping cards */}
+          <div className="relative h-[420px] lg:h-[520px] w-full">
+            <CardSwap
+              width={440}
+              height={300}
+              cardDistance={56}
+              verticalDistance={64}
+              delay={4000}
+              pauseOnHover
+              skewAmount={5}
+              easing="elastic"
+            >
+              {STEPS.map(({ num, icon: Icon, title, body, badge }) => (
+                <Card key={num}>
+                  <div className="w-full h-full flex flex-col p-8">
+                    {/* Header row */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div
+                        className="w-12 h-12 flex items-center justify-center border shrink-0"
+                        style={{ borderColor: BRAND_ORANGE, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}12` }}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span
+                        className="font-bold tabular-nums leading-none select-none"
+                        style={{ fontSize: '3rem', color: 'rgba(232,72,28,0.18)' }}
+                      >
+                        {num}
+                      </span>
+                    </div>
+
+                    {/* Title + body */}
+                    <h3 className="font-bold text-xl mb-2" style={{ color: '#ffffff' }}>{title}</h3>
+                    <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.55)' }}>{body}</p>
+
+                    {/* Output badge */}
+                    <span
+                      className="inline-block self-start text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border mt-4"
+                      style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
+                    >
+                      Output → {badge}
+                    </span>
+                  </div>
+                </Card>
+              ))}
+            </CardSwap>
           </div>
         </div>
       </div>
