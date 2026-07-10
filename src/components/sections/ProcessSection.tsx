@@ -64,39 +64,64 @@ export default function ProcessSection() {
 
         {/* Steps */}
         <div className="relative">
+          {/* Vertical connector line */}
           <div className="absolute left-[2.25rem] top-0 bottom-0 w-px hidden md:block" style={{ backgroundColor: T.border }} />
 
           <div className="flex flex-col gap-0">
             {STEPS.map(({ num, title, body, badge }, i) => (
               <motion.div
                 key={num}
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0, ease: [0.4, 0, 0.2, 1] }}
                 className="relative flex gap-8 md:gap-12 pb-12 last:pb-0 group"
               >
+                {/* Animated left border reveal on scroll */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+                  className="absolute left-[2.25rem] top-[72px] bottom-0 w-px origin-top hidden md:block"
+                  style={{ backgroundColor: BRAND_ORANGE, opacity: i === STEPS.length - 1 ? 0 : 0.25 }}
+                />
+
                 {/* Number bubble */}
                 <div className="relative z-10 flex-shrink-0">
-                  <div
-                    className="w-[72px] h-[72px] flex items-center justify-center border text-lg font-bold transition-all duration-300"
-                    style={{ borderColor: T.border, backgroundColor: T.bg, color: BRAND_ORANGE }}
+                  <motion.div
+                    initial={{ scale: 0.7, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.45, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+                    className="w-[72px] h-[72px] flex items-center justify-center border text-lg font-bold"
+                    style={{ borderColor: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}10`, color: BRAND_ORANGE }}
                   >
                     {num}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 pt-4">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.55, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                  className="flex-1 pt-4"
+                >
                   <h3 className="font-bold text-xl mb-2" style={{ color: T.text }}>{title}</h3>
                   <p className="text-sm leading-relaxed mb-4" style={{ color: T.textMuted }}>{body}</p>
-                  <span
+                  <motion.span
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.4, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
                     className="inline-block text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border"
                     style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
                   >
                     Output → {badge}
-                  </span>
-                </div>
+                  </motion.span>
+                </motion.div>
               </motion.div>
             ))}
           </div>
