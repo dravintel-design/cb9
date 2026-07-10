@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ShieldCheck, FlaskConical, DollarSign, Video } from 'lucide-react'
+import { ShieldCheck, FlaskConical, DollarSign, Video, ArrowUpRight } from 'lucide-react'
 import { BRAND_ORANGE, LIGHT_SECTION } from '@/lib/utils'
-import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack'
+import TiltCard from '@/components/ui/TiltCard'
 
 const T = LIGHT_SECTION
 
@@ -15,30 +15,34 @@ const DIFFERENTIATORS = [
     body: 'Every worker on your site — mason, electrician, plumber — is a Corner Brick 9 employee. One accountability chain, start to finish.',
     stat: '0',
     statLabel: 'Subcontractors, ever',
+    span: 'lg:col-span-3',
   },
   {
     icon: FlaskConical,
     tag: 'Engineering Rigour',
-    title: 'IS-Standard Testing at Every Stage',
-    body: 'Soil tests, concrete cube tests, and structural checks at foundation, slab, and roof — every batch, every pour, documented.',
+    title: 'IS-Standard Testing',
+    body: 'Soil tests, concrete cube tests, and structural checks at foundation, slab, and roof — documented every pour.',
     stat: '100%',
-    statLabel: 'Batches tested & documented',
+    statLabel: 'Batches tested',
+    span: 'lg:col-span-2',
   },
   {
     icon: DollarSign,
     tag: 'No Hidden Charges',
     title: 'Open-Cost Transparency',
-    body: 'Itemised estimates shared before sign-off. Stage-wise payment schedule locked upfront. No surprise bills at handover.',
+    body: 'Itemised estimates shared before sign-off. Stage-wise payment locked upfront. No surprise bills at handover.',
     stat: '₹0',
-    statLabel: 'Surprise costs at handover',
+    statLabel: 'Surprise costs',
+    span: 'lg:col-span-2',
   },
   {
     icon: Video,
     tag: 'Post-Completion Proof',
     title: 'Video-Documented Handover',
-    body: 'You receive a full video walkthrough of every completed system — plumbing, wiring, structure — alongside the keys and warranty pack.',
+    body: 'A full video walkthrough of every completed system — plumbing, wiring, structure — handed over with the keys and warranty pack.',
     stat: '40+',
     statLabel: 'Homes handed over on video',
+    span: 'lg:col-span-3',
   },
 ] as const
 
@@ -51,7 +55,7 @@ export default function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
           className="max-w-2xl mb-16"
         >
@@ -65,69 +69,83 @@ export default function ServicesSection() {
           </h2>
         </motion.div>
 
-        {/* ScrollStack cards */}
-        <ScrollStack
-          itemDistance={120}
-          itemScale={0.04}
-          itemStackDistance={20}
-          stackPosition="15%"
-          scaleEndPosition="8%"
-          baseScale={0.88}
-          blurAmount={0}
-        >
-          {DIFFERENTIATORS.map(({ icon: Icon, tag, title, body, stat, statLabel }) => (
-            <ScrollStackItem key={title}>
-              <div
-                className="w-full border flex flex-col"
-                style={{
-                  backgroundColor: T.cardBg,
-                  borderColor: T.border,
-                  minHeight: '22rem',
-                }}
+        {/* Interactive bento grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-5">
+          {DIFFERENTIATORS.map(({ icon: Icon, tag, title, body, stat, statLabel, span }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: (i % 2) * 0.1, ease: [0.4, 0, 0.2, 1] }}
+              className={span}
+            >
+              <TiltCard
+                className="h-full min-h-[19rem] flex flex-col overflow-hidden border bg-white transition-shadow duration-300 hover:shadow-[0_28px_70px_-24px_rgba(232,72,28,0.45)]"
+                style={{ borderColor: T.border }}
               >
-                {/* Top: icon + tag */}
-                <div className="flex items-start justify-between gap-4 px-8 pt-8 pb-6">
-                  <div
-                    className="w-12 h-12 flex items-center justify-center border shrink-0"
-                    style={{ borderColor: `${BRAND_ORANGE}50`, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}08` }}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span
-                    className="text-[10px] font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
-                    style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}40`, backgroundColor: `${BRAND_ORANGE}06` }}
-                  >
-                    {tag}
-                  </span>
-                </div>
-
-                {/* Divider */}
-                <div style={{ height: '1px', backgroundColor: T.border, margin: '0 2rem' }} />
-
-                {/* Body */}
-                <div className="flex flex-col gap-3 px-8 py-6 flex-1">
-                  <h3 className="font-bold text-2xl leading-snug" style={{ color: T.text }}>{title}</h3>
-                  <p className="leading-relaxed text-sm flex-1" style={{ color: T.textMuted }}>{body}</p>
-                </div>
-
-                {/* Stat footer */}
+                {/* Animated corner accent */}
                 <div
-                  className="flex items-center justify-between gap-4 px-8 py-5 border-t"
-                  style={{ borderColor: T.border, backgroundColor: T.bg }}
-                >
-                  <div>
-                    <p className="font-bold text-3xl leading-none" style={{ color: BRAND_ORANGE }}>{stat}</p>
-                    <p className="text-xs mt-1" style={{ color: T.textFaint }}>{statLabel}</p>
+                  className="absolute top-0 left-0 w-0 h-0 z-10 pointer-events-none transition-all duration-500 group-hover:w-16 group-hover:h-16"
+                  style={{ background: `linear-gradient(135deg, ${BRAND_ORANGE} 0%, transparent 70%)` }}
+                />
+
+                {/* Content — sits above spotlight */}
+                <div className="relative z-10 flex flex-col h-full p-8 lg:p-10">
+                  {/* Top row */}
+                  <div className="flex items-start justify-between gap-4" style={{ transform: 'translateZ(45px)' }}>
+                    <div
+                      className="w-14 h-14 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:scale-110"
+                      style={{ borderColor: BRAND_ORANGE, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}10` }}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span
+                      className="text-[10px] font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
+                      style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}40`, backgroundColor: `${BRAND_ORANGE}06` }}
+                    >
+                      {tag}
+                    </span>
                   </div>
+
+                  {/* Title + body */}
+                  <div className="mt-8 flex-1" style={{ transform: 'translateZ(30px)' }}>
+                    <h3 className="font-bold text-2xl lg:text-[1.75rem] leading-tight mb-3" style={{ color: T.text }}>
+                      {title}
+                    </h3>
+                    <p className="leading-relaxed text-sm max-w-md" style={{ color: T.textMuted }}>
+                      {body}
+                    </p>
+                  </div>
+
+                  {/* Stat footer */}
                   <div
-                    className="h-[2px] flex-1 mx-4"
-                    style={{ backgroundColor: `${BRAND_ORANGE}20` }}
-                  />
+                    className="mt-8 pt-6 border-t flex items-end justify-between gap-4"
+                    style={{ borderColor: T.border, transform: 'translateZ(20px)' }}
+                  >
+                    <div>
+                      <p className="font-bold text-4xl lg:text-5xl leading-none tracking-tight" style={{ color: BRAND_ORANGE }}>
+                        {stat}
+                      </p>
+                      <p className="text-xs mt-2 font-medium tracking-wide" style={{ color: T.textFaint }}>
+                        {statLabel}
+                      </p>
+                    </div>
+                    <div
+                      className="w-10 h-10 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:bg-[#E8481C] group-hover:border-[#E8481C]"
+                      style={{ borderColor: T.border }}
+                    >
+                      <ArrowUpRight
+                        className="w-4 h-4 transition-colors duration-300 group-hover:text-white"
+                        style={{ color: BRAND_ORANGE }}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </ScrollStackItem>
+              </TiltCard>
+            </motion.div>
           ))}
-        </ScrollStack>
+        </div>
       </div>
     </section>
   )
