@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { ShieldCheck, FlaskConical, DollarSign, Video, ArrowUpRight } from 'lucide-react'
 import { BRAND_ORANGE, LIGHT_SECTION } from '@/lib/utils'
 import TiltCard from '@/components/ui/TiltCard'
+import TextReveal from '@/components/ui/TextReveal'
+import CountUp from '@/components/ui/CountUp'
 
 const T = LIGHT_SECTION
 
@@ -62,11 +64,15 @@ export default function ServicesSection() {
           <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
             Why Corner Brick 9
           </p>
-          <h2 className="font-bold leading-tight text-display-lg" style={{ color: T.text }}>
-            Not What We Do.
-            <br />
-            <span style={{ color: BRAND_ORANGE }}>How We Do It.</span>
-          </h2>
+          <TextReveal
+            as="h2"
+            className="font-bold leading-tight text-display-lg"
+            style={{ color: T.text }}
+            lines={[
+              'Not What We Do.',
+              <span key="l2" style={{ color: BRAND_ORANGE }}>How We Do It.</span>,
+            ]}
+          />
         </motion.div>
 
         {/* Interactive bento grid */}
@@ -124,9 +130,11 @@ export default function ServicesSection() {
                     style={{ borderColor: T.border, transform: 'translateZ(20px)' }}
                   >
                     <div>
-                      <p className="font-bold text-4xl lg:text-5xl leading-none tracking-tight" style={{ color: BRAND_ORANGE }}>
-                        {stat}
-                      </p>
+                      <CountUp
+                        value={stat}
+                        className="block font-bold text-4xl lg:text-5xl leading-none tracking-tight"
+                        style={{ color: BRAND_ORANGE }}
+                      />
                       <p className="text-xs mt-2 font-medium tracking-wide" style={{ color: T.textFaint }}>
                         {statLabel}
                       </p>

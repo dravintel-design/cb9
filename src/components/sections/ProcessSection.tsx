@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { MapPin, PencilRuler, Building2, Wrench, Video } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import CardSwapScroll, { Card } from '@/components/ui/CardSwapScroll'
+import TextReveal from '@/components/ui/TextReveal'
 
 const T = DARK_SECTION
 
@@ -63,11 +64,16 @@ export default function ProcessSection() {
             <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
               How We Build
             </p>
-            <h2 className="font-bold leading-tight text-display-lg mb-6" style={{ color: T.text }}>
-              Precision Is a Process,
-              <br />
-              <span style={{ color: BRAND_ORANGE }}>Not a Promise.</span>
-            </h2>
+            <TextReveal
+              as="h2"
+              className="font-bold leading-tight text-display-lg mb-6"
+              style={{ color: T.text }}
+              amount={0.3}
+              lines={[
+                'Precision Is a Process,',
+                <span key="l2" style={{ color: BRAND_ORANGE }}>Not a Promise.</span>,
+              ]}
+            />
             <p className="text-base leading-relaxed mb-8" style={{ color: T.textMuted }}>
               Five stages, one accountable team. Scroll through each stage — from the first
               soil test to the final walkthrough on video.

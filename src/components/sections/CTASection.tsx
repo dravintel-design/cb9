@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Download, Eye } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
+import TextReveal from '@/components/ui/TextReveal'
 
 const T = DARK_SECTION
 
@@ -52,22 +53,27 @@ export default function CTASection() {
           <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
             Chennai · Avadi · Thiruvallur · Pattibiram
           </p>
-          <h2 className="font-bold leading-tight text-display-lg" style={{ color: T.text }}>
-            Where Are You in
-            <br />
-            <span style={{ color: BRAND_ORANGE }}>Your Build Journey?</span>
-          </h2>
+          <TextReveal
+            as="h2"
+            className="font-bold leading-tight text-display-lg"
+            style={{ color: T.text }}
+            lines={[
+              'Where Are You in',
+              <span key="l2" style={{ color: BRAND_ORANGE }}>Your Build Journey?</span>,
+            ]}
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TIERS.map(({ icon: Icon, label, heading, body, cta, href, variant }, i) => (
             <motion.div
               key={label}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex flex-col gap-6 p-10 border"
+              viewport={{ once: true, amount: 0.25 }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1], y: { duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0 } }}
+              className="flex flex-col gap-6 p-10 border transition-shadow duration-500 hover:shadow-[0_30px_60px_-25px_rgba(232,72,28,0.25)]"
               style={{
                 borderColor: variant === 'filled' ? `${BRAND_ORANGE}30` : T.border,
                 backgroundColor: variant === 'filled' ? `${BRAND_ORANGE}08` : T.cardBg,

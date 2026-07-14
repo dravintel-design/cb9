@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { BRAND_ORANGE, LIGHT_SECTION } from '@/lib/utils'
 import VideoCarousel, { type VideoItem } from '@/components/ui/VideoCarousel'
+import TextReveal from '@/components/ui/TextReveal'
+import CountUp from '@/components/ui/CountUp'
 
 const T = LIGHT_SECTION
 
@@ -47,9 +49,14 @@ export default function ClientsSection() {
             Track Record
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: T.border }}>
-            {STATS.map(({ value, label, sub }) => (
+            {STATS.map(({ value, label, sub }, i) => (
               <div key={label} className="p-8 lg:p-10" style={{ backgroundColor: T.bg }}>
-                <p className="font-bold text-5xl lg:text-6xl mb-1" style={{ color: T.text }}>{value}</p>
+                <CountUp
+                  value={value}
+                  delay={i * 0.12}
+                  className="block font-bold text-5xl lg:text-6xl mb-1"
+                  style={{ color: T.text }}
+                />
                 <p className="font-semibold text-sm mb-2" style={{ color: T.text }}>{label}</p>
                 <p className="text-xs leading-relaxed" style={{ color: T.textFaint }}>{sub}</p>
               </div>
@@ -66,14 +73,15 @@ export default function ClientsSection() {
             transition={{ duration: 0.7 }}
             className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6"
           >
-            <h2
+            <TextReveal
+              as="h2"
               className="font-bold leading-tight"
               style={{ color: T.text, fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
-            >
-              What Clients Say
-              <br />
-              <span style={{ color: BRAND_ORANGE }}>After Moving In.</span>
-            </h2>
+              lines={[
+                'What Clients Say',
+                <span key="l2" style={{ color: BRAND_ORANGE }}>After Moving In.</span>,
+              ]}
+            />
             <p className="text-sm max-w-xs" style={{ color: T.textFaint }}>
               Real homeowners, on camera. Hover to preview — click any story to play.
             </p>
