@@ -6,6 +6,8 @@ import React, {
   createRef,
   forwardRef,
   isValidElement,
+  useCallback,
+  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -64,14 +66,14 @@ const CardSwapScroll = ({
     [childArr.length]
   )
 
-  useLayoutEffect(() => {
-    const total = refs.length
-    if (!total) return
-    const els = refs.map(r => r.current).filter(Boolean) as HTMLDivElement[]
-    if (els.length !== total) return
+  const lastActiveRef = useRef(-1)
 
-    let lastActive = -1
-    const applyProgress = (progress: number) => {
+  const makeApplyProgress = useCallback(() => {
+    const total = refs.length
+    const els = refs.map(r => r.current).filter(Boolean) as HTMLDivElement[]
+    if (!total || els.length !== total) return null
+
+    return (progress: number) => {
       // Fractional "front position": 0 → card 0 at front, total-1 → last card at front
       const p = progress * (total - 1)
 
@@ -112,20 +114,30 @@ const CardSwapScroll = ({
       })
 
       const active = Math.max(0, Math.min(total - 1, Math.round(p)))
-      if (active !== lastActive) {
-        lastActive = active
+      if (active !== lastActiveRef.current) {
+        lastActiveRef.current = active
         onActiveChange?.(active)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refs, cardDistance, verticalDistance, skewAmount, dropDistance])
+
+  // Initial placement before first paint (no pin dependency).
+  useLayoutEffect(() => {
+    makeApplyProgress()?.(0)
+  }, [makeApplyProgress])
+
+  // ScrollTrigger creation runs in a passive effect: by then ALL refs —
+  // including pinTargetRef on an ancestor element — are attached. (A child's
+  // layout effect fires before ancestor refs attach, which made the pin
+  // silently fall back to the stage div in production builds.)
+  useEffect(() => {
+    const total = refs.length
+    const applyProgress = makeApplyProgress()
+    if (!applyProgress) return
 
     // Respect reduced-motion: show a static readable stack, no pin/scrub.
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    applyProgress(0)
-
-    if (prefersReduced) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const pinEl = pinTargetRef?.current ?? stageRef.current
     if (!pinEl) return
@@ -143,9 +155,17 @@ const CardSwapScroll = ({
       onRefresh: self => applyProgress(self.progress),
     })
 
-    return () => st.kill()
+    // Layout above can shift after hydration (fonts, media) — re-measure.
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    document.fonts?.ready.then(refresh).catch(() => {})
+
+    return () => {
+      window.removeEventListener('load', refresh)
+      st.kill()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refs.length, cardDistance, verticalDistance, skewAmount, dropDistance, scrollPerCard])
+  }, [makeApplyProgress, scrollPerCard])
 
   const rendered = childArr.map((child, i) =>
     isValidElement<CardProps>(child)
