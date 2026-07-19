@@ -58,7 +58,7 @@ export default function WorkCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="border p-10 flex flex-col gap-8"
+            className="rounded-2xl border p-10 flex flex-col gap-8"
             style={{ backgroundColor: T.cardBg, borderColor: T.border }}
           >
             <p className="text-sm font-semibold" style={{ color: T.text }}>
@@ -88,7 +88,7 @@ export default function WorkCTA() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+              className="rounded-2xl inline-flex items-center justify-center gap-2.5 px-8 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
               style={{ backgroundColor: BRAND_ORANGE }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}

@@ -77,12 +77,12 @@ export default function AboutStandards() {
               whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.65, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
-              className="border flex flex-col gap-0 overflow-hidden"
+              className="rounded-2xl border flex flex-col gap-0 overflow-hidden"
               style={{ backgroundColor: T.cardBg, borderColor: T.border }}
             >
               {/* Header */}
               <div
-                className="flex items-start justify-between gap-4 p-6 border-b"
+                className="rounded-2xl flex items-start justify-between gap-4 p-6 border-b"
                 style={{ borderColor: T.border }}
               >
                 <div>
@@ -95,7 +95,7 @@ export default function AboutStandards() {
                   <p className="font-semibold text-sm" style={{ color: T.text }}>{s.name}</p>
                 </div>
                 <div
-                  className="text-[9px] font-semibold tracking-[0.18em] uppercase px-2.5 py-1.5 border shrink-0 text-right leading-snug"
+                  className="rounded-lg text-[9px] font-semibold tracking-[0.18em] uppercase px-2.5 py-1.5 border shrink-0 text-right leading-snug"
                   style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
                 >
                   {s.applies}

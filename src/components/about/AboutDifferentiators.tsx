@@ -96,7 +96,7 @@ export default function AboutDifferentiators() {
                     {p.num}
                   </span>
                   <div
-                    className="w-10 h-10 flex items-center justify-center border shrink-0"
+                    className="rounded-xl w-10 h-10 flex items-center justify-center border shrink-0"
                     style={{ borderColor: `${BRAND_ORANGE}30`, backgroundColor: `${BRAND_ORANGE}08` }}
                   >
                     <Icon className="w-4.5 h-4.5" style={{ color: BRAND_ORANGE }} />

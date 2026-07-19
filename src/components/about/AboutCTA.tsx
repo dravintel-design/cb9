@@ -48,7 +48,7 @@ export default function AboutCTA() {
           >
             {/* Stat block */}
             <div
-              className="grid grid-cols-2 gap-px border overflow-hidden"
+              className="rounded-2xl overflow-hidden grid grid-cols-2 gap-px border"
               style={{ borderColor: T.border, backgroundColor: T.border }}
             >
               {[
@@ -79,7 +79,7 @@ export default function AboutCTA() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
                 href="/contact"
-                className="flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+                className="rounded-2xl flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
                 style={{ backgroundColor: BRAND_ORANGE }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -89,7 +89,7 @@ export default function AboutCTA() {
               </Link>
               <Link
                 href="/work"
-                className="flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-semibold tracking-widest uppercase border transition-all"
+                className="rounded-2xl flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-semibold tracking-widest uppercase border transition-all"
                 style={{ color: T.textMuted, borderColor: T.border }}
                 onMouseEnter={e => {
                   e.currentTarget.style.color = T.text

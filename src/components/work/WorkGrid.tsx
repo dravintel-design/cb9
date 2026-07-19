@@ -126,12 +126,12 @@ function ProjectCard({ p, index, theme }: { p: Project; index: number; theme: 'd
       whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.65, delay: (index % 3) * 0.1, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative flex flex-col border overflow-hidden"
+      className="rounded-2xl group relative flex flex-col border overflow-hidden"
       style={{ backgroundColor: T.cardBg, borderColor: T.border }}
     >
       {/* Visual placeholder — orange triangle corner + service number */}
       <div
-        className="relative h-48 flex items-end overflow-hidden"
+        className="rounded-2xl relative h-48 flex items-end overflow-hidden"
         style={{ backgroundColor: theme === 'dark' ? '#141414' : '#e8e3da' }}
       >
         {/* Corner accent */}
@@ -152,7 +152,7 @@ function ProjectCard({ p, index, theme }: { p: Project; index: number; theme: 'd
         {/* Floor tag */}
         <div className="absolute top-3 right-3">
           <span
-            className="text-[9px] font-bold tracking-[0.22em] uppercase px-2.5 py-1 border"
+            className="rounded-lg text-[9px] font-bold tracking-[0.22em] uppercase px-2.5 py-1 border"
             style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}40`, backgroundColor: `${BRAND_ORANGE}10` }}
           >
             {p.floors}

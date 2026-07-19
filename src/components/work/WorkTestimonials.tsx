@@ -62,7 +62,7 @@ export default function WorkTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.65, delay: i * 0.12, ease: [0.4, 0, 0.2, 1] }}
-              className="border flex flex-col gap-6 p-8"
+              className="rounded-2xl border flex flex-col gap-6 p-8"
               style={{ backgroundColor: T.cardBg, borderColor: T.border }}
             >
               {/* Orange accent quote mark */}
@@ -83,7 +83,7 @@ export default function WorkTestimonials() {
               >
                 {/* Initials avatar */}
                 <div
-                  className="w-10 h-10 flex items-center justify-center shrink-0 font-bold text-xs"
+                  className="rounded-xl w-10 h-10 flex items-center justify-center shrink-0 font-bold text-xs"
                   style={{ backgroundColor: `${BRAND_ORANGE}15`, color: BRAND_ORANGE }}
                 >
                   {t.initials}

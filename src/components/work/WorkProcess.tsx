@@ -96,7 +96,7 @@ export default function WorkProcess() {
 
                 {/* Content */}
                 <div
-                  className="flex-1 border p-6"
+                  className="rounded-2xl flex-1 border p-6"
                   style={{ backgroundColor: T.cardBg, borderColor: T.border }}
                 >
                   <h3 className="font-semibold text-lg mb-2" style={{ color: T.text }}>

@@ -92,7 +92,7 @@ export default function ServicesHero() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-widest uppercase text-white transition-colors"
+                className="rounded-2xl inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-widest uppercase text-white transition-colors"
                 style={{ backgroundColor: BRAND_ORANGE }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -115,7 +115,7 @@ export default function ServicesHero() {
                 <a
                   key={href}
                   href={href}
-                  className="text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border border-white/20 text-white/55 hover:border-white/50 hover:text-white transition-all duration-200"
+                  className="rounded-lg text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border border-white/20 text-white/55 hover:border-white/50 hover:text-white transition-all duration-200"
                 >
                   {label}
                 </a>

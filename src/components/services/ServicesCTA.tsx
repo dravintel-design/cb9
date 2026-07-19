@@ -39,7 +39,7 @@ export default function ServicesCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="border p-10 flex flex-col gap-8"
+            className="rounded-2xl border p-10 flex flex-col gap-8"
             style={{ backgroundColor: T.cardBg, borderColor: T.border }}
           >
             {[
@@ -56,7 +56,7 @@ export default function ServicesCTA() {
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
                 href="/contact"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+                className="rounded-2xl flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
                 style={{ backgroundColor: BRAND_ORANGE }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -66,7 +66,7 @@ export default function ServicesCTA() {
               </Link>
               <a
                 href="tel:+919876543210"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-semibold tracking-widest uppercase transition-all border"
+                className="rounded-2xl flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-semibold tracking-widest uppercase transition-all border"
                 style={{ color: T.textMuted, borderColor: T.border }}
                 onMouseEnter={e => { e.currentTarget.style.color = T.text; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)' }}
                 onMouseLeave={e => { e.currentTarget.style.color = T.textMuted; e.currentTarget.style.borderColor = T.border }}

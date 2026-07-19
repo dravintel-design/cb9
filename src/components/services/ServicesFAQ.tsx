@@ -86,7 +86,7 @@ function Item({ q, a, open, onToggle }: { q: string; a: string; open: boolean; o
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-            className="overflow-hidden"
+            className="rounded-2xl overflow-hidden"
           >
             <p className="px-6 pb-7 text-sm leading-relaxed max-w-3xl" style={{ color: T.textMuted }}>
               {a}

@@ -87,7 +87,7 @@ export default function ServicesSection() {
               className={span}
             >
               <TiltCard
-                className="h-full min-h-[19rem] flex flex-col overflow-hidden border bg-white transition-shadow duration-300 hover:shadow-[0_28px_70px_-24px_rgba(232,72,28,0.45)]"
+                className="rounded-2xl h-full min-h-[19rem] flex flex-col overflow-hidden border bg-white transition-shadow duration-300 hover:shadow-[0_28px_70px_-24px_rgba(232,72,28,0.45)]"
                 style={{ borderColor: T.border }}
               >
                 {/* Animated corner accent */}
@@ -101,13 +101,13 @@ export default function ServicesSection() {
                   {/* Top row */}
                   <div className="flex items-start justify-between gap-4" style={{ transform: 'translateZ(45px)' }}>
                     <div
-                      className="w-14 h-14 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:scale-110"
+                      className="rounded-xl w-14 h-14 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:scale-110"
                       style={{ borderColor: BRAND_ORANGE, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}10` }}
                     >
                       <Icon className="w-6 h-6" />
                     </div>
                     <span
-                      className="text-[10px] font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
+                      className="rounded-lg text-[10px] font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
                       style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}40`, backgroundColor: `${BRAND_ORANGE}06` }}
                     >
                       {tag}
@@ -140,7 +140,7 @@ export default function ServicesSection() {
                       </p>
                     </div>
                     <div
-                      className="w-10 h-10 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:bg-[#E8481C] group-hover:border-[#E8481C]"
+                      className="rounded-xl w-10 h-10 flex items-center justify-center border shrink-0 transition-all duration-300 group-hover:bg-[#E8481C] group-hover:border-[#E8481C]"
                       style={{ borderColor: T.border }}
                     >
                       <ArrowUpRight

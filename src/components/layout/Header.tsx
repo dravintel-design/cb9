@@ -69,7 +69,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <Link
               href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+              className="rounded-2xl hidden lg:inline-flex items-center gap-2 px-6 py-2.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
               style={{ backgroundColor: BRAND_ORANGE }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -81,7 +81,7 @@ export default function Header() {
             {/* Mobile trigger */}
             <button
               onClick={() => setOpen(v => !v)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-white border border-white/20 hover:border-white/50 transition-colors"
+              className="rounded-xl lg:hidden w-10 h-10 flex items-center justify-center text-white border border-white/20 hover:border-white/50 transition-colors"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >
@@ -110,7 +110,7 @@ export default function Header() {
               </Link>
               <button
                 onClick={() => setOpen(false)}
-                className="w-10 h-10 flex items-center justify-center text-white border border-white/20"
+                className="rounded-xl w-10 h-10 flex items-center justify-center text-white border border-white/20"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />

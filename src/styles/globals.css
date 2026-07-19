@@ -89,3 +89,14 @@ html.lenis {
   height: 2px;
   background-color: var(--brand-orange);
 }
+
+/* ── CB9 radius system: 16px curvy edges site-wide ────── */
+@layer base {
+  button,
+  input,
+  select,
+  textarea,
+  iframe {
+    border-radius: 16px;
+  }
+}

@@ -175,11 +175,11 @@ export default function ContactForm() {
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="border p-10 flex flex-col gap-6"
+                  className="rounded-2xl border p-10 flex flex-col gap-6"
                   style={{ backgroundColor: TL.cardBg, borderColor: TL.border }}
                 >
                   <div
-                    className="w-12 h-12 flex items-center justify-center"
+                    className="rounded-xl w-12 h-12 flex items-center justify-center"
                     style={{ backgroundColor: `${BRAND_ORANGE}12` }}
                   >
                     <CheckCircle2 className="w-6 h-6" style={{ color: BRAND_ORANGE }} />
@@ -359,7 +359,7 @@ export default function ContactForm() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="inline-flex items-center gap-2.5 px-8 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="rounded-2xl inline-flex items-center gap-2.5 px-8 py-4 text-xs font-semibold tracking-widest uppercase text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                       style={{ backgroundColor: BRAND_ORANGE }}
                       onMouseEnter={e => {
                         if (!submitting) e.currentTarget.style.backgroundColor = '#D03D14'
@@ -488,7 +488,7 @@ export default function ContactForm() {
                     style={{ borderColor: TL.border }}
                   >
                     <div
-                      className="w-8 h-8 flex items-center justify-center shrink-0 mt-0.5"
+                      className="rounded-xl w-8 h-8 flex items-center justify-center shrink-0 mt-0.5"
                       style={{ backgroundColor: `${BRAND_ORANGE}12` }}
                     >
                       <Icon className="w-3.5 h-3.5" style={{ color: BRAND_ORANGE }} />

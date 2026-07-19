@@ -8,7 +8,7 @@ const T = DARK_SECTION
 export default function ContactHero() {
   return (
     <section
-      className="relative overflow-hidden pt-36 pb-16 lg:pt-44 lg:pb-20"
+      className="rounded-2xl relative overflow-hidden pt-36 pb-16 lg:pt-44 lg:pb-20"
       style={{ backgroundColor: CB9_DARKEST }}
     >
       {/* Grid texture */}

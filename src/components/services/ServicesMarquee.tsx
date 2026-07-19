@@ -20,7 +20,7 @@ export default function ServicesMarquee() {
   return (
     <div
       ref={ref}
-      className="relative overflow-hidden border-y py-10 lg:py-14"
+      className="rounded-2xl relative overflow-hidden border-y py-10 lg:py-14"
       style={{ backgroundColor: T.bg, borderColor: T.border }}
       aria-hidden="true"
     >

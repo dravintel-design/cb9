@@ -90,7 +90,7 @@ export default function ProcessSection() {
                     style={{ opacity: isActive ? 1 : 0.45 }}
                   >
                     <span
-                      className="text-xs font-bold tabular-nums w-8 h-8 flex items-center justify-center border shrink-0 transition-all duration-300"
+                      className="rounded-xl text-xs font-bold tabular-nums w-8 h-8 flex items-center justify-center border shrink-0 transition-all duration-300"
                       style={{
                         color: isActive ? '#ffffff' : BRAND_ORANGE,
                         borderColor: isActive ? BRAND_ORANGE : `${BRAND_ORANGE}30`,
@@ -129,7 +129,7 @@ export default function ProcessSection() {
                     {/* Header row */}
                     <div className="flex items-start justify-between mb-6">
                       <div
-                        className="w-12 h-12 flex items-center justify-center border shrink-0"
+                        className="rounded-xl w-12 h-12 flex items-center justify-center border shrink-0"
                         style={{ borderColor: BRAND_ORANGE, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}12` }}
                       >
                         <Icon className="w-5 h-5" />
@@ -148,7 +148,7 @@ export default function ProcessSection() {
 
                     {/* Output badge */}
                     <span
-                      className="inline-block self-start text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border mt-4"
+                      className="rounded-lg inline-block self-start text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border mt-4"
                       style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
                     >
                       Output → {badge}

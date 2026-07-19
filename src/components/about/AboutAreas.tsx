@@ -56,7 +56,7 @@ export default function AboutAreas() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+                className="rounded-2xl inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
                 style={{ backgroundColor: BRAND_ORANGE }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -93,7 +93,7 @@ export default function AboutAreas() {
                   </div>
                 </div>
                 <span
-                  className="text-[9px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 border"
+                  className="rounded-lg text-[9px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 border"
                   style={{
                     color:            area.tag === 'Primary' ? BRAND_ORANGE : T.textFaint,
                     borderColor:      area.tag === 'Primary' ? `${BRAND_ORANGE}35` : T.border,

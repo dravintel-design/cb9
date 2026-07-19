@@ -30,7 +30,7 @@ export default function FounderSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.1, ease: EASE }}
           >
-            <Parallax speed={6} className="relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: T.bgDeep }}>
+            <Parallax speed={6} className="rounded-2xl relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: T.bgDeep }}>
               <div className="absolute inset-0 flex items-end p-8">
                 <motion.div
                   className="h-1 origin-left"
@@ -109,7 +109,7 @@ export default function FounderSection() {
                   transition={{ duration: 0.6, delay: i * 0.12, ease: EASE }}
                 >
                   <div
-                    className="w-8 h-8 flex-shrink-0 flex items-center justify-center border"
+                    className="rounded-xl w-8 h-8 flex-shrink-0 flex items-center justify-center border"
                     style={{ borderColor: T.border, color: BRAND_ORANGE }}
                   >
                     <Icon className="w-4 h-4" />

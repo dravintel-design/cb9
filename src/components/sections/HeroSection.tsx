@@ -148,7 +148,7 @@ export default function HeroSection() {
             <Magnetic strength={0.25}>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-widest uppercase text-white transition-colors"
+                className="rounded-2xl inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-widest uppercase text-white transition-colors"
                 style={{ backgroundColor: BRAND_ORANGE }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
@@ -158,7 +158,7 @@ export default function HeroSection() {
             </Magnetic>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold tracking-wide text-white/80 hover:text-white border border-white/25 hover:border-white/50 transition-all"
+              className="rounded-2xl inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold tracking-wide text-white/80 hover:text-white border border-white/25 hover:border-white/50 transition-all"
             >
               <PlayCircle className="w-4 h-4" style={{ color: BRAND_ORANGE }} />
               See Completed Projects

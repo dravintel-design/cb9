@@ -73,7 +73,7 @@ export default function CTASection() {
               viewport={{ once: true, amount: 0.25 }}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1], y: { duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0 } }}
-              className="flex flex-col gap-6 p-10 border transition-shadow duration-500 hover:shadow-[0_30px_60px_-25px_rgba(232,72,28,0.25)]"
+              className="rounded-2xl flex flex-col gap-6 p-10 border transition-shadow duration-500 hover:shadow-[0_30px_60px_-25px_rgba(232,72,28,0.25)]"
               style={{
                 borderColor: variant === 'filled' ? `${BRAND_ORANGE}30` : T.border,
                 backgroundColor: variant === 'filled' ? `${BRAND_ORANGE}08` : T.cardBg,
@@ -89,7 +89,7 @@ export default function CTASection() {
 
               <Link
                 href={href}
-                className="mt-auto inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold tracking-widest uppercase transition-all"
+                className="rounded-2xl mt-auto inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold tracking-widest uppercase transition-all"
                 style={
                   variant === 'filled'
                     ? { backgroundColor: BRAND_ORANGE, color: '#fff' }

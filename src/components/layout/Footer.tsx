@@ -40,7 +40,7 @@ export default function Footer() {
           </h2>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 text-sm font-semibold tracking-widest uppercase text-white shrink-0 transition-colors"
+            className="rounded-2xl inline-flex items-center gap-3 px-10 py-4 text-sm font-semibold tracking-widest uppercase text-white shrink-0 transition-colors"
             style={{ backgroundColor: BRAND_ORANGE }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}

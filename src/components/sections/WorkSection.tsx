@@ -72,7 +72,7 @@ export default function WorkSection() {
           >
             <Link
               href="/work"
-              className="group/link inline-flex items-center gap-2 text-sm font-semibold tracking-wide border px-6 py-3 transition-all"
+              className="rounded-2xl group/link inline-flex items-center gap-2 text-sm font-semibold tracking-wide border px-6 py-3 transition-all"
               style={{ borderColor: T.border, color: T.textMuted }}
               onMouseEnter={e => { e.currentTarget.style.color = T.text; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
               onMouseLeave={e => { e.currentTarget.style.color = T.textMuted; e.currentTarget.style.borderColor = T.border }}
@@ -93,11 +93,11 @@ export default function WorkSection() {
               viewport={{ once: true, amount: 0.25 }}
               whileHover={{ y: -10 }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: EASE, y: { duration: 0.35, ease: EASE, delay: 0 } }}
-              className="group flex flex-col overflow-hidden cursor-pointer border border-transparent transition-[border-color,box-shadow] duration-500 hover:border-white/10 hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.8)]"
+              className="rounded-2xl group flex flex-col overflow-hidden cursor-pointer border border-transparent transition-[border-color,box-shadow] duration-500 hover:border-white/10 hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.8)]"
               style={{ backgroundColor: T.cardBg }}
             >
               {/* Image placeholder with hover zoom */}
-              <div className="aspect-[4/3] relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+              <div className="rounded-2xl aspect-[4/3] relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
                 <div
                   className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110"
                   style={{ background: `radial-gradient(120% 100% at 30% 100%, ${BRAND_ORANGE}18 0%, transparent 55%), #1a1a1a` }}
@@ -120,7 +120,7 @@ export default function WorkSection() {
                 </div>
                 {/* Hover arrow */}
                 <div
-                  className="absolute bottom-4 right-4 w-9 h-9 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400"
+                  className="rounded-xl absolute bottom-4 right-4 w-9 h-9 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400"
                   style={{ backgroundColor: BRAND_ORANGE }}
                 >
                   <ArrowRight className="w-4 h-4 text-white" />
@@ -135,7 +135,7 @@ export default function WorkSection() {
                   {tags.map(tag => (
                     <span
                       key={tag}
-                      className="text-[10px] tracking-wide font-medium px-2.5 py-1 border"
+                      className="rounded-lg text-[10px] tracking-wide font-medium px-2.5 py-1 border"
                       style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}30` }}
                     >
                       {tag}

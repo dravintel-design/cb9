@@ -32,7 +32,7 @@ function PosterCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative snap-start shrink-0 w-[290px] sm:w-[360px] lg:w-[420px] aspect-video overflow-hidden border text-left transition-all duration-500 ease-out hover:z-20 hover:scale-[1.05] hover:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.55)]"
+      className="rounded-2xl group relative snap-start shrink-0 w-[290px] sm:w-[360px] lg:w-[420px] aspect-video overflow-hidden border text-left transition-all duration-500 ease-out hover:z-20 hover:scale-[1.05] hover:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.55)]"
       style={{ borderColor: 'rgba(255,255,255,0.1)', backgroundColor: '#0d0d0d' }}
     >
       {/* Poster */}
@@ -198,7 +198,7 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
                   type="button"
                   aria-label="Close"
                   onClick={() => setPlaying(null)}
-                  className="w-10 h-10 flex items-center justify-center border transition-colors duration-200 hover:bg-white/10"
+                  className="rounded-xl w-10 h-10 flex items-center justify-center border transition-colors duration-200 hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}
                 >
                   <X className="w-5 h-5" />
@@ -206,7 +206,7 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
               </div>
 
               {/* Video */}
-              <div className="relative w-full aspect-video border" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+              <div className="rounded-2xl overflow-hidden relative w-full aspect-video border" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <iframe
                   src={`https://www.youtube-nocookie.com/embed/${playing.videoId}?autoplay=1&rel=0&modestbranding=1&color=white`}
                   title={playing.client}

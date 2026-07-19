@@ -6,7 +6,7 @@ import { BRAND_ORANGE, CB9_DARK, CB9_DARKEST } from '@/lib/utils'
 export default function WorkHero() {
   return (
     <section
-      className="relative min-h-[52vh] flex items-end overflow-hidden"
+      className="rounded-2xl relative min-h-[52vh] flex items-end overflow-hidden"
       style={{ backgroundColor: CB9_DARKEST }}
     >
       {/* Subtle grid pattern */}
@@ -87,7 +87,7 @@ export default function WorkHero() {
 
         {/* Stats strip */}
         <motion.div
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px border-t"
+          className="rounded-2xl overflow-hidden mt-16 grid grid-cols-2 md:grid-cols-4 gap-px border-t"
           style={{ borderColor: 'rgba(255,255,255,0.08)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

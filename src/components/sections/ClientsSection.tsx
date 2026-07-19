@@ -48,7 +48,7 @@ export default function ClientsSection() {
           <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-8" style={{ color: BRAND_ORANGE }}>
             Track Record
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: T.border }}>
+          <div className="rounded-2xl overflow-hidden grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: T.border }}>
             {STATS.map(({ value, label, sub }, i) => (
               <div key={label} className="p-8 lg:p-10" style={{ backgroundColor: T.bg }}>
                 <CountUp

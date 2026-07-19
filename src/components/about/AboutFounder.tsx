@@ -63,7 +63,7 @@ export default function AboutFounder() {
           >
             {/* Portrait box */}
             <div
-              className="relative w-full aspect-[3/4] max-w-sm overflow-hidden border"
+              className="rounded-2xl relative w-full aspect-[3/4] max-w-sm overflow-hidden border"
               style={{ backgroundColor: T.bgDeep, borderColor: T.border }}
             >
               {/* Orange corner accent */}
@@ -87,7 +87,7 @@ export default function AboutFounder() {
               </div>
               {/* Bottom overlay with name */}
               <div
-                className="absolute bottom-0 left-0 right-0 p-6 border-t"
+                className="rounded-2xl absolute bottom-0 left-0 right-0 p-6 border-t"
                 style={{ borderColor: T.border, backgroundColor: T.cardBg }}
               >
                 <p className="font-bold text-lg" style={{ color: T.text }}>M. Sathish Kumar</p>
@@ -149,7 +149,7 @@ export default function AboutFounder() {
                   style={{ backgroundColor: T.cardBg, borderColor: T.border }}
                 >
                   <div
-                    className="w-8 h-8 flex items-center justify-center"
+                    className="rounded-xl w-8 h-8 flex items-center justify-center"
                     style={{ backgroundColor: `${BRAND_ORANGE}12` }}
                   >
                     <Icon className="w-4 h-4" style={{ color: BRAND_ORANGE }} />

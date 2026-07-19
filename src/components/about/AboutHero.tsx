@@ -8,7 +8,7 @@ const T = DARK_SECTION
 export default function AboutHero() {
   return (
     <section
-      className="relative min-h-[58vh] flex items-end overflow-hidden"
+      className="rounded-2xl relative min-h-[58vh] flex items-end overflow-hidden"
       style={{ backgroundColor: CB9_DARKEST }}
     >
       {/* Subtle grid */}
