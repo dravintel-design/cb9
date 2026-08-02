@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
-import ContactPage from '@/components/pages/ContactPage'
+import ProjectsPage from '@/components/pages/ProjectsPage'
 
 export const metadata: Metadata = {
-  title: 'Contact — Corner Brick 9 | Start With a Conversation',
-  description: 'A minimal enquiry form, WhatsApp, and a free first site visit — reach the Corner Brick 9 studio in Avadi, Chennai.',
+  title: 'Projects — Corner Brick 9 | Homes & Concept Studies',
+  description: 'Completed homes and honest concept studies across Chennai — residential, villas, farmhouses, interiors, and renovations, all fully documented.',
 }
 
 export default function Page() {
@@ -15,7 +15,7 @@ export default function Page() {
       <ScrollProgress />
       <Header />
       <main>
-        <ContactPage />
+        <ProjectsPage />
       </main>
       <Footer />
     </>

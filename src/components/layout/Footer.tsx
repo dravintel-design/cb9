@@ -5,17 +5,17 @@ import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
 import { BRAND_ORANGE } from '@/lib/utils'
 
 const COMPANY_LINKS = [
-  { label: 'About Us',  href: '/about'   },
-  { label: 'Our Work',  href: '/work'    },
-  { label: 'Services',  href: '/services'},
-  { label: 'Contact',   href: '/contact' },
+  { label: 'About the Studio', href: '/about'    },
+  { label: 'Projects',         href: '/projects' },
+  { label: 'Journal',          href: '/journal'  },
+  { label: 'Contact',          href: '/contact'  },
 ]
 
 const SERVICE_LINKS = [
-  { label: 'Design & Planning',     href: '/services' },
-  { label: 'Construction',          href: '/services' },
-  { label: 'Interior Finishing',    href: '/services' },
-  { label: 'Handover & After Care', href: '/services' },
+  { label: 'Design Process',    href: '/design-process' },
+  { label: 'Build Process',     href: '/build-process'  },
+  { label: 'Services',          href: '/services'       },
+  { label: 'Materials Library', href: '/materials'      },
 ]
 
 const CONTACT = [
@@ -59,7 +59,7 @@ export default function Footer() {
               Corner<span style={{ color: BRAND_ORANGE }}>Brick</span>9
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">
-              Turnkey construction solutions from concept to completion. Elegance in every corner.
+              A residential architecture, engineering &amp; build studio. Every home designed for one family, one site, one story.
             </p>
             <div className="flex flex-col gap-3 mt-2">
               {CONTACT.map(({ icon: Icon, text }) => (
@@ -90,7 +90,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
-              Services
+              The Studio
             </h4>
             <ul className="flex flex-col gap-3">
               {SERVICE_LINKS.map(l => (

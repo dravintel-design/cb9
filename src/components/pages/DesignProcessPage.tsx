@@ -1,0 +1,144 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
+import PageHero from '@/components/ui/PageHero'
+import PageCTA from '@/components/ui/PageCTA'
+import TextReveal from '@/components/ui/TextReveal'
+
+const D = DARK_SECTION
+const L = LIGHT_SECTION
+const EASE = [0.22, 1, 0.36, 1] as const
+
+const STAGES = [
+  { num: '01', title: 'Discovery',                  body: 'Long conversations before any drawing. How your family lives, cooks, prays, hosts, and rests — the brief is written from your routines, not our templates.' },
+  { num: '02', title: 'Site Analysis',              body: 'Sun path, wind direction, soil profile, drainage, neighbouring structures, and street noise — measured and mapped before a single line is drawn.' },
+  { num: '03', title: 'Concept Design',             body: 'Massing studies and hand sketches that answer the site. Two or three honest directions, each explained with its trade-offs.' },
+  { num: '04', title: 'Design Development',         body: 'The chosen concept matures — room by room, section by section — with you in the room for every major decision.' },
+  { num: '05', title: 'Engineering',                body: 'Structural design runs parallel to architecture, not after it. Load paths, spans, and foundations resolved while the design can still respond.' },
+  { num: '06', title: 'Approvals',                  body: 'CMDA / DTCP drawings prepared and filed by us. You review every sheet before it is submitted.' },
+  { num: '07', title: 'Construction Documentation', body: 'Working drawings detailed enough that nothing on site is left to interpretation — every junction, every level, every finish.' },
+  { num: '08', title: 'Interior Design',            body: 'Interiors designed with the architecture, not applied afterwards — materials, light, and storage planned as one continuous idea.' },
+  { num: '09', title: 'Site Execution',             body: 'Our own workforce builds from our own drawings. The designer and the builder answer to the same name.' },
+  { num: '10', title: 'Handover & Maintenance',     body: 'A video walkthrough of every system, the complete document set, and a maintenance calendar for the years ahead.' },
+] as const
+
+const DNA = [
+  { num: '01', principle: 'Light before luxury',            note: 'A well-lit modest room beats a dark expensive one.' },
+  { num: '02', principle: 'Privacy before aesthetics',      note: 'The street never looks into your living room, however good the elevation.' },
+  { num: '03', principle: 'Cross ventilation first',        note: 'Every habitable room breathes from two sides. Chennai demands it.' },
+  { num: '04', principle: 'Engineering before decoration',  note: 'Structure is designed, never disguised.' },
+  { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone, and timber that gain character — not cladding that peels.' },
+  { num: '06', principle: 'Function before trends',         note: 'We skip what Instagram loves this year for what your family needs for thirty.' },
+  { num: '07', principle: 'Timeless architecture',          note: 'Proportion and shadow over ornament. Homes that will not date.' },
+  { num: '08', principle: 'Homes built around families',    note: 'The plan follows your rituals — morning coffee to festival cooking.' },
+] as const
+
+export default function DesignProcessPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Design Process"
+        lines={[
+          'Ten Stages.',
+          <span key="l2" style={{ color: BRAND_ORANGE }}>No Shortcuts.</span>,
+        ]}
+        intro="From the first conversation to the maintenance calendar, every CB9 home moves through the same disciplined sequence — design, engineering, and documentation advancing together."
+        meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
+      />
+
+      {/* Ten stages — editorial list */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
+        <div className="mx-auto max-w-5xl px-6 lg:px-16">
+          {STAGES.map(({ num, title, body }, i) => (
+            <motion.div
+              key={num}
+              className="grid grid-cols-12 gap-6 py-10 border-b"
+              style={{ borderColor: L.border }}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.65, ease: EASE }}
+            >
+              <div className="col-span-12 sm:col-span-2">
+                <span
+                  className="font-bold tabular-nums leading-none"
+                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: i === 0 ? BRAND_ORANGE : `${BRAND_ORANGE}55` }}
+                >
+                  {num}
+                </span>
+              </div>
+              <div className="col-span-12 sm:col-span-4">
+                <h3 className="font-bold text-xl lg:text-2xl leading-snug" style={{ color: L.text }}>{title}</h3>
+              </div>
+              <div className="col-span-12 sm:col-span-6">
+                <p className="text-sm lg:text-base leading-relaxed" style={{ color: L.textMuted }}>{body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Design DNA */}
+      <section id="design-dna" className="py-24 lg:py-32 scroll-mt-24" style={{ backgroundColor: D.bg }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-16">
+          <div className="max-w-2xl mb-16">
+            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+              Design DNA
+            </p>
+            <TextReveal
+              as="h2"
+              className="font-bold leading-tight text-display-lg"
+              style={{ color: D.text }}
+              lines={[
+                'Eight Principles.',
+                <span key="l2" style={{ color: BRAND_ORANGE }}>Every Project.</span>,
+              ]}
+            />
+            <motion.p
+              className="mt-6 text-base leading-relaxed"
+              style={{ color: D.textMuted }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+            >
+              These are not slogans — they are the order in which we make decisions when two good things conflict.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+            {DNA.map(({ num, principle, note }, i) => (
+              <motion.div
+                key={num}
+                className="py-7 border-b flex items-start gap-6"
+                style={{ borderColor: D.border }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, delay: (i % 2) * 0.08, ease: EASE }}
+              >
+                <span className="text-xs font-bold tabular-nums pt-2" style={{ color: BRAND_ORANGE }}>{num}</span>
+                <div>
+                  <h3 className="font-bold text-xl lg:text-2xl leading-snug mb-1.5" style={{ color: D.text }}>
+                    {principle}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>{note}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PageCTA
+        lines={[
+          'Begin at',
+          <span key="l2" style={{ color: BRAND_ORANGE }}>Stage One.</span>,
+        ]}
+        body="Discovery starts with a conversation about your family and your site — no fees, no commitment, no sales script."
+        ctaLabel="Book a Discovery Call"
+      />
+    </>
+  )
+}

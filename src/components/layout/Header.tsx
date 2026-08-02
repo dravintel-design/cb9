@@ -8,10 +8,14 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { cn, BRAND_ORANGE } from '@/lib/utils'
 
 const NAV = [
-  { label: 'Services', href: '/services' },
-  { label: 'Work',     href: '/work'     },
-  { label: 'About',   href: '/about'    },
-  { label: 'Contact', href: '/contact'  },
+  { label: 'About',     href: '/about'          },
+  { label: 'Projects',  href: '/projects'       },
+  { label: 'Design',    href: '/design-process' },
+  { label: 'Build',     href: '/build-process'  },
+  { label: 'Services',  href: '/services'       },
+  { label: 'Materials', href: '/materials'      },
+  { label: 'Journal',   href: '/journal'        },
+  { label: 'Contact',   href: '/contact'        },
 ]
 
 export default function Header() {
@@ -50,13 +54,13 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
             {NAV.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  'text-sm font-medium tracking-wide transition-colors duration-200',
+                  'text-[13px] font-medium tracking-wide transition-colors duration-200',
                   pathname === href ? 'text-[#E8481C]' : 'text-white/70 hover:text-white'
                 )}
               >
@@ -69,13 +73,13 @@ export default function Header() {
             {/* Desktop CTA */}
             <Link
               href="/contact"
-              className="rounded-2xl hidden lg:inline-flex items-center gap-2 px-6 py-2.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
+              className="rounded-2xl hidden xl:inline-flex items-center gap-2 px-6 py-2.5 text-xs font-semibold tracking-widest uppercase text-white transition-colors"
               style={{ backgroundColor: BRAND_ORANGE }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
             >
               <ArrowRight className="w-3 h-3" />
-              Get a Quote
+              Start a Project
             </Link>
 
             {/* Mobile trigger */}
@@ -129,7 +133,7 @@ export default function Header() {
                   <Link
                     href={href}
                     className={cn(
-                      'block text-5xl sm:text-6xl font-bold py-3 border-b border-white/8 transition-colors',
+                      'block text-4xl sm:text-5xl font-bold py-2.5 border-b border-white/8 transition-colors',
                       pathname === href ? 'text-[#E8481C]' : 'text-white/80 hover:text-white'
                     )}
                   >
@@ -147,7 +151,7 @@ export default function Header() {
                 style={{ backgroundColor: BRAND_ORANGE }}
               >
                 <ArrowRight className="w-4 h-4" />
-                Get a Free Quote
+                Start a Project
               </Link>
             </div>
           </motion.div>
