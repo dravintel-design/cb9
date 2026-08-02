@@ -82,8 +82,7 @@ export default function ServicesPage() {
           {SERVICES.map(({ num, title, body, scope }, i) => (
             <motion.div
               key={num}
-              className="group grid grid-cols-12 gap-6 py-10 lg:py-12 border-b items-start"
-              style={{ borderColor: L.border }}
+              className="group rounded-2xl grid grid-cols-12 gap-6 py-10 lg:py-12 border-b border-[rgba(0,0,0,0.08)] items-start -mx-4 px-4 lg:-mx-8 lg:px-8 transition-colors duration-500 hover:bg-[#171717] hover:border-transparent cursor-default"
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -94,21 +93,22 @@ export default function ServicesPage() {
               </div>
               <div className="col-span-10 lg:col-span-4">
                 <h2
-                  className="font-bold leading-tight transition-colors duration-300"
-                  style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: L.text }}
+                  className="font-bold leading-tight transition-colors duration-500 text-[#171717] group-hover:text-white"
+                  style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
                 >
                   {title}
                 </h2>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-6">
-                <p className="text-sm lg:text-base leading-relaxed" style={{ color: L.textMuted }}>{body}</p>
+                <p className="text-sm lg:text-base leading-relaxed transition-colors duration-500 text-[rgba(23,23,23,0.58)] group-hover:text-[rgba(255,255,255,0.6)]">
+                  {body}
+                </p>
               </div>
               <div className="col-span-12 lg:col-span-3 flex lg:flex-col flex-wrap gap-2">
                 {scope.map(s => (
                   <span
                     key={s}
-                    className="rounded-lg text-[10px] font-semibold tracking-[0.14em] uppercase px-3 py-1.5 border self-start"
-                    style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}30`, backgroundColor: `${BRAND_ORANGE}05` }}
+                    className="rounded-lg text-[10px] font-semibold tracking-[0.14em] uppercase px-3 py-1.5 border self-start transition-colors duration-500 text-[#E8481C] border-[rgba(232,72,28,0.19)] bg-[rgba(232,72,28,0.02)] group-hover:border-[rgba(232,72,28,0.55)] group-hover:bg-[rgba(232,72,28,0.14)]"
                   >
                     {s}
                   </span>
