@@ -61,13 +61,16 @@ interface DnaHelixProps {
   principles: readonly { num: string; principle: string }[]
   activeIndex: number
   onSelect: (i: number) => void
+  /** External rotation driver in degrees (e.g. from a pinned scroll sequence).
+   *  When omitted, the helix twists on its own viewport transit. */
+  rotation?: MotionValue<number>
 }
 
 /**
  * CSS-3D double helix that twists as the page scrolls. Every ~3rd rung
  * carries a numbered, clickable principle node.
  */
-export default function DnaHelix({ principles, activeIndex, onSelect }: DnaHelixProps) {
+export default function DnaHelix({ principles, activeIndex, onSelect, rotation: external }: DnaHelixProps) {
   const sceneRef = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
 
@@ -75,8 +78,8 @@ export default function DnaHelix({ principles, activeIndex, onSelect }: DnaHelix
     target: sceneRef,
     offset: ['start end', 'end start'],
   })
-  const raw = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 480])
-  const rotation = useSpring(raw, { stiffness: 55, damping: 18, mass: 0.4 })
+  const internal = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 480])
+  const rotation = useSpring(external ?? internal, { stiffness: 55, damping: 18, mass: 0.4 })
 
   // Which rung indices carry a principle node (8 nodes over 22 rungs).
   const nodeRungs = principles.map((_, i) => i * 3)

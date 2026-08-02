@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
 import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
+import { ScrollTrigger } from '@/lib/gsap'
+import { getLenis } from '@/lib/lenis'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
@@ -36,9 +38,72 @@ const DNA = [
   { num: '08', principle: 'Homes built around families',    note: 'The plan follows your rituals — morning coffee to festival cooking.' },
 ] as const
 
+/** Degrees of helix twist between one principle and the next (nodes sit 72° apart). */
+const DEG_PER_PRINCIPLE = 72
+/** Scroll distance consumed per principle while the section is pinned. */
+const SCROLL_PER_PRINCIPLE = 380
+
 export default function DesignProcessPage() {
   const [activeDna, setActiveDna] = useState(0)
   const active = DNA[activeDna]!
+
+  const dnaSectionRef = useRef<HTMLElement>(null)
+  const dnaRotation = useMotionValue(0)
+  const dnaStRef = useRef<InstanceType<typeof ScrollTrigger> | null>(null)
+  const lastIdxRef = useRef(0)
+
+  // Pin the Design DNA section and walk 01 -> 08 as the user scrolls,
+  // twisting the helix so the active node turns to the front.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // On small screens the stacked layout is taller than the viewport —
+    // keep tap-to-reveal there instead of pinning.
+    if (window.innerWidth < 1024) return
+    const el = dnaSectionRef.current
+    if (!el) return
+
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: 'top top',
+      end: `+=${(DNA.length - 1) * SCROLL_PER_PRINCIPLE}`,
+      pin: el,
+      pinSpacing: true,
+      scrub: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: self => {
+        dnaRotation.set(-self.progress * (DNA.length - 1) * DEG_PER_PRINCIPLE)
+        const idx = Math.max(0, Math.min(DNA.length - 1, Math.round(self.progress * (DNA.length - 1))))
+        if (idx !== lastIdxRef.current) {
+          lastIdxRef.current = idx
+          setActiveDna(idx)
+        }
+      },
+    })
+    dnaStRef.current = st
+
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    document.fonts?.ready.then(refresh).catch(() => {})
+
+    return () => {
+      window.removeEventListener('load', refresh)
+      st.kill()
+      dnaStRef.current = null
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Clicking a node/chip scrolls to that principle's position in the sequence.
+  const selectDna = (i: number) => {
+    const st = dnaStRef.current
+    const lenis = getLenis()
+    if (st && lenis) {
+      lenis.scrollTo(st.start + (i / (DNA.length - 1)) * (st.end - st.start), { duration: 0.9 })
+    } else {
+      setActiveDna(i)
+    }
+  }
 
   return (
     <>
@@ -85,31 +150,32 @@ export default function DesignProcessPage() {
       </section>
 
       {/* Design DNA */}
-      <section id="design-dna" className="py-24 lg:py-32 scroll-mt-24" style={{ backgroundColor: D.bg }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
-              Design DNA
+      <section
+        id="design-dna"
+        ref={dnaSectionRef}
+        className="min-h-screen flex items-center overflow-hidden scroll-mt-24"
+        style={{ backgroundColor: D.bg }}
+      >
+        <div className="mx-auto max-w-7xl w-full px-6 lg:px-16 py-16 lg:py-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+                Design DNA
+              </p>
+              <TextReveal
+                as="h2"
+                className="font-bold leading-tight text-display-md"
+                style={{ color: D.text }}
+                amount={0.3}
+                lines={[
+                  'Eight Principles.',
+                  <span key="l2" style={{ color: BRAND_ORANGE }}>Every Project.</span>,
+                ]}
+              />
+            </div>
+            <p className="text-sm max-w-xs" style={{ color: D.textFaint }}>
+              Keep scrolling — the strand turns and each principle reveals itself in order.
             </p>
-            <TextReveal
-              as="h2"
-              className="font-bold leading-tight text-display-lg"
-              style={{ color: D.text }}
-              lines={[
-                'Eight Principles.',
-                <span key="l2" style={{ color: BRAND_ORANGE }}>Every Project.</span>,
-              ]}
-            />
-            <motion.p
-              className="mt-6 text-base leading-relaxed"
-              style={{ color: D.textMuted }}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-            >
-              These are not slogans — they are the order in which we make decisions when two good things conflict.
-            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -123,10 +189,11 @@ export default function DesignProcessPage() {
               <DnaHelix
                 principles={DNA}
                 activeIndex={activeDna}
-                onSelect={setActiveDna}
+                onSelect={selectDna}
+                rotation={dnaRotation}
               />
               <p className="text-center text-xs mt-2" style={{ color: D.textFaint }}>
-                Scroll to twist the strand · tap a number to reveal its principle
+                Scroll to move through the strand · tap a number to jump to its principle
               </p>
             </motion.div>
 
@@ -168,7 +235,7 @@ export default function DesignProcessPage() {
                     <button
                       key={num}
                       type="button"
-                      onClick={() => setActiveDna(i)}
+                      onClick={() => selectDna(i)}
                       aria-pressed={isActive}
                       className="rounded-xl flex items-center gap-3 px-4 py-3 border text-left transition-all duration-300"
                       style={{
