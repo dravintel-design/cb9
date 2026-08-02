@@ -1,10 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
+import DnaHelix from '@/components/ui/DnaHelix'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
@@ -35,6 +37,9 @@ const DNA = [
 ] as const
 
 export default function DesignProcessPage() {
+  const [activeDna, setActiveDna] = useState(0)
+  const active = DNA[activeDna]!
+
   return (
     <>
       <PageHero
@@ -107,26 +112,87 @@ export default function DesignProcessPage() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-            {DNA.map(({ num, principle, note }, i) => (
-              <motion.div
-                key={num}
-                className="py-7 border-b flex items-start gap-6"
-                style={{ borderColor: D.border }}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.6, delay: (i % 2) * 0.08, ease: EASE }}
-              >
-                <span className="text-xs font-bold tabular-nums pt-2" style={{ color: BRAND_ORANGE }}>{num}</span>
-                <div>
-                  <h3 className="font-bold text-xl lg:text-2xl leading-snug mb-1.5" style={{ color: D.text }}>
-                    {principle}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>{note}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            {/* 3D helix — twists on scroll, nodes are clickable */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: EASE }}
+            >
+              <DnaHelix
+                principles={DNA}
+                activeIndex={activeDna}
+                onSelect={setActiveDna}
+              />
+              <p className="text-center text-xs mt-2" style={{ color: D.textFaint }}>
+                Scroll to twist the strand · tap a number to reveal its principle
+              </p>
+            </motion.div>
+
+            {/* Reveal panel + all eight principles */}
+            <div className="flex flex-col gap-8">
+              {/* Active principle reveal */}
+              <div className="relative min-h-[190px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.num}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -14 }}
+                    transition={{ duration: 0.35, ease: EASE }}
+                    className="rounded-2xl border p-8 lg:p-10"
+                    style={{ backgroundColor: D.cardBg, borderColor: `${BRAND_ORANGE}35` }}
+                  >
+                    <span
+                      className="font-bold tabular-nums leading-none block mb-4"
+                      style={{ fontSize: '2.6rem', color: `${BRAND_ORANGE}45` }}
+                    >
+                      {active.num}
+                    </span>
+                    <h3 className="font-bold text-2xl lg:text-3xl leading-snug mb-3" style={{ color: D.text }}>
+                      {active.principle}
+                    </h3>
+                    <p className="text-sm lg:text-base leading-relaxed" style={{ color: D.textMuted }}>
+                      {active.note}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* All eight — click to reveal */}
+              <div className="grid grid-cols-2 gap-2">
+                {DNA.map(({ num, principle }, i) => {
+                  const isActive = i === activeDna
+                  return (
+                    <button
+                      key={num}
+                      type="button"
+                      onClick={() => setActiveDna(i)}
+                      aria-pressed={isActive}
+                      className="rounded-xl flex items-center gap-3 px-4 py-3 border text-left transition-all duration-300"
+                      style={{
+                        backgroundColor: isActive ? `${BRAND_ORANGE}12` : 'transparent',
+                        borderColor: isActive ? BRAND_ORANGE : D.border,
+                      }}
+                    >
+                      <span
+                        className="text-[10px] font-bold tabular-nums shrink-0"
+                        style={{ color: BRAND_ORANGE }}
+                      >
+                        {num}
+                      </span>
+                      <span
+                        className="text-xs font-semibold leading-snug transition-colors duration-300"
+                        style={{ color: isActive ? D.text : D.textMuted }}
+                      >
+                        {principle}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
