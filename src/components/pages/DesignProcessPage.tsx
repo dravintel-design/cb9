@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
 import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import { ScrollTrigger } from '@/lib/gsap'
+import { isPrintMode } from '@/components/ui/PrintMode'
 import { getLenis } from '@/lib/lenis'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
@@ -51,10 +52,17 @@ export default function DesignProcessPage() {
   const dnaRotation = useMotionValue(0)
   const dnaStRef = useRef<InstanceType<typeof ScrollTrigger> | null>(null)
   const lastIdxRef = useRef(0)
+  // Static capture shows all eight principles instead of the live single panel.
+  const [printing, setPrinting] = useState(false)
+
+  useEffect(() => {
+    if (isPrintMode()) setPrinting(true)
+  }, [])
 
   // Pin the Design DNA section and walk 01 -> 08 as the user scrolls,
   // twisting the helix so the active node turns to the front.
   useEffect(() => {
+    if (isPrintMode()) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     // On small screens the stacked layout is taller than the viewport —
     // keep tap-to-reveal there instead of pinning.
@@ -115,6 +123,8 @@ export default function DesignProcessPage() {
         ]}
         intro="From the first conversation to the maintenance calendar, every CB9 home moves through the same disciplined sequence — design, engineering, and documentation advancing together."
         meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
+        image="/heroes/design-process.svg"
+        imageAlt="Floor plan sketch with door swing arcs, furniture layout, dimensions, and a north arrow"
       />
 
       {/* Ten stages — editorial list */}
@@ -178,7 +188,22 @@ export default function DesignProcessPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          {/* Static capture: every principle laid out for review */}
+          {printing && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+              {DNA.map(({ num, principle, note }) => (
+                <div key={num} className="py-6 border-b flex items-start gap-6" style={{ borderColor: D.border }}>
+                  <span className="text-xs font-bold tabular-nums pt-2" style={{ color: BRAND_ORANGE }}>{num}</span>
+                  <div>
+                    <h3 className="font-bold text-xl leading-snug mb-1.5" style={{ color: D.text }}>{principle}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>{note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className={printing ? 'hidden' : 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center'}>
             {/* 3D helix — twists on scroll, nodes are clickable */}
             <motion.div
               initial={{ opacity: 0 }}

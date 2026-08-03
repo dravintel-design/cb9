@@ -113,6 +113,8 @@ export default function JournalPage() {
         ]}
         intro="Essays, site stories, and video lessons from the studio — because an informed client builds a better home. No gated PDFs, no sales funnels."
         meta={['Education', 'Engineering', 'Site Stories', 'Video']}
+        image="/heroes/journal.svg"
+        imageAlt="Stacked architectural drawing sheets with a title block and a magnified construction detail callout"
       />
 
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>

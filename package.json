@@ -7,25 +7,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preview:pdf": "node scripts/build-preview-pdf.mjs"
   },
   "dependencies": {
     "next": "14.2.29",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-
     "three": "0.169.0",
     "@react-three/fiber": "8.17.10",
     "@react-three/drei": "9.115.0",
     "@react-three/postprocessing": "2.16.3",
     "postprocessing": "6.36.4",
-
     "gsap": "3.12.5",
-
     "framer-motion": "11.18.2",
-
     "lenis": "1.1.14",
-
     "clsx": "2.1.1",
     "tailwind-merge": "2.5.4",
     "lucide-react": "0.460.0"

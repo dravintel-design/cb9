@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#101010"/><stop offset="1" stop-color="#1a1a1a"/>
+  </linearGradient>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  </pattern>
+  
+</defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<rect width="1920" height="1080" fill="url(#grid)"/>
+<rect x="460" y="200" width="1000" height="680" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="3.5"/>
+<line x1="840" y1="200" x2="840" y2="500" stroke="rgba(255,255,255,0.30)" stroke-width="2.5"/>
+<line x1="840" y1="500" x2="460" y2="500" stroke="rgba(255,255,255,0.30)" stroke-width="2.5"/>
+<line x1="1080" y1="880" x2="1080" y2="580" stroke="rgba(255,255,255,0.30)" stroke-width="2.5"/>
+<line x1="1080" y1="580" x2="1460" y2="580" stroke="rgba(255,255,255,0.30)" stroke-width="2.5"/>
+<line x1="840" y1="670" x2="840" y2="880" stroke="rgba(255,255,255,0.30)" stroke-width="2.5"/>
+<path d="M 840 540 A 90 90 0 0 1 930 630" fill="none" stroke="rgba(232,72,28,0.72)" stroke-width="2"/>
+<path d="M 640 500 A 80 80 0 0 0 560 420" fill="none" stroke="rgba(232,72,28,0.72)" stroke-width="2"/>
+<path d="M 1080 630 A 70 70 0 0 1 1150 700" fill="none" stroke="rgba(232,72,28,0.72)" stroke-width="2"/>
+<line x1="600" y1="198" x2="710" y2="198" stroke="rgba(232,72,28,0.40)" stroke-width="6"/>
+<line x1="980" y1="198" x2="1090" y2="198" stroke="rgba(232,72,28,0.40)" stroke-width="6"/>
+<line x1="1260" y1="198" x2="1370" y2="198" stroke="rgba(232,72,28,0.40)" stroke-width="6"/>
+<line x1="1462" y1="320" x2="1462" y2="440" stroke="rgba(232,72,28,0.40)" stroke-width="6"/>
+<rect x="520" y="280" width="220" height="120" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+<rect x="1160" y="280" width="200" height="90" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+<circle cx="1260" cy="740" r="60" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+<rect x="540" y="720" width="180" height="70" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+<line x1="460" y1="940" x2="1460" y2="940" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="460" y1="928" x2="460" y2="952" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="840" y1="928" x2="840" y2="952" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="1080" y1="928" x2="1080" y2="952" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="1460" y1="928" x2="1460" y2="952" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="400" y1="200" x2="400" y2="880" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="388" y1="200" x2="412" y2="200" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="388" y1="500" x2="412" y2="500" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="388" y1="670" x2="412" y2="670" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<line x1="388" y1="880" x2="412" y2="880" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+<circle cx="1700" cy="260" r="54" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="2"/>
+<polyline points="1700,300 1700,220" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="2"/>
+<polyline points="1688,240 1700,214 1712,240" fill="none" stroke="rgba(232,72,28,0.72)" stroke-width="2"/>
+</svg>

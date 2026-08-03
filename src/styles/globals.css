@@ -100,3 +100,45 @@ html.lenis {
     border-radius: 16px;
   }
 }
+
+/* ── Print / PDF capture mode (?print=1) ──────────────────
+   The site animates content in on scroll and pins several sections.
+   For a static capture we force everything to its resting visible
+   state and keep backgrounds in the output. */
+[data-print] *,
+[data-print] *::before,
+[data-print] *::after {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+  clip-path: none !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+[data-print] {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Masked line reveals need their overflow released, or the lines stay clipped. */
+[data-print] .overflow-hidden {
+  overflow: visible !important;
+}
+
+/* Viewport-relative heights are poison in a static capture: the paper box
+   is the full document height, so 100svh/100vh would balloon one section to
+   fill the entire sheet and push everything else off it. Pin them to a
+   fixed, viewport-independent height instead. */
+[data-print] .min-h-\[100svh\],
+[data-print] .h-screen {
+  min-height: 760px !important;
+  height: 760px !important;
+}
+
+[data-print] .min-h-screen {
+  min-height: 0 !important;
+  height: auto !important;
+}

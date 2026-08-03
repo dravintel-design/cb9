@@ -40,6 +40,8 @@ export default function MaterialsPage() {
         ]}
         intro="Twelve categories, one standard: everything specified in a CB9 home is chosen for how it performs in year ten, documented at delivery, and logged in your project file."
         meta={['Specified by the Studio', 'Certified Sources', 'Logged per Project']}
+        image="/heroes/materials.svg"
+        imageAlt="Material sample board with twelve swatches showing brick coursing, stone, wood grain, steel section, and tile hatch patterns"
       />
 
       {/* Curation philosophy */}

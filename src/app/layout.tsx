@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import LenisProvider from '@/components/providers/LenisProvider'
+import PrintMode from '@/components/ui/PrintMode'
 
 // Inter as fallback; Stack is loaded via @import in globals.css
 const inter = Inter({
@@ -58,6 +60,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased overflow-x-hidden">
+        <Suspense fallback={null}>
+          <PrintMode />
+        </Suspense>
         <LenisProvider>
           {children}
         </LenisProvider>

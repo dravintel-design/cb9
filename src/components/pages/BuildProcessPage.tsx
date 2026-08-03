@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { Drill, FlaskConical, Building2, Zap, Paintbrush, Camera, Video, ShieldCheck } from 'lucide-react'
-import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
+import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
 import CountUp from '@/components/ui/CountUp'
+import StepSequence from '@/components/ui/StepSequence'
 
 const D = DARK_SECTION
-const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const STAGES = [
@@ -89,51 +89,16 @@ export default function BuildProcessPage() {
         ]}
         intro="Eight stages between drawings and keys — each one tested, photographed, and filed. This is how a CB9 design survives contact with the real world, intact."
         meta={['IS 1888 Soil Testing', 'IS 456 Concrete', 'Zero Subcontractors', 'Video Handover']}
+        image="/heroes/build-process.svg"
+        imageAlt="Structural section drawing with column grid, slabs, rebar lines, and footings"
       />
 
-      {/* Stages */}
-      <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
-            {STAGES.map(({ icon: Icon, num, title, body, output }, i) => (
-              <motion.div
-                key={num}
-                className="rounded-2xl border p-8 lg:p-10 flex flex-col gap-5"
-                style={{ backgroundColor: L.cardBg, borderColor: L.border }}
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.65, delay: (i % 2) * 0.1, ease: EASE }}
-              >
-                <div className="flex items-start justify-between">
-                  <div
-                    className="rounded-xl w-12 h-12 flex items-center justify-center border"
-                    style={{ borderColor: BRAND_ORANGE, color: BRAND_ORANGE, backgroundColor: `${BRAND_ORANGE}08` }}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span
-                    className="font-bold tabular-nums leading-none select-none"
-                    style={{ fontSize: '2.5rem', color: `${BRAND_ORANGE}30` }}
-                  >
-                    {num}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-xl mb-2" style={{ color: L.text }}>{title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: L.textMuted }}>{body}</p>
-                </div>
-                <span
-                  className="rounded-lg inline-block self-start text-[10px] font-semibold tracking-[0.16em] uppercase px-3 py-1.5 border mt-auto"
-                  style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}06` }}
-                >
-                  Output → {output}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Stages — pinned, scroll-driven walkthrough */}
+      <StepSequence
+        steps={STAGES}
+        eyebrow="How We Build"
+        heading={<>Eight Stages, <span style={{ color: BRAND_ORANGE }}>In Order.</span></>}
+      />
 
       {/* Proof stats */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>

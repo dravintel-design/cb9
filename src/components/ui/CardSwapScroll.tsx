@@ -13,6 +13,7 @@ import React, {
   useRef,
 } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { isPrintMode } from '@/components/ui/PrintMode'
 import './CardSwapScroll.css'
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -136,7 +137,8 @@ const CardSwapScroll = ({
     const applyProgress = makeApplyProgress()
     if (!applyProgress) return
 
-    // Respect reduced-motion: show a static readable stack, no pin/scrub.
+    // Static capture and reduced-motion both get a readable stack, no pin/scrub.
+    if (isPrintMode()) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const pinEl = pinTargetRef?.current ?? stageRef.current

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { animate, useInView, useReducedMotion } from 'framer-motion'
+import { isPrintMode } from '@/components/ui/PrintMode'
 
 interface CountUpProps {
   /** Display value, e.g. "40+", "₹2,600", "100%", "0". */
@@ -35,6 +36,12 @@ export default function CountUp({
   const grouped = numStr.includes(',')
 
   const [display, setDisplay] = useState(match ? `${prefix}0${suffix}` : value)
+
+  // Static capture never runs the animation to completion, which would print
+  // every stat as zero — show the final value straight away.
+  useEffect(() => {
+    if (isPrintMode()) setDisplay(value)
+  }, [value])
 
   useEffect(() => {
     if (!inView) return

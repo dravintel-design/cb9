@@ -126,6 +126,8 @@ export default function ProjectsPage() {
         ]}
         intro="Completed homes and honest concept studies — never staged luxury. What you see here is real work and real thinking: site analysis, detailing, documentation, and the houses that came out of them."
         meta={['Residential', 'Luxury Villas', 'Farmhouses', 'Interiors', 'Renovations']}
+        image="/heroes/projects.svg"
+        imageAlt="Architectural street elevation study of four CB9 house profiles with dimension lines"
       />
 
       {/* Grid with filters */}

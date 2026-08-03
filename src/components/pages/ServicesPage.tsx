@@ -74,6 +74,8 @@ export default function ServicesPage() {
         ]}
         intro="Architecture, engineering, and construction under one accountable roof — engage us for the whole journey or the single discipline you need."
         meta={['Design', 'Engineering', 'Build', 'Advisory']}
+        image="/heroes/services.svg"
+        imageAlt="Isometric wireframe drawing of a house with discipline nodes orbiting around it"
       />
 
       {/* Editorial service rows */}
