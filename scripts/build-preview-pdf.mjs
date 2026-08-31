@@ -204,10 +204,14 @@ async function main() {
     mkdirSync(OUT_DIR, { recursive: true })
     console.log(`Capturing ${ROUTES.length} pages from ${BASE}  (one sheet each)`)
 
+    // Each page is written as its own file for page-by-page review, then
+    // merged into a single document for whoever wants the whole set.
     const parts = []
     for (const route of ROUTES) {
       const pdf = await capture(route)
-      const f = join(profile, `${parts.length}.pdf`)
+      const n = String(parts.length + 1).padStart(2, '0')
+      const slug = route.path === '' ? 'home' : route.path
+      const f = join(OUT_DIR, `${n}-${slug}.pdf`)
       writeFileSync(f, pdf)
       parts.push(f)
     }
@@ -228,7 +232,12 @@ print(f"  {out}  ({len(w.pages)} pages)")
       merge.on('exit', c => (c === 0 ? res() : rej(new Error('merge failed'))))
     )
 
-    console.log(`\nDone. Open: ${BASE}/preview/cb9-website-pages.pdf`)
+    console.log('\nDone.')
+    console.log(`  Combined:     ${BASE}/preview/cb9-website-pages.pdf`)
+    console.log('  Page by page:')
+    for (const f of parts) {
+      console.log(`    ${BASE}/preview/${f.split('/').pop()}`)
+    }
   } finally {
     cleanup()
   }
