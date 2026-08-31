@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
 
 /**
  * Marks the document for static capture when `?print=1` is present.
@@ -11,34 +10,27 @@ import { useSearchParams } from 'next/navigation'
  * would render blank or half-built in a headless PDF capture, so print mode
  * sets `data-print` on <html>; CSS then forces every element to its resting
  * visible state and the pinned components skip ScrollTrigger entirely.
+ *
+ * The flag is read straight from `window.location` rather than
+ * `useSearchParams()`: these routes are statically prerendered, and in that
+ * mode the hook did not populate reliably under a headless capture, which
+ * silently produced PDFs with every animated section left invisible.
  */
 export default function PrintMode() {
-  const params = useSearchParams()
-
   useEffect(() => {
-    if (params.get('print') !== '1') return
+    if (!isPrintMode()) return
     const root = document.documentElement
     root.setAttribute('data-print', '1')
 
-    // `h` sizes the PDF page to the whole document so each site page
-    // exports as exactly one PDF page. The capture script measures the
-    // height from `data-doc-height` on a first pass, then re-requests
-    // the page with that value.
-    const h = params.get('h')
-    if (h) {
-      const style = document.createElement('style')
-      style.textContent = `@page { size: 1440px ${h}px; margin: 0; }`
-      document.head.appendChild(style)
-    }
-
-    // Publish the settled document height for the measuring pass.
+    // Publish the settled document height so a capture pass can size the
+    // PDF page to the whole document.
     const publish = () => {
       root.setAttribute('data-doc-height', String(Math.ceil(root.scrollHeight)))
     }
     publish()
     const t = window.setTimeout(publish, 1200)
     return () => window.clearTimeout(t)
-  }, [params])
+  }, [])
 
   return null
 }

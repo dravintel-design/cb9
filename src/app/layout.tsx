@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import { Suspense } from 'react'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import LenisProvider from '@/components/providers/LenisProvider'
@@ -60,9 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased overflow-x-hidden">
-        <Suspense fallback={null}>
-          <PrintMode />
-        </Suspense>
+        <PrintMode />
         <LenisProvider>
           {children}
         </LenisProvider>

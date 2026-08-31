@@ -142,10 +142,3 @@ html.lenis {
   min-height: 0 !important;
   height: auto !important;
 }
-
-/* Chrome's printToPDF renders position:fixed elements in a separate layer
-   that loses the page's styles — the site header came out as unstyled
-   default links in every capture. Let it flow with the document instead. */
-[data-print] header {
-  position: static !important;
-}
