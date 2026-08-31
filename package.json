@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "preview:pdf": "node scripts/build-preview-pdf.mjs"
+    "preview:pdf": "node scripts/build-preview-pdf.mjs",
+    "approval:deck": "node scripts/build-approval-deck.mjs"
   },
   "dependencies": {
     "next": "14.2.29",
