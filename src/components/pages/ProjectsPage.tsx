@@ -54,7 +54,7 @@ const PROJECTS: readonly Project[] = [
     category: 'Residential',
     status: 'Completed',
     spec: '4,100 sq.ft · G+2',
-    note: 'Three floors engineered on a narrow footprint — structural drawings, permits, and handover pack all in-house.',
+    note: 'Three floors engineered on a narrow footprint — structural drawings, permits and handover pack coordinated end to end by CB9.',
     year: '2023',
   },
   {

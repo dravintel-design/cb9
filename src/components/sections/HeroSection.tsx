@@ -11,14 +11,15 @@ import { ChevronDown, PlayCircle } from 'lucide-react'
 import Link from 'next/link'
 import { BRAND_ORANGE } from '@/lib/utils'
 import TextReveal from '@/components/ui/TextReveal'
-import CountUp from '@/components/ui/CountUp'
 import Magnetic from '@/components/ui/Magnetic'
 
-const STATS = [
-  { value: '40+',    label: 'Homes Built'      },
-  { value: '10+',    label: 'Years Active'      },
-  { value: '₹2,600', label: 'Per sq.ft'        },
-  { value: '0',      label: 'Subcontractors'   },
+/** Qualitative proof points — no unverified counts, no per-sq.ft pricing.
+ *  Bespoke positioning should not invite price comparison. */
+const TRUST = [
+  { value: 'Bespoke',      label: 'Every home designed from scratch' },
+  { value: '10+ Years',    label: 'Building in Chennai'              },
+  { value: 'IS-Standard',  label: 'Testing & documentation'          },
+  { value: 'One Team',     label: 'Single point of accountability'   },
 ] as const
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -105,11 +106,11 @@ export default function HeroSection() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: BRAND_ORANGE }}>
-              Turnkey Construction
+              Chennai
             </span>
             <span className="text-white/30 text-xs">·</span>
             <span className="text-white/50 text-xs tracking-widest uppercase">
-              Chennai · Avadi · Thiruvallur · Pattibiram
+              Avadi · Thiruvallur · Pattibiram
             </span>
           </motion.div>
 
@@ -122,8 +123,8 @@ export default function HeroSection() {
             duration={1.05}
             className="text-white font-bold leading-[1.0] tracking-tight text-display-xl"
             lines={[
-              <>We Build&nbsp;<span style={{ color: BRAND_ORANGE }}>End to End.</span></>,
-              <>You Move&nbsp;In.</>,
+              <>Bespoke Residential</>,
+              <span key="l2" style={{ color: BRAND_ORANGE }}>Studio.</span>,
             ]}
           />
 
@@ -134,8 +135,9 @@ export default function HeroSection() {
             animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
             transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
           >
-            No subcontractors. IS-standard tested at every stage. Open-cost transparency from day one.
-            Corner Brick 9 delivers fully finished homes — on time, on budget, documented on video.
+            Corner Brick 9 is a residential design, engineering and build studio. We begin with your
+            family, your plot and the way you want to live — and take responsibility for everything
+            from the first sketch to the finished residence.
           </motion.p>
 
           {/* Tiered CTAs */}
@@ -153,33 +155,28 @@ export default function HeroSection() {
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#D03D14')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
               >
-                Get a Free Consultation
+                Start a Project
               </Link>
             </Magnetic>
             <Link
-              href="/work"
+              href="/projects"
               className="rounded-2xl inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold tracking-wide text-white/80 hover:text-white border border-white/25 hover:border-white/50 transition-all"
             >
               <PlayCircle className="w-4 h-4" style={{ color: BRAND_ORANGE }} />
-              See Completed Projects
+              See Our Residences
             </Link>
           </motion.div>
 
-          {/* Trust micro-bar with count-up stats */}
+          {/* Trust micro-bar */}
           <motion.div
             className="flex flex-wrap items-center gap-6 pt-3 border-t border-white/10"
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: EASE }}
           >
-            {STATS.map(({ value, label }, i) => (
+            {TRUST.map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
-                <CountUp
-                  value={value}
-                  delay={0.8 + i * 0.12}
-                  duration={1.4}
-                  className="font-bold text-white text-lg lg:text-xl"
-                />
+                <span className="font-bold text-white text-base lg:text-lg">{value}</span>
                 <span className="text-white/40 text-xs tracking-wide">{label}</span>
               </div>
             ))}

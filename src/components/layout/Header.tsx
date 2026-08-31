@@ -8,14 +8,13 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { cn, BRAND_ORANGE } from '@/lib/utils'
 
 const NAV = [
-  { label: 'About',     href: '/about'          },
-  { label: 'Projects',  href: '/projects'       },
-  { label: 'Design',    href: '/design-process' },
-  { label: 'Build',     href: '/build-process'  },
-  { label: 'Services',  href: '/services'       },
-  { label: 'Materials', href: '/materials'      },
-  { label: 'Journal',   href: '/journal'        },
-  { label: 'Contact',   href: '/contact'        },
+  { label: 'The Studio',       href: '/about'          },
+  { label: 'Projects',         href: '/projects'       },
+  { label: 'Design Process',   href: '/design-process' },
+  { label: 'Build Process',    href: '/build-process'  },
+  { label: 'Services',         href: '/services'       },
+  { label: 'Materials & Craft', href: '/materials'     },
+  { label: 'Journal',          href: '/journal'        },
 ]
 
 export default function Header() {
@@ -54,7 +53,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
+          <nav className="hidden xl:flex items-center gap-5" aria-label="Primary">
             {NAV.map(({ label, href }) => (
               <Link
                 key={href}
@@ -85,7 +84,7 @@ export default function Header() {
             {/* Mobile trigger */}
             <button
               onClick={() => setOpen(v => !v)}
-              className="rounded-xl lg:hidden w-10 h-10 flex items-center justify-center text-white border border-white/20 hover:border-white/50 transition-colors"
+              className="rounded-xl xl:hidden w-10 h-10 flex items-center justify-center text-white border border-white/20 hover:border-white/50 transition-colors"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >

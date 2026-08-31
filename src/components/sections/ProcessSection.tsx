@@ -20,7 +20,7 @@ const STEPS = [
     num: '02',
     icon: PencilRuler,
     title: 'Design & Permits',
-    body: 'Our in-house civil engineers produce structural drawings and handle every government approval.',
+    body: 'Our engineering team and design partners produce structural drawings, and we handle every government approval on your behalf.',
     badge: 'Structural drawings + all approvals handled',
   },
   {
@@ -34,8 +34,8 @@ const STEPS = [
     num: '04',
     icon: Wrench,
     title: 'MEP & Interior Finishing',
-    body: 'Mechanical, electrical, and plumbing work done entirely by our own team — zero outsourcing.',
-    badge: 'All our workers — zero subcontractors',
+    body: 'Mechanical, electrical and plumbing work run to our drawings, with every trade controlled through CB9 site management.',
+    badge: 'Every trade under CB9 site management',
   },
   {
     num: '05',

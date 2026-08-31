@@ -23,12 +23,80 @@ const OFFICE = [
 
 type Status = 'idle' | 'sending' | 'sent'
 
+/** Optional extras a bespoke residence commonly includes. */
+const SPECIAL_REQUIREMENTS = [
+  'Swimming Pool', 'Gym', 'Home Theatre', 'Bar',
+  'Landscape', 'Home Office', 'Guest Suite', 'Service Areas',
+] as const
+
+const PROJECT_TYPES = [
+  'New Bespoke Residence',
+  'Luxury Villa',
+  'Farmhouse',
+  'Full Interior',
+  'Renovation / Extension',
+] as const
+
+const INVESTMENT_RANGES = [
+  'Under ₹2 crore',
+  '₹2 – 3 crore',
+  '₹3 – 5 crore',
+  '₹5 crore +',
+  'Not yet decided',
+] as const
+
+const START_TIMES = [
+  'Within 3 months', '3 – 6 months', '6 – 12 months', 'Exploring only',
+] as const
+
+const INPUT =
+  'w-full border px-5 py-4 text-sm outline-none transition-colors focus:border-[#E8481C] bg-white'
+const INPUT_STYLE = { borderColor: LIGHT_SECTION.border, color: LIGHT_SECTION.text }
+
+function Field({
+  id, label, required, children,
+}: {
+  id: string
+  label: string
+  required?: boolean
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="text-xs font-semibold tracking-wide uppercase" style={{ color: LIGHT_SECTION.textMuted }}>
+        {label}
+        {!required && <span className="normal-case font-normal"> (optional)</span>}
+      </label>
+      {children}
+    </div>
+  )
+}
+
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>('idle')
-  const [fields, setFields] = useState({ name: '', phone: '', interest: 'New Home', message: '' })
+  const [fields, setFields] = useState({
+    name: '', phone: '',
+    plotLocation: '', plotSize: '', builtUpArea: '',
+    projectType: PROJECT_TYPES[0] as string,
+    investment: INVESTMENT_RANGES[4] as string,
+    startTime: START_TIMES[3] as string,
+    familySize: '',
+    requirements: [] as string[],
+    message: '',
+  })
+
+  const toggleRequirement = (r: string) =>
+    setFields(f => ({
+      ...f,
+      requirements: f.requirements.includes(r)
+        ? f.requirements.filter(x => x !== r)
+        : [...f.requirements, r],
+    }))
 
   const canSubmit =
-    fields.name.trim().length >= 2 && /^[6-9]\d{9}$/.test(fields.phone.trim())
+    fields.name.trim().length >= 2 &&
+    /^[6-9]\d{9}$/.test(fields.phone.trim()) &&
+    fields.plotLocation.trim().length >= 2
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,22 +109,22 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
+        eyebrow="Start a Project"
         lines={[
-          'Start With a',
-          <span key="l2" style={{ color: BRAND_ORANGE }}>Conversation.</span>,
+          'Tell Us About',
+          <span key="l2" style={{ color: BRAND_ORANGE }}>Your Site.</span>,
         ]}
-        intro="No call centres, no sales scripts. Your enquiry lands with the studio and is answered by the engineer who would run your project."
-        meta={['Reply within 24 hours', 'Free First Site Visit']}
+        intro="We take on a small number of bespoke residences each year so each one gets the studio’s full attention. The more you can tell us about your plot and your family, the more useful the first conversation will be."
+        meta={['Reply within 24 hours', 'Free First Site Visit', 'Founder-Led Conversation']}
       />
 
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
-          {/* Minimal enquiry form */}
+          {/* Qualification form */}
           <div>
             <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-8" style={{ color: BRAND_ORANGE }}>
-              Enquiry
+              Project Enquiry
             </p>
 
             {status === 'sent' ? (
@@ -90,68 +158,125 @@ export default function ContactPage() {
               </motion.div>
             ) : (
               <form onSubmit={submit} className="flex flex-col gap-5" noValidate>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-xs font-semibold tracking-wide uppercase" style={{ color: L.textMuted }}>
-                    Name
-                  </label>
+                {/* You */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <Field id="name" label="Name" required>
+                    <input
+                      id="name" type="text" value={fields.name}
+                      onChange={e => setFields(f => ({ ...f, name: e.target.value }))}
+                      placeholder="Your name" className={INPUT} style={INPUT_STYLE}
+                    />
+                  </Field>
+                  <Field id="phone" label="Phone / WhatsApp" required>
+                    <input
+                      id="phone" type="tel" inputMode="numeric" value={fields.phone}
+                      onChange={e => setFields(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
+                      placeholder="10-digit mobile number" className={INPUT} style={INPUT_STYLE}
+                    />
+                  </Field>
+                </div>
+
+                {/* The plot */}
+                <Field id="plotLocation" label="Plot Location" required>
                   <input
-                    id="name"
-                    type="text"
-                    value={fields.name}
-                    onChange={e => setFields(f => ({ ...f, name: e.target.value }))}
-                    placeholder="Your name"
-                    className="border px-5 py-4 text-sm outline-none transition-colors focus:border-[#E8481C] bg-white"
-                    style={{ borderColor: L.border, color: L.text }}
+                    id="plotLocation" type="text" value={fields.plotLocation}
+                    onChange={e => setFields(f => ({ ...f, plotLocation: e.target.value }))}
+                    placeholder="Area, city — e.g. Thiruvallur, Chennai" className={INPUT} style={INPUT_STYLE}
                   />
+                </Field>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <Field id="plotSize" label="Plot Size">
+                    <input
+                      id="plotSize" type="text" value={fields.plotSize}
+                      onChange={e => setFields(f => ({ ...f, plotSize: e.target.value }))}
+                      placeholder="e.g. 4,800 sq.ft" className={INPUT} style={INPUT_STYLE}
+                    />
+                  </Field>
+                  <Field id="builtUpArea" label="Approx. Built-Up Area">
+                    <input
+                      id="builtUpArea" type="text" value={fields.builtUpArea}
+                      onChange={e => setFields(f => ({ ...f, builtUpArea: e.target.value }))}
+                      placeholder="e.g. 5,000 sq.ft" className={INPUT} style={INPUT_STYLE}
+                    />
+                  </Field>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-xs font-semibold tracking-wide uppercase" style={{ color: L.textMuted }}>
-                    Phone
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    inputMode="numeric"
-                    value={fields.phone}
-                    onChange={e => setFields(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
-                    placeholder="10-digit mobile number"
-                    className="border px-5 py-4 text-sm outline-none transition-colors focus:border-[#E8481C] bg-white"
-                    style={{ borderColor: L.border, color: L.text }}
-                  />
+                {/* The project */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <Field id="projectType" label="Project Type">
+                    <select
+                      id="projectType" value={fields.projectType}
+                      onChange={e => setFields(f => ({ ...f, projectType: e.target.value }))}
+                      className={`${INPUT} appearance-none`} style={INPUT_STYLE}
+                    >
+                      {PROJECT_TYPES.map(o => <option key={o}>{o}</option>)}
+                    </select>
+                  </Field>
+                  <Field id="investment" label="Investment Range">
+                    <select
+                      id="investment" value={fields.investment}
+                      onChange={e => setFields(f => ({ ...f, investment: e.target.value }))}
+                      className={`${INPUT} appearance-none`} style={INPUT_STYLE}
+                    >
+                      {INVESTMENT_RANGES.map(o => <option key={o}>{o}</option>)}
+                    </select>
+                  </Field>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="interest" className="text-xs font-semibold tracking-wide uppercase" style={{ color: L.textMuted }}>
-                    I&apos;m thinking about
-                  </label>
-                  <select
-                    id="interest"
-                    value={fields.interest}
-                    onChange={e => setFields(f => ({ ...f, interest: e.target.value }))}
-                    className="border px-5 py-4 text-sm outline-none transition-colors focus:border-[#E8481C] bg-white appearance-none"
-                    style={{ borderColor: L.border, color: L.text }}
-                  >
-                    {['New Home', 'Renovation', 'Design & Engineering Only', 'Plot Appraisal', 'Something Else'].map(o => (
-                      <option key={o}>{o}</option>
-                    ))}
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <Field id="startTime" label="Expected Start">
+                    <select
+                      id="startTime" value={fields.startTime}
+                      onChange={e => setFields(f => ({ ...f, startTime: e.target.value }))}
+                      className={`${INPUT} appearance-none`} style={INPUT_STYLE}
+                    >
+                      {START_TIMES.map(o => <option key={o}>{o}</option>)}
+                    </select>
+                  </Field>
+                  <Field id="familySize" label="Family Size / Key Users">
+                    <input
+                      id="familySize" type="text" value={fields.familySize}
+                      onChange={e => setFields(f => ({ ...f, familySize: e.target.value }))}
+                      placeholder="e.g. 2 adults, 2 children, grandparents" className={INPUT} style={INPUT_STYLE}
+                    />
+                  </Field>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs font-semibold tracking-wide uppercase" style={{ color: L.textMuted }}>
-                    A few lines about it <span className="normal-case font-normal">(optional)</span>
-                  </label>
+                {/* Special requirements */}
+                <fieldset className="flex flex-col gap-3">
+                  <legend className="text-xs font-semibold tracking-wide uppercase mb-1" style={{ color: L.textMuted }}>
+                    Special Requirements
+                  </legend>
+                  <div className="flex flex-wrap gap-2">
+                    {SPECIAL_REQUIREMENTS.map(r => {
+                      const on = fields.requirements.includes(r)
+                      return (
+                        <button
+                          key={r} type="button" onClick={() => toggleRequirement(r)}
+                          aria-pressed={on}
+                          className="rounded-xl text-[11px] font-semibold tracking-wide px-4 py-2 border transition-all duration-200"
+                          style={{
+                            backgroundColor: on ? BRAND_ORANGE : 'transparent',
+                            color: on ? '#ffffff' : L.textMuted,
+                            borderColor: on ? BRAND_ORANGE : L.border,
+                          }}
+                        >
+                          {r}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </fieldset>
+
+                <Field id="message" label="Additional Notes">
                   <textarea
-                    id="message"
-                    rows={4}
-                    value={fields.message}
+                    id="message" rows={4} value={fields.message}
                     onChange={e => setFields(f => ({ ...f, message: e.target.value }))}
-                    placeholder="Plot location, size, timeline — whatever you know so far."
-                    className="border px-5 py-4 text-sm outline-none transition-colors focus:border-[#E8481C] bg-white resize-none"
-                    style={{ borderColor: L.border, color: L.text }}
+                    placeholder="Anything else about the site, the brief, or how your family wants to live."
+                    className={`${INPUT} resize-none`} style={INPUT_STYLE}
                   />
-                </div>
+                </Field>
 
                 <button
                   type="submit"
@@ -161,10 +286,11 @@ export default function ContactPage() {
                 >
                   {status === 'sending'
                     ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending</>
-                    : 'Send Enquiry'}
+                    : 'Start a Project'}
                 </button>
                 <p className="text-xs" style={{ color: L.textFaint }}>
-                  Name and a valid mobile number are all we need — we&apos;ll ask the rest on the call.
+                  Name, phone and plot location are all we need to begin — the rest helps us prepare
+                  properly for the first conversation.
                 </p>
               </form>
             )}

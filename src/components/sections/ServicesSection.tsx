@@ -13,10 +13,10 @@ const DIFFERENTIATORS = [
   {
     icon: ShieldCheck,
     tag: 'Our #1 Differentiator',
-    title: 'Zero Subcontractors',
-    body: 'Every worker on your site — mason, electrician, plumber — is a Corner Brick 9 employee. One accountability chain, start to finish.',
-    stat: '0',
-    statLabel: 'Subcontractors, ever',
+    title: 'One Accountable Team',
+    body: 'Architecture, engineering and construction answer to a single project team. Every trade on your site is controlled through CB9’s site management — you never chase a vendor we appointed.',
+    stat: 'One',
+    statLabel: 'Point of accountability',
     span: 'lg:col-span-3',
   },
   {
@@ -41,9 +41,9 @@ const DIFFERENTIATORS = [
     icon: Video,
     tag: 'Post-Completion Proof',
     title: 'Video-Documented Handover',
-    body: 'A full video walkthrough of every completed system — plumbing, wiring, structure — handed over with the keys and warranty pack.',
-    stat: '40+',
-    statLabel: 'Homes handed over on video',
+    body: 'A full walkthrough of every completed system — plumbing, wiring, structure — recorded and handed over with the keys, test records and warranty pack.',
+    stat: 'Every',
+    statLabel: 'Home handed over on video',
     span: 'lg:col-span-3',
   },
 ] as const

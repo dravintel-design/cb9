@@ -5,7 +5,7 @@ import { animate, useInView, useReducedMotion } from 'framer-motion'
 import { isPrintMode } from '@/components/ui/PrintMode'
 
 interface CountUpProps {
-  /** Display value, e.g. "40+", "₹2,600", "100%", "0". */
+  /** Display value, e.g. "10+", "100%", "One". Non-numeric values render as-is. */
   value: string
   duration?: number
   delay?: number

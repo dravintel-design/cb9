@@ -6,6 +6,13 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [],
   },
+  async redirects() {
+    return [
+      // /work predates the studio IA; Projects is now the single home for
+      // built work and concept residences.
+      { source: '/work', destination: '/projects', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

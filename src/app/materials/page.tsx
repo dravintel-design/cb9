@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import MaterialsPage from '@/components/pages/MaterialsPage'
 
 export const metadata: Metadata = {
-  title: 'Materials Library — Corner Brick 9 | Materials That Age Beautifully',
-  description: 'Twelve material categories specified for performance and provenance — every delivery certified, every batch logged in your project file.',
+  title: 'Materials & Craft — Corner Brick 9 | Materials That Age Beautifully',
+  description: 'Eight curated material families — stone, wood, metal, glass, lighting, hardware, sanitaryware and finishes — chosen for how they age and logged per residence.',
 }
 
 export default function Page() {

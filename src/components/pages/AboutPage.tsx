@@ -23,10 +23,10 @@ const BELIEFS = [
 ] as const
 
 const TEAM = [
-  { icon: Compass,     role: 'Design Studio',        detail: 'Architecture and interior design led by the founder — every drawing reviewed before it reaches site.' },
-  { icon: FlaskConical, role: 'In-House Engineering', detail: 'Civil and structural engineers who run soil tests, verify rebar layouts, and cube-test every pour.' },
-  { icon: Users,       role: 'Direct Workforce',      detail: 'Masons, electricians, and plumbers employed directly by CB9. Zero subcontractors, one accountability chain.' },
-  { icon: FileCheck,   role: 'Documentation Cell',    detail: 'Photographs, test reports, and video records maintained for every stage of every home.' },
+  { icon: Compass,      role: 'Design Partners',    detail: 'We work with architects and specialist designers whose work suits your site and brief — coordinated by CB9, so you deal with one team.' },
+  { icon: FlaskConical, role: 'Engineering',        detail: 'Civil and structural engineering, soil testing, rebar verification and concrete cube testing at every pour.' },
+  { icon: Users,        role: 'Site Management',    detail: 'Every trade on your site — mason, electrician, plumber, finisher — is controlled and inspected through CB9 site management.' },
+  { icon: FileCheck,    role: 'Documentation Cell', detail: 'Photographs, test reports and handover records maintained for every stage of every residence.' },
 ] as const
 
 const VALUES = [
@@ -52,7 +52,7 @@ export default function AboutPage() {
           <>Design. Engineering.</>,
           <span key="l2" style={{ color: BRAND_ORANGE }}>Build.</span>,
         ]}
-        intro="Corner Brick 9 is a residential architecture, engineering, and build studio in Chennai. Every home we take on is designed for one family, one site, one story — and built by our own hands."
+        intro="Corner Brick 9 is a bespoke residential design, engineering and build studio in Chennai. We take a family, a plot and a way of living, develop an individual architectural response to it, and stay accountable for building it."
         meta={['Architecture', 'Engineering', 'Construction', 'Chennai']}
         image="/heroes/about.svg"
         imageAlt="Site plan drawing showing plot boundary, setbacks, house footprint with central courtyard, trees, and a north arrow"
@@ -79,7 +79,7 @@ export default function AboutPage() {
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-6 justify-center">
             {[
               'Most construction in Chennai is copied — the same elevation, the same plan, the same shortcuts, sold plot after plot. We started Corner Brick 9 to do the opposite: to treat every home as a piece of architecture that answers to its site and its family, and to back that design with engineering you can audit.',
-              'We are not a contractor with a portfolio. We are a studio that designs, engineers, and builds under one roof — because the only way to guarantee a drawing is honoured is to be the one holding the trowel.',
+              'We are not a contractor with a portfolio. We are a studio that shapes the design, engineers it, and then stands behind its execution on site — because a drawing is only honoured when the people who drew it are still answerable when it is built.',
             ].map((p, i) => (
               <motion.p
                 key={i}
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families in Avadi and Thiruvallur lose lakhs to middlemen and subcontractors they never met. He founded Corner Brick 9 to change one thing: when you hire us, you know exactly who is designing your home, who is building it, what they are testing, and why.
+                Sathish grew up watching families in Avadi and Thiruvallur hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence — for who designs it, who builds it, what gets tested, and why.
               </motion.p>
             </div>
             <motion.p
@@ -189,7 +189,7 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering, he personally oversees every soil test, every concrete cube, every electrical layout — and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
+              With a B.E. and M.Tech in Civil Engineering, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence — and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
             </motion.p>
 
             <div className="flex flex-col gap-4">
@@ -239,7 +239,7 @@ export default function AboutPage() {
               />
             </div>
             <p className="text-sm max-w-xs" style={{ color: D.textFaint }}>
-              A founder-led studio. Small on purpose — nothing leaves without his review.
+              A founder-led studio with a partner network. You experience one integrated project team.
             </p>
           </div>
 

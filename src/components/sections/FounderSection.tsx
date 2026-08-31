@@ -82,7 +82,7 @@ export default function FounderSection() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families in Avadi, Thiruvallur, and Pattibiram lose lakhs to middlemen and subcontractors they never met. He founded Corner Brick 9 to change one thing: when you hire us, you know exactly who is building your home, what they are testing, and why.
+                Sathish grew up watching families in Avadi, Thiruvallur and Pattibiram hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your home from the first sketch to the final handover.
               </motion.p>
             </div>
 
@@ -94,7 +94,7 @@ export default function FounderSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering from an Anna University affiliated college, Sathish personally oversees every soil test, every concrete cube, every electrical layout. He also runs an educational YouTube channel documenting real construction mistakes — because an informed client builds a better home.
+              With a B.E. and M.Tech in Civil Engineering, Sathish leads the studio’s engineering and site management, and coordinates the architects and specialists who shape each residence. He also runs an educational YouTube channel documenting real construction lessons — because an informed client builds a better home.
             </motion.p>
 
             {/* Credentials — staggered slide-in */}

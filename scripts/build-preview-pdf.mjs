@@ -40,7 +40,7 @@ const ROUTES = [
   { path: 'design-process', label: 'Design Process' },
   { path: 'build-process', label: 'Build Process' },
   { path: 'services', label: 'Services' },
-  { path: 'materials', label: 'Materials Library' },
+  { path: 'materials', label: 'Materials & Craft' },
   { path: 'journal', label: 'Journal' },
   { path: 'contact', label: 'Contact' },
 ]

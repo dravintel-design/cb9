@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 import {
-  Grid3x3, Mountain, TreePine, Wrench, Boxes, AppWindow,
-  DoorOpen, Paintbrush, Lightbulb, Droplets, Zap, Wind,
+  Mountain, TreePine, Wrench, AppWindow,
+  Lightbulb, DoorOpen, Droplets, Paintbrush,
 } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
@@ -15,31 +15,27 @@ const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const MATERIALS = [
-  { icon: Grid3x3,   name: 'Tiles',        note: 'Vitrified for wear, anti-skid for wet areas, Athangudi where character matters. Batch numbers logged at laying.' },
-  { icon: Mountain,  name: 'Stone',        note: 'Granite and Kota chosen slab by slab — sealed, edge-finished, and photographed before fixing.' },
-  { icon: TreePine,  name: 'Wood',         note: 'Seasoned teak and engineered alternatives, moisture-checked before joinery begins.' },
-  { icon: Wrench,    name: 'Steel',        note: 'Fe550D rebar from certified mills. Test certificates filed against every delivery.' },
-  { icon: Boxes,     name: 'AAC Blocks',   note: 'Lighter walls, better insulation, straighter lines — laid with thin-bed adhesive, not guesswork mortar.' },
-  { icon: AppWindow, name: 'Windows',      note: 'UPVC and aluminium systems specified for Chennai sun and monsoon — sealed, not just fitted.' },
-  { icon: DoorOpen,  name: 'Doors',        note: 'Solid frames, honest cores, and hardware that still closes cleanly a decade in.' },
-  { icon: Paintbrush, name: 'Paint',       note: 'Low-VOC interior systems and weather-grade exteriors, applied over properly cured surfaces.' },
-  { icon: Lightbulb, name: 'Lighting',     note: 'Layered light — task, ambient, accent — planned on the drawing, not improvised on site.' },
-  { icon: Droplets,  name: 'Sanitaryware', note: 'Fittings pressure-tested on installation. Every valve location recorded in your handover video.' },
-  { icon: Zap,       name: 'Electrical',   note: 'FRLS wiring, ISI-marked switchgear, and circuit maps that match the as-built drawings.' },
-  { icon: Wind,      name: 'HVAC',         note: 'Ventilation designed before air-conditioning — cross-breeze first, tonnage second.' },
+  { icon: Mountain,   name: 'Stone',        note: 'Granite, Kota and limestone selected slab by slab for grain and tone — sealed, edge-finished and laid to a drawing, not to a pattern book.' },
+  { icon: TreePine,   name: 'Wood',         note: 'Seasoned teak and engineered timber for joinery, screens and ceilings — moisture-checked before a single piece is cut.' },
+  { icon: Wrench,     name: 'Metal',        note: 'Steel, brass and blackened iron for railings, screens and slender structural moments where the detail should read as intentional.' },
+  { icon: AppWindow,  name: 'Glass',        note: 'Glazing specified for Chennai light and heat — sightlines, spans and shading resolved with the elevation, not after it.' },
+  { icon: Lightbulb,  name: 'Lighting',     note: 'Layered light — task, ambient and accent — planned on the reflected ceiling plan so fittings sit where the architecture wants them.' },
+  { icon: DoorOpen,   name: 'Hardware',     note: 'Handles, hinges and closers chosen for how they feel in the hand and how they behave a decade in.' },
+  { icon: Droplets,   name: 'Sanitaryware', note: 'Fixtures and fittings coordinated with the bathroom layout and pressure-tested on installation.' },
+  { icon: Paintbrush, name: 'Finishes',     note: 'Plaster, paint, microtopping and textured surfaces — sampled on site under your own light before anything is approved.' },
 ] as const
 
 export default function MaterialsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Materials Library"
+        eyebrow="Materials & Craft"
         lines={[
           'Materials That',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Age Beautifully.</span>,
         ]}
-        intro="Twelve categories, one standard: everything specified in a CB9 home is chosen for how it performs in year ten, documented at delivery, and logged in your project file."
-        meta={['Specified by the Studio', 'Certified Sources', 'Logged per Project']}
+        intro="Eight material families, one standard: everything specified in a CB9 residence is chosen for how it feels in the hand and how it looks in year ten — sampled with you, and logged in your project file."
+        meta={['Curated by the Studio', 'Sampled On Site', 'Logged per Residence']}
         image="/heroes/materials.svg"
         imageAlt="Material sample board with twelve swatches showing brick coursing, stone, wood grain, steel section, and tile hatch patterns"
       />
@@ -70,9 +66,9 @@ export default function MaterialsPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              We do not maintain a brand list to earn dealer margins — we maintain a standard. Every
-              material that enters a CB9 site arrives with its certificate, gets checked against the
-              specification, and is photographed into the project record before it is used.
+              We do not keep a brand list to earn dealer margins — we keep a standard. Materials are
+              chosen for the residence in front of us: sampled under your own light, checked against
+              the specification on delivery, and photographed into the project record before use.
             </motion.p>
           </div>
         </div>

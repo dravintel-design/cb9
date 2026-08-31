@@ -15,51 +15,45 @@ const EASE = [0.22, 1, 0.36, 1] as const
 const SERVICES = [
   {
     num: '01',
-    title: 'Architecture',
-    body: 'Custom residential design from brief to working drawings — every plan begins with your site and your family, never a template.',
-    scope: ['Concept & massing', 'Plans, sections, elevations', '3D visualisation'],
+    title: 'Bespoke Residential Design + Build',
+    body: 'Our primary offering. One studio takes a family, a plot and a way of living and carries it through design, engineering and construction to a finished residence.',
+    scope: ['Single accountability', 'Design through handover', 'Complete residence'],
   },
   {
     num: '02',
-    title: 'Interior Design',
-    body: 'Interiors conceived with the architecture — light, storage, and material palettes planned as one continuous idea.',
-    scope: ['Space planning', 'Material & finish palettes', 'Joinery detailing'],
+    title: 'Architecture',
+    body: 'An individual architectural response to your site — massing, zoning, light and circulation, developed with our architect partners under CB9 coordination.',
+    scope: ['Concept & massing', 'Plans, sections, elevations', '3D visualisation'],
   },
   {
     num: '03',
-    title: 'Construction',
-    body: 'Full build execution by our directly employed workforce. The studio that drew the house is the one that builds it.',
-    scope: ['Zero subcontractors', 'IS-standard testing', 'Stage-wise transparency'],
+    title: 'Engineering',
+    body: 'Soil testing, structural design and MEP coordination, developed alongside the architecture so the design and the structure resolve together.',
+    scope: ['Soil & structural', 'MEP coordination', 'IS-standard testing'],
   },
   {
     num: '04',
-    title: 'Project Management',
-    body: 'One accountable team running schedule, procurement, and quality — with weekly photographic reporting to you.',
-    scope: ['Timeline control', 'Procurement', 'Weekly reports'],
+    title: 'Interior Design',
+    body: 'Interiors conceived with the architecture — light, storage, joinery and material palettes planned as one continuous idea, not applied afterwards.',
+    scope: ['Space planning', 'Material palettes', 'Joinery detailing'],
   },
   {
     num: '05',
-    title: 'Structural Engineering',
-    body: 'In-house structural design to IS 456 and IS 875, resolved alongside the architecture rather than bolted on after.',
-    scope: ['Foundation design', 'RCC detailing', 'Structural audits'],
-  },
-  {
-    num: '06',
-    title: 'Renovation',
-    body: 'Careful surgery on existing homes — structural assessment first, then phased execution that respects the family living inside.',
-    scope: ['Condition assessment', 'Phased execution', 'MEP rerouting'],
-  },
-  {
-    num: '07',
     title: 'Landscape',
-    body: 'Gardens, courts, and boundaries designed with the house — shade, drainage, and planting that mature with the architecture.',
+    body: 'Courtyards, gardens and boundaries designed with the house — shade, drainage and planting that mature alongside the architecture.',
     scope: ['Courtyards & gardens', 'Hardscape detailing', 'Rainwater planning'],
   },
   {
-    num: '08',
-    title: 'Consultation',
-    body: 'Independent advice when you need an engineer in your corner — plot appraisals, drawing reviews, or a second opinion on a quote.',
-    scope: ['Plot appraisal', 'Drawing review', 'Cost sanity checks'],
+    num: '06',
+    title: 'Construction',
+    body: 'Full build execution to the approved drawings, with every trade on site controlled through CB9 site management and documented at every stage.',
+    scope: ['CB9 site management', 'Quality documentation', 'Stage-wise transparency'],
+  },
+  {
+    num: '07',
+    title: 'Project Management',
+    body: 'One accountable team running programme, procurement, cost and quality — with photographic reporting so you always know where your residence stands.',
+    scope: ['Programme control', 'Procurement', 'Weekly reporting'],
   },
 ] as const
 
@@ -69,11 +63,11 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         lines={[
-          'Eight Disciplines.',
-          <span key="l2" style={{ color: BRAND_ORANGE }}>One Studio.</span>,
+          'One Bespoke Service.',
+          <span key="l2" style={{ color: BRAND_ORANGE }}>Every Discipline.</span>,
         ]}
-        intro="Architecture, engineering, and construction under one accountable roof — engage us for the whole journey or the single discipline you need."
-        meta={['Design', 'Engineering', 'Build', 'Advisory']}
+        intro="Corner Brick 9 exists to deliver complete bespoke residences. Architecture, engineering, interiors, landscape and construction are the disciplines we bring to that one outcome — coordinated by a single accountable team."
+        meta={['Design', 'Engineering', 'Interiors', 'Landscape', 'Build']}
         image="/heroes/services.svg"
         imageAlt="Isometric wireframe drawing of a house with discipline nodes orbiting around it"
       />
@@ -145,16 +139,16 @@ export default function ServicesPage() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
             >
-              Most families engage us end-to-end — design through handover. But if you only need
-              structural drawings reviewed, a renovation assessed, or a plot appraised before you
-              buy, that conversation is welcome too.
+              Most families engage us end to end — discovery through handover — because that is
+              where a bespoke residence works best. If you are further along and already hold an
+              approved design, we can take it from there.
             </motion.p>
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { label: 'Design + Engineering + Build', note: 'The full studio, one contract, one accountability chain.' },
-              { label: 'Design & Engineering Only',    note: 'Drawings and structural design you can build with any contractor.' },
-              { label: 'Advisory & Review',            note: 'Independent checks at an hourly or per-visit engagement.' },
+              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build — one contract, one accountable team.' },
+              { label: 'Design & Engineering',    note: 'The full design and engineering package, developed to construction documentation.' },
+              { label: 'Build to Approved Design', note: 'You already have drawings you believe in; we engineer, manage and build them.' },
             ].map(({ label, note }, i) => (
               <motion.div
                 key={label}

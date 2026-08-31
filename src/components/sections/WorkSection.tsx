@@ -15,8 +15,8 @@ const PROJECTS = [
     id: 'p1',
     label: 'Residential · Avadi',
     title: 'Lakshmi Villa — 3BHK',
-    spec: '2,200 sq.ft · Ground + 1 Floor · ₹2,600/sq.ft',
-    tags: ['IS-Tested', 'Video Handover', 'Zero Subcontractors'],
+    spec: '2,200 sq.ft · Ground + 1 Floor · 3BHK',
+    tags: ['IS-Tested', 'Documented Handover', 'CB9 Site Management'],
   },
   {
     id: 'p2',
@@ -51,7 +51,7 @@ export default function WorkSection() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
-              Completed Projects
+              Selected Built Work
             </motion.p>
             <TextReveal
               as="h2"
@@ -71,13 +71,13 @@ export default function WorkSection() {
             transition={{ delay: 0.35, duration: 0.6, ease: EASE }}
           >
             <Link
-              href="/work"
+              href="/projects"
               className="rounded-2xl group/link inline-flex items-center gap-2 text-sm font-semibold tracking-wide border px-6 py-3 transition-all"
               style={{ borderColor: T.border, color: T.textMuted }}
               onMouseEnter={e => { e.currentTarget.style.color = T.text; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
               onMouseLeave={e => { e.currentTarget.style.color = T.textMuted; e.currentTarget.style.borderColor = T.border }}
             >
-              View All Projects
+              View All Residences
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
             </Link>
           </motion.div>

@@ -1,7 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Drill, FlaskConical, Building2, Zap, Paintbrush, Camera, Video, ShieldCheck } from 'lucide-react'
+import {
+  ClipboardList, Drill, Building2, FlaskConical, Blocks, Zap,
+  Droplets, Paintbrush, Trees, Camera, ListChecks, ShieldCheck,
+} from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
@@ -14,67 +17,72 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 const STAGES = [
   {
-    icon: Drill,
-    num: '01',
-    title: 'Pre-Construction & Soil Testing',
-    body: 'Bore samples tested to IS 1888 before the foundation is designed. The ground tells us what it can carry; we do not guess.',
-    output: 'Soil report filed in your project record',
+    icon: ClipboardList, num: '01', title: 'Pre-Construction Planning',
+    body: 'Sequence, procurement, site logistics and the stage-wise programme agreed before anyone breaks ground.',
+    output: 'Construction programme + cost plan',
   },
   {
-    icon: Building2,
-    num: '02',
-    title: 'Structural Engineering',
-    body: 'Foundations, columns, and slabs designed in-house against IS 456 and IS 875 — sized for your soil and your spans, not copied from the last site.',
+    icon: Drill, num: '02', title: 'Soil Testing & Site Preparation',
+    body: 'Bore samples tested to IS 1888, then levelling, setting out and access established. The ground tells us what it can carry.',
+    output: 'Soil report + setting-out drawings',
+  },
+  {
+    icon: Building2, num: '03', title: 'Foundation & Structural Execution',
+    body: 'Foundations, columns and slabs built to the approved structural design for your soil and your spans.',
     output: 'Stamped structural drawing set',
   },
   {
-    icon: FlaskConical,
-    num: '03',
-    title: 'Quality Testing',
-    body: 'Concrete cube-tested at every pour. Rebar layouts photographed and verified against drawings before a single bucket of concrete goes in.',
+    icon: FlaskConical, num: '04', title: 'Rebar & Concrete Quality Control',
+    body: 'Rebar layouts checked against drawings before every pour, and concrete cube-tested to IS 456.',
     output: 'Cube test certificates, every batch',
   },
   {
-    icon: Zap,
-    num: '04',
-    title: 'MEP Execution',
-    body: 'Electrical, plumbing, and drainage run by CB9 employees — FRLS wiring, pressure-tested lines, and conduit routes that match the drawings.',
-    output: 'As-built MEP layout drawings',
+    icon: Blocks, num: '05', title: 'Masonry & Envelope',
+    body: 'Walls, openings and the external envelope built to line and level, with materials checked on delivery.',
+    output: 'Envelope inspection records',
   },
   {
-    icon: Paintbrush,
-    num: '05',
-    title: 'Interior Execution',
-    body: 'Flooring, joinery, painting, and fittings finished by the same accountable team — the interior design honoured down to the shadow gaps.',
+    icon: Zap, num: '06', title: 'MEP Execution',
+    body: 'Electrical, plumbing and drainage installed to coordinated services drawings — every trade controlled through CB9 site management.',
+    output: 'Coordinated MEP layouts',
+  },
+  {
+    icon: Droplets, num: '07', title: 'Waterproofing & Testing',
+    body: 'Terraces, bathrooms and sunken areas waterproofed, then flood-tested and signed off before finishes go on.',
+    output: 'Flood test sign-off',
+  },
+  {
+    icon: Paintbrush, num: '08', title: 'Interior Execution',
+    body: 'Flooring, joinery, painting and fittings finished to the interior design — down to the shadow gaps.',
     output: 'Finish schedule with material records',
   },
   {
-    icon: Camera,
-    num: '06',
-    title: 'Documentation',
-    body: 'Weekly photographs, stage-completion reports, and every test certificate organised into one project file you can open any day.',
+    icon: Trees, num: '09', title: 'Landscape Coordination',
+    body: 'Courtyards, planting, drainage and hardscape completed with the building, not bolted on afterwards.',
+    output: 'Landscape and drainage layout',
+  },
+  {
+    icon: Camera, num: '10', title: 'Quality Inspections & Documentation',
+    body: 'Stage inspections, weekly photographs and every test certificate collected into one project file you can open any day.',
     output: 'Complete project dossier',
   },
   {
-    icon: Video,
-    num: '07',
-    title: 'Video Handover',
-    body: 'Before the keys, a recorded walkthrough of every system — where the valves are, what the switches do, how the house works.',
-    output: 'Walkthrough video + keys, together',
+    icon: ListChecks, num: '11', title: 'Snagging & Handover',
+    body: 'A joint snag list closed out, then a recorded walkthrough of every system before the keys change hands.',
+    output: 'Closed snag list + walkthrough',
   },
   {
-    icon: ShieldCheck,
-    num: '08',
-    title: 'Warranty',
-    body: 'A written warranty pack and a maintenance calendar. When we say we stand behind the house, it is on paper.',
+    icon: ShieldCheck, num: '12', title: 'Warranty & Maintenance',
+    body: 'A written warranty pack and a maintenance calendar, so the residence is looked after long after handover.',
     output: 'Warranty pack + maintenance calendar',
   },
 ] as const
 
+/** Defensible proof points only — no unverified project counts. */
 const STATS = [
   { value: '100%', label: 'Concrete batches cube-tested' },
-  { value: '0',    label: 'Subcontractors, ever' },
-  { value: '40+',  label: 'Homes handed over on video' },
+  { value: 'One',  label: 'Team accountable for every trade' },
+  { value: 'Every',label: 'Handover recorded and documented' },
   { value: '10+',  label: 'Years building in Chennai' },
 ] as const
 
@@ -87,8 +95,8 @@ export default function BuildProcessPage() {
           'Engineering You',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Can Audit.</span>,
         ]}
-        intro="Eight stages between drawings and keys — each one tested, photographed, and filed. This is how a CB9 design survives contact with the real world, intact."
-        meta={['IS 1888 Soil Testing', 'IS 456 Concrete', 'Zero Subcontractors', 'Video Handover']}
+        intro="Twelve stages between approved drawings and handed-over keys — each one inspected, photographed and filed. This is how a CB9 design survives contact with the real world, intact."
+        meta={['IS 1888 Soil Testing', 'IS 456 Concrete', 'CB9 Site Management', 'Documented Handover']}
         image="/heroes/build-process.svg"
         imageAlt="Structural section drawing with column grid, slabs, rebar lines, and footings"
       />
@@ -97,7 +105,7 @@ export default function BuildProcessPage() {
       <StepSequence
         steps={STAGES}
         eyebrow="How We Build"
-        heading={<>Eight Stages, <span style={{ color: BRAND_ORANGE }}>In Order.</span></>}
+        heading={<>Twelve Stages, <span style={{ color: BRAND_ORANGE }}>In Order.</span></>}
       />
 
       {/* Proof stats */}

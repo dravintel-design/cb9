@@ -5,7 +5,7 @@ import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
 import { BRAND_ORANGE } from '@/lib/utils'
 
 const COMPANY_LINKS = [
-  { label: 'About the Studio', href: '/about'    },
+  { label: 'The Studio',       href: '/about'    },
   { label: 'Projects',         href: '/projects' },
   { label: 'Journal',          href: '/journal'  },
   { label: 'Contact',          href: '/contact'  },
@@ -15,7 +15,7 @@ const SERVICE_LINKS = [
   { label: 'Design Process',    href: '/design-process' },
   { label: 'Build Process',     href: '/build-process'  },
   { label: 'Services',          href: '/services'       },
-  { label: 'Materials Library', href: '/materials'      },
+  { label: 'Materials & Craft', href: '/materials'      },
 ]
 
 const CONTACT = [

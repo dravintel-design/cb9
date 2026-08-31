@@ -14,16 +14,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Corner Brick 9 | Turnkey Construction — Chennai',
+    default: 'Corner Brick 9 | Bespoke Residential Design, Engineering & Build Studio',
     template: '%s | Corner Brick 9',
   },
   description:
-    'Turnkey residential construction in Chennai, Avadi, Thiruvallur, and Pattibiram. No subcontractors. IS-standard tested. Open-cost transparency. Video-documented handover.',
+    'A bespoke residential design, engineering and build studio in Chennai. We translate a family, a plot and a way of living into an individual residence — and take responsibility for building it.',
   keywords: [
-    'turnkey construction Chennai',
-    'home builders Avadi',
-    'construction company Thiruvallur',
-    'residential construction Pattibiram',
+    'bespoke residential architecture Chennai',
+    'custom home design and build Chennai',
+    'luxury residential studio Chennai',
+    'design engineering build studio',
     'Corner Brick 9',
   ],
   authors: [{ name: 'M. Sathish Kumar', url: 'https://cornerbrick9.com' }],
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://cornerbrick9.com',
     siteName: 'Corner Brick 9',
-    title: 'Corner Brick 9 | Turnkey Construction — Chennai',
+    title: 'Corner Brick 9 | Bespoke Residential Design, Engineering & Build Studio',
     description:
-      'No subcontractors. IS-standard testing at every stage. Open-cost transparency. Homes built and documented — from foundation to video handover.',
+      'An individual architectural response to your plot and your family — engineered, documented and built under one accountable team.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corner Brick 9 | Turnkey Construction — Chennai',
+    title: 'Corner Brick 9 | Bespoke Residential Design, Engineering & Build Studio',
     description:
-      'No subcontractors. IS-standard testing. Open-cost transparency. Video-documented handover.',
+      'Bespoke homes designed around a family and a site, engineered and built under one accountable team.',
   },
   robots: { index: true, follow: true },
   metadataBase: new URL('https://cornerbrick9.com'),

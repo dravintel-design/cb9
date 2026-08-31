@@ -8,11 +8,12 @@ import CountUp from '@/components/ui/CountUp'
 
 const T = LIGHT_SECTION
 
+/** Defensible proof points only — no unverified project counts. */
 const STATS = [
-  { value: '40+',   label: 'Homes Built',       sub: 'Across Avadi, Thiruvallur & Pattibiram' },
-  { value: '10+',   label: 'Years Active',       sub: 'In Chennai and surrounding districts'   },
-  { value: '100%',  label: 'IS-Standard Tested', sub: 'Every batch, every pour, documented'   },
-  { value: '0',     label: 'Subcontractors',     sub: 'All workers employed directly by CB9'  },
+  { value: '10+',   label: 'Years Active',        sub: 'Designing and building in Chennai'        },
+  { value: '100%',  label: 'IS-Standard Tested',  sub: 'Every batch, every pour, documented'      },
+  { value: 'One',   label: 'Accountable Team',    sub: 'Every trade under CB9 site management'    },
+  { value: 'Every', label: 'Handover Documented', sub: 'Walkthrough, test records and warranty'   },
 ] as const
 
 const VIDEOS: readonly VideoItem[] = [

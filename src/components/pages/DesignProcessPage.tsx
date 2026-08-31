@@ -16,16 +16,17 @@ const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const STAGES = [
-  { num: '01', title: 'Discovery',                  body: 'Long conversations before any drawing. How your family lives, cooks, prays, hosts, and rests — the brief is written from your routines, not our templates.' },
-  { num: '02', title: 'Site Analysis',              body: 'Sun path, wind direction, soil profile, drainage, neighbouring structures, and street noise — measured and mapped before a single line is drawn.' },
-  { num: '03', title: 'Concept Design',             body: 'Massing studies and hand sketches that answer the site. Two or three honest directions, each explained with its trade-offs.' },
-  { num: '04', title: 'Design Development',         body: 'The chosen concept matures — room by room, section by section — with you in the room for every major decision.' },
-  { num: '05', title: 'Engineering',                body: 'Structural design runs parallel to architecture, not after it. Load paths, spans, and foundations resolved while the design can still respond.' },
-  { num: '06', title: 'Approvals',                  body: 'CMDA / DTCP drawings prepared and filed by us. You review every sheet before it is submitted.' },
-  { num: '07', title: 'Construction Documentation', body: 'Working drawings detailed enough that nothing on site is left to interpretation — every junction, every level, every finish.' },
-  { num: '08', title: 'Interior Design',            body: 'Interiors designed with the architecture, not applied afterwards — materials, light, and storage planned as one continuous idea.' },
-  { num: '09', title: 'Site Execution',             body: 'Our own workforce builds from our own drawings. The designer and the builder answer to the same name.' },
-  { num: '10', title: 'Handover & Maintenance',     body: 'A video walkthrough of every system, the complete document set, and a maintenance calendar for the years ahead.' },
+  { num: '01', title: 'Discover',                    body: 'Family, lifestyle, aspirations and future needs. Long conversations before any drawing — the brief starts from how you actually live.' },
+  { num: '02', title: 'Understand the Site',         body: 'Plot, orientation, sunlight, wind, access, views, neighbours and regulations, measured and mapped before a line is drawn.' },
+  { num: '03', title: 'Define the Brief',            body: 'Needs translated into a clear spatial and functional brief — room by room, with the trade-offs made explicit.' },
+  { num: '04', title: 'Zoning',                      body: 'Public, semi-private, private, service, recreation and outdoor relationships resolved before form is considered.' },
+  { num: '05', title: 'Concept Architecture',        body: 'Massing, circulation, light, ventilation and the relationship to the site. Two or three honest directions, each explained.' },
+  { num: '06', title: 'Design Development',          body: 'Plans, elevations, sections, 3D and materials — iterated with you in the room for every major decision.' },
+  { num: '07', title: 'Engineering',                 body: 'Soil testing, structural design and MEP coordination, running alongside the architecture rather than after it.' },
+  { num: '08', title: 'Documentation & Approvals',   body: 'Construction documentation and specifications prepared, and every approval filed and tracked on your behalf.' },
+  { num: '09', title: 'Elevation, Interiors & Landscape', body: 'The complete residence developed beyond the building shell — finishes, joinery, light, planting and outdoor rooms.' },
+  { num: '10', title: 'Build',                       body: 'The approved design translated into reality, with one team accountable for every trade on site.' },
+  { num: '11', title: 'Handover',                    body: 'Testing, snagging, documentation and a recorded walkthrough before the keys change hands.' },
 ] as const
 
 const DNA = [
@@ -118,16 +119,16 @@ export default function DesignProcessPage() {
       <PageHero
         eyebrow="Design Process"
         lines={[
-          'Ten Stages.',
+          'Eleven Stages.',
           <span key="l2" style={{ color: BRAND_ORANGE }}>No Shortcuts.</span>,
         ]}
-        intro="From the first conversation to the maintenance calendar, every CB9 home moves through the same disciplined sequence — design, engineering, and documentation advancing together."
+        intro="Every CB9 residence moves through the same sequence: understand the family, understand the site, then design — with engineering, interiors and landscape developed as one complete residence rather than bolted on."
         meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
         image="/heroes/design-process.svg"
         imageAlt="Floor plan sketch with door swing arcs, furniture layout, dimensions, and a north arrow"
       />
 
-      {/* Ten stages — editorial list */}
+      {/* Eleven stages — editorial list */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-5xl px-6 lg:px-16">
           {STAGES.map(({ num, title, body }, i) => (
