@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
 import { BRAND_ORANGE } from '@/lib/utils'
 
@@ -55,8 +56,14 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-5">
-            <Link href="/" className="font-bold text-xl tracking-tight text-white">
-              Corner<span style={{ color: BRAND_ORANGE }}>Brick</span>9
+            <Link href="/" aria-label="Corner Brick 9, home" className="inline-block">
+              {/* Full lockup here: at this size the tagline is legible. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/cb9-logo.png"
+                alt="Corner Brick 9, elegance in every corner"
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">
               A residential architecture, engineering &amp; build studio. Every home designed for one family, one site, one story.
@@ -103,13 +110,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tagline */}
+          {/* Positioning: the lockup already carries the tagline */}
           <div className="flex flex-col justify-between">
-            <p
-              className="text-4xl font-bold leading-tight select-none"
-              style={{ color: 'rgba(255,255,255,0.04)' }}
-            >
-              ELEGANCE IN EVERY CORNER
+            <p className="text-4xl font-bold leading-tight select-none cursor-default">
+              {['DESIGN.', 'ENGINEERING.', 'BUILD.'].map((word, i) => (
+                <motion.span
+                  key={word}
+                  className="block transition-colors duration-500 hover:text-[#E8481C]"
+                  style={{ color: 'rgba(255,255,255,0.06)' }}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ x: 6 }}
+                >
+                  {word}
+                </motion.span>
+              ))}
             </p>
             <p className="text-white/25 text-xs tracking-widest uppercase mt-auto pt-8">
               Licensed &amp; Insured<br />IS-Standard Compliant

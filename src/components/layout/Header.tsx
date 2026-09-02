@@ -43,13 +43,21 @@ export default function Header() {
           'fixed top-0 inset-x-0 z-[var(--z-sticky)] transition-all duration-400',
           scrolled
             ? 'bg-black/80 backdrop-blur-md py-4 border-b border-white/10'
-            : 'bg-transparent py-7'
+            : 'py-6 bg-gradient-to-b from-black/95 via-black/70 to-transparent'
         )}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="font-brand font-bold text-xl tracking-tight text-white group">
-            Corner<span style={{ color: BRAND_ORANGE }}>Brick</span>9
+          {/* Full lockup: sized so the tagline stays legible, not decorative */}
+          <Link href="/" aria-label="Corner Brick 9, home" className="shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/cb9-logo.png"
+              alt="Corner Brick 9, elegance in every corner"
+              className={cn(
+                'w-auto transition-all duration-400',
+                scrolled ? 'h-9' : 'h-11'
+              )}
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -108,8 +116,9 @@ export default function Header() {
           >
             {/* Mobile header row */}
             <div className="flex items-center justify-between px-6 py-7 border-b border-white/10">
-              <Link href="/" className="font-bold text-xl text-white tracking-tight">
-                Corner<span style={{ color: BRAND_ORANGE }}>Brick</span>9
+              <Link href="/" aria-label="Corner Brick 9, home">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/cb9-logo.png" alt="Corner Brick 9, elegance in every corner" className="h-9 w-auto" />
               </Link>
               <button
                 onClick={() => setOpen(false)}
