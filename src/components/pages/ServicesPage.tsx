@@ -119,7 +119,7 @@ export default function ServicesPage() {
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               How to Engage
             </p>
             <TextReveal

@@ -56,7 +56,7 @@ export default function FounderSection() {
           <div className="flex flex-col gap-8">
             <div>
               <motion.p
-                className="text-xs font-semibold tracking-[0.25em] uppercase mb-5"
+                className="text-sm font-bold tracking-[0.2em] uppercase mb-5"
                 style={{ color: BRAND_ORANGE }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}

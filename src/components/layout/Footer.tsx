@@ -53,7 +53,7 @@ export default function Footer() {
 
       {/* Columns */}
       <div className="py-16 border-b border-white/8">
-        <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-5">
             <Link href="/" aria-label="Corner Brick 9, home" className="inline-block">
@@ -62,7 +62,9 @@ export default function Footer() {
               <img
                 src="/brand/cb9-logo.png"
                 alt="Corner Brick 9, elegance in every corner"
-                className="h-14 w-auto"
+                width={1100}
+                height={177}
+                className="w-full max-w-[340px] h-auto"
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">

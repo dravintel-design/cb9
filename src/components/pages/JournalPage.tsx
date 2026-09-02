@@ -121,7 +121,7 @@ export default function JournalPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
           {/* Category filter */}
           <motion.div
-            className="flex flex-wrap gap-2 mb-12 pb-8 border-b"
+            className="flex flex-wrap gap-2 mb-9 pb-8 border-b"
             style={{ borderColor: L.border }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

@@ -62,7 +62,7 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               Vision
             </p>
             <TextReveal
@@ -100,8 +100,8 @@ export default function AboutPage() {
       {/* Design philosophy, six beliefs */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+          <div className="max-w-2xl mb-10">
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               Design Philosophy
             </p>
             <TextReveal
@@ -158,7 +158,7 @@ export default function AboutPage() {
 
           <div className="flex flex-col gap-8">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+              <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
                 The Founder
               </p>
               <TextReveal
@@ -223,9 +223,9 @@ export default function AboutPage() {
       {/* Team, honest, role-based */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+              <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
                 The Team
               </p>
               <TextReveal
@@ -272,7 +272,7 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               Design DNA
             </p>
             <TextReveal
@@ -318,8 +318,8 @@ export default function AboutPage() {
       {/* Core values */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bgDeep }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+          <div className="max-w-2xl mb-10">
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               Core Values
             </p>
             <TextReveal

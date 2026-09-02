@@ -26,7 +26,7 @@ export default function PageCTA({
   return (
     <section className="py-24 lg:py-32" style={{ backgroundColor: DARK_SECTION.bgDeep }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-16 text-center flex flex-col items-center">
-        <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
+        <p className="text-sm font-bold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
           {eyebrow}
         </p>
         <TextReveal

@@ -61,7 +61,7 @@ export default function ProcessSection() {
 
           {/* Left, copy + live step index */}
           <div className="max-w-xl">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
               How We Build
             </p>
             <TextReveal

@@ -135,7 +135,7 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
           {/* Filter bar */}
           <motion.div
-            className="flex flex-wrap gap-2 mb-12 pb-8 border-b"
+            className="flex flex-wrap gap-2 mb-9 pb-8 border-b"
             style={{ borderColor: L.border }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -240,9 +240,9 @@ export default function ProjectsPage() {
       {/* Anatomy of a project */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+              <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
                 Documentation Standard
               </p>
               <TextReveal

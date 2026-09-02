@@ -46,7 +46,7 @@ export default function ClientsSection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-8" style={{ color: BRAND_ORANGE }}>
+          <p className="text-sm font-bold tracking-[0.2em] uppercase mb-8" style={{ color: BRAND_ORANGE }}>
             Track Record
           </p>
           <div className="rounded-2xl overflow-hidden grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: T.border }}>

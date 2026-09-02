@@ -111,8 +111,8 @@ export default function BuildProcessPage() {
       {/* Proof stats */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+          <div className="max-w-2xl mb-10">
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               The Record
             </p>
             <TextReveal

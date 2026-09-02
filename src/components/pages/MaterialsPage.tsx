@@ -44,7 +44,7 @@ export default function MaterialsPage() {
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
           <div className="lg:col-span-5">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
               How We Choose
             </p>
             <TextReveal
@@ -108,7 +108,7 @@ export default function MaterialsPage() {
       {/* Documentation note */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-4xl px-6 lg:px-16 text-center">
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
+          <p className="text-sm font-bold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
             The Material Record
           </p>
           <TextReveal

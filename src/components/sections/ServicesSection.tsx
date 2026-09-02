@@ -59,9 +59,9 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="max-w-2xl mb-16"
+          className="max-w-2xl mb-10"
         >
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+          <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
             Why Corner Brick 9
           </p>
           <TextReveal

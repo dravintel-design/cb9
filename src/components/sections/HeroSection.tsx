@@ -105,7 +105,7 @@ export default function HeroSection() {
             animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: BRAND_ORANGE }}>
+            <span className="text-sm font-bold tracking-[0.2em] uppercase" style={{ color: BRAND_ORANGE }}>
               Chennai
             </span>
             <span className="text-white/30 text-xs">·</span>

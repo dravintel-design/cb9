@@ -94,7 +94,7 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
   const content = (
     <>
       <motion.p
-        className="text-xs font-semibold tracking-[0.25em] uppercase mb-6"
+        className="text-sm font-bold tracking-[0.2em] uppercase mb-6"
         style={{ color: accent }}
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}

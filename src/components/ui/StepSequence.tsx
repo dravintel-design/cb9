@@ -103,9 +103,9 @@ export default function StepSequence({
     >
       <div className="mx-auto max-w-7xl w-full px-6 lg:px-16 py-16 lg:py-20">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 lg:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 lg:mb-9">
           <div>
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
               {eyebrow}
             </p>
             <h2 className="font-bold leading-tight text-display-md" style={{ color: D.text }}>

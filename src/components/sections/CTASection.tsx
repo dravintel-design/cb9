@@ -48,9 +48,9 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
+          <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
             Chennai · Avadi · Thiruvallur · Pattibiram
           </p>
           <TextReveal
