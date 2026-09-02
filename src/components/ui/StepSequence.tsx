@@ -113,7 +113,7 @@ export default function StepSequence({
             </h2>
           </div>
           <p className="text-sm max-w-xs" style={{ color: D.textFaint }}>
-            Keep scrolling — each stage builds on the one before it.
+            Keep scrolling, each stage builds on the one before it.
           </p>
         </div>
 

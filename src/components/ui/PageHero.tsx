@@ -167,7 +167,7 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
           fetchPriority="high"
         />
 
-        {/* Contrast scrims — base wash + dense gradient behind the text.
+        {/* Contrast scrims, base wash + dense gradient behind the text.
             White copy sits over >= ~85% black, comfortably past WCAG AA. */}
         <div ref={scrimRef} aria-hidden className="absolute inset-0 bg-black" style={{ opacity: 0.45 }} />
         <div
