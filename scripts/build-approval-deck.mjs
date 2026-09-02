@@ -78,7 +78,7 @@ function headerHtml(index, total, name, route, note) {
   </div>
   <div class="r">
     <div class="b">Corner Brick 9</div>
-    <div class="s">Website Design — For Approval</div>
+    <div class="s">Website Design · For Approval</div>
     <div class="p">${esc(route)}</div>
   </div>
 </body></html>`
@@ -129,7 +129,7 @@ function coverHtml() {
     <p class="lede">
       The complete page set for the Corner Brick 9 website, presented for review.
       Each sheet that follows shows one page of the site in full, exactly as it is
-      built — positioning, structure, content and interaction states included.
+      built: positioning, structure, content and interaction states included.
     </p>
     <div class="meta">
       <div><span>Prepared for</span><strong>Corner Brick 9</strong></div>

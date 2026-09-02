@@ -45,7 +45,9 @@ export default function CountUp({
 
   useEffect(() => {
     if (!inView) return
-    if (reduce || !match || Number.isNaN(target)) {
+    // Print mode must not start the count: a static capture freezes it partway
+    // and prints a wrong number (10+ captured as "3+", 100% as "0%").
+    if (isPrintMode() || reduce || !match || Number.isNaN(target)) {
       setDisplay(value)
       return
     }
