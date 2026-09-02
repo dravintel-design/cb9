@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Corner Brick 9',
   },
   description:
-    'A bespoke residential design, engineering and build studio in Chennai. We translate a family, a plot and a way of living into an individual residence — and take responsibility for building it.',
+    'A bespoke residential design, engineering and build studio in Chennai. We translate a family, a plot and a way of living into an individual residence, and take responsibility for building it.',
   keywords: [
     'bespoke residential architecture Chennai',
     'custom home design and build Chennai',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'Corner Brick 9',
     title: 'Corner Brick 9 | Bespoke Residential Design, Engineering & Build Studio',
     description:
-      'An individual architectural response to your plot and your family — engineered, documented and built under one accountable team.',
+      'An individual architectural response to your plot and your family, engineered, documented and built under one accountable team.',
   },
   twitter: {
     card: 'summary_large_image',

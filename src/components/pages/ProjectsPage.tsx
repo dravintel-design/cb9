@@ -54,7 +54,7 @@ const PROJECTS: readonly Project[] = [
     category: 'Residential',
     status: 'Completed',
     spec: '4,100 sq.ft · G+2',
-    note: 'Three floors engineered on a narrow footprint — structural drawings, permits and handover pack coordinated end to end by CB9.',
+    note: 'Three floors engineered on a narrow footprint, structural drawings, permits and handover pack coordinated end to end by CB9.',
     year: '2023',
   },
   {
@@ -74,7 +74,7 @@ const PROJECTS: readonly Project[] = [
     category: 'Luxury Villas',
     status: 'Concept Study',
     spec: '5,400 sq.ft · Single family',
-    note: 'A west-facing plot answered with a shaded central courtyard — sun-path study, massing model, and material palette.',
+    note: 'A west-facing plot answered with a shaded central courtyard: sun-path study, massing model, and material palette.',
     year: '2025',
   },
   {
@@ -84,7 +84,7 @@ const PROJECTS: readonly Project[] = [
     category: 'Farmhouses',
     status: 'Concept Study',
     spec: '2,800 sq.ft · Weekend home',
-    note: 'Load-bearing brick, deep verandahs, and rainwater capture — designed to sit quietly inside an existing orchard.',
+    note: 'Load-bearing brick, deep verandahs, and rainwater capture, designed to sit quietly inside an existing orchard.',
     year: '2025',
   },
   {
@@ -94,7 +94,7 @@ const PROJECTS: readonly Project[] = [
     category: 'Interiors',
     status: 'Concept Study',
     spec: '3BHK · Full interior',
-    note: 'Athangudi tile, cane, and teak against clean white volumes — a palette study for a completed CB9 shell.',
+    note: 'Athangudi tile, cane, and teak against clean white volumes, a palette study for a completed CB9 shell.',
     year: '2025',
   },
 ] as const
@@ -124,7 +124,7 @@ export default function ProjectsPage() {
           'Built One Story',
           <span key="l2" style={{ color: BRAND_ORANGE }}>at a Time.</span>,
         ]}
-        intro="Completed homes and honest concept studies — never staged luxury. What you see here is real work and real thinking: site analysis, detailing, documentation, and the houses that came out of them."
+        intro="Completed homes and honest concept studies, never staged luxury. What you see here is real work and real thinking: site analysis, detailing, documentation, and the houses that came out of them."
         meta={['Residential', 'Luxury Villas', 'Farmhouses', 'Interiors', 'Renovations']}
         image="/heroes/projects.jpg"
         imageAlt="Two workers lifting a pan of mortar as the brick and plinth walls of a CB9 residence rise"
@@ -232,7 +232,7 @@ export default function ProjectsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Showing {filtered.length} of {PROJECTS.length} — concept studies are marked honestly. We never present renders as built work.
+            Showing {filtered.length} of {PROJECTS.length}. Concept studies are marked honestly. We never present renders as built work.
           </motion.p>
         </div>
       </section>
@@ -256,7 +256,7 @@ export default function ProjectsPage() {
               />
             </div>
             <p className="text-sm max-w-xs" style={{ color: D.textFaint }}>
-              Ten records we keep for every home — from first brief to final photograph.
+              Ten records we keep for every home, from first brief to final photograph.
             </p>
           </div>
 
@@ -289,7 +289,7 @@ export default function ProjectsPage() {
           'Your Site Could Be',
           <span key="l2" style={{ color: BRAND_ORANGE }}>the Next Story.</span>,
         ]}
-        body="Walk us through your plot and your brief — we'll show you how we'd think about it before you commit to anything."
+        body="Walk us through your plot and your brief, we'll show you how we'd think about it before you commit to anything."
       />
     </>
   )

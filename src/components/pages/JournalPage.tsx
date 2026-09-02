@@ -44,7 +44,7 @@ const ARTICLES: readonly Article[] = [
   {
     id: 'aac-vs-red-brick',
     title: 'AAC Blocks vs Red Brick: An Honest Comparison',
-    excerpt: 'Weight, insulation, cost per finished wall, and where each one genuinely wins — without the dealer spin.',
+    excerpt: 'Weight, insulation, cost per finished wall, and where each one genuinely wins, without the dealer spin.',
     category: 'Material Comparisons',
     kind: 'read',
     readTime: '8 min read',
@@ -68,7 +68,7 @@ const ARTICLES: readonly Article[] = [
   {
     id: 'cube-test-day',
     title: 'Site Story: The Day a Cube Test Failed',
-    excerpt: 'What happens on a CB9 site when the 7-day strength comes back low — and why we tell the client the same afternoon.',
+    excerpt: 'What happens on a CB9 site when the 7-day strength comes back low, and why we tell the client the same afternoon.',
     category: 'Site Stories',
     kind: 'read',
     readTime: '5 min read',
@@ -76,7 +76,7 @@ const ARTICLES: readonly Article[] = [
   {
     id: 'client-walkthrough-video',
     title: 'Inside a Video Handover: Full Client Walkthrough',
-    excerpt: 'A complete recorded handover — every valve, every switch, every warranty document — exactly as our clients receive it.',
+    excerpt: 'A complete recorded handover: every valve, every switch, every warranty document, exactly as our clients receive it.',
     category: 'Video Articles',
     kind: 'video',
     readTime: '12 min watch',
@@ -92,7 +92,7 @@ const ARTICLES: readonly Article[] = [
   {
     id: 'common-mistakes-video',
     title: 'Five Construction Mistakes We Keep Seeing in Chennai',
-    excerpt: 'From the founder’s educational channel — real defects filmed on real sites, and how each one should have been prevented.',
+    excerpt: 'From the founder’s educational channel, real defects filmed on real sites, and how each one should have been prevented.',
     category: 'Video Articles',
     kind: 'video',
     readTime: '15 min watch',
@@ -111,7 +111,7 @@ export default function JournalPage() {
           'Building Knowledge,',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Openly.</span>,
         ]}
-        intro="Essays, site stories, and video lessons from the studio — because an informed client builds a better home. No gated PDFs, no sales funnels."
+        intro="Essays, site stories, and video lessons from the studio, because an informed client builds a better home. No gated PDFs, no sales funnels."
         meta={['Education', 'Engineering', 'Site Stories', 'Video']}
         image="/heroes/journal.jpg"
         imageAlt="A brick being cut to size with an angle grinder, tile spacers laid out ready for setting"
@@ -208,7 +208,7 @@ export default function JournalPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            New essays and site stories are published as the work happens — not on a content calendar.
+            New essays and site stories are published as the work happens, not on a content calendar.
           </motion.p>
         </div>
       </section>
@@ -219,7 +219,7 @@ export default function JournalPage() {
           'Ask the Engineer,',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Not the Algorithm.</span>,
         ]}
-        body="If a topic here raises questions about your own plot or project, write to us — real questions become future journal entries."
+        body="If a topic here raises questions about your own plot or project, write to us, real questions become future journal entries."
         ctaLabel="Write to the Studio"
       />
     </>

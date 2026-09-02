@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import ServicesPage from '@/components/pages/ServicesPage'
 
 export const metadata: Metadata = {
-  title: 'Services — Corner Brick 9 | Architecture to Consultation',
-  description: 'Architecture, interior design, construction, project management, structural engineering, renovation, landscape, and consultation — one studio.',
+  title: 'Services: Bespoke Residential Design + Build',
+  description: 'Architecture, interior design, construction, project management, structural engineering, renovation, landscape, and consultation, one studio.',
 }
 
 export default function Page() {

@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import JournalPage from '@/components/pages/JournalPage'
 
 export const metadata: Metadata = {
-  title: 'Journal — Corner Brick 9 | Building Knowledge, Openly',
-  description: 'Essays, site stories, engineering insights, and video lessons from the CB9 studio — education for informed home builders.',
+  title: 'Journal: Building Knowledge, Openly',
+  description: 'Essays, site stories, engineering insights, and video lessons from the CB9 studio, education for informed home builders.',
 }
 
 export default function Page() {

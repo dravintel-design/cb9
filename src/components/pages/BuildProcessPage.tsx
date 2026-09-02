@@ -43,7 +43,7 @@ const STAGES = [
   },
   {
     icon: Zap, num: '06', title: 'MEP Execution',
-    body: 'Electrical, plumbing and drainage installed to coordinated services drawings — every trade controlled through CB9 site management.',
+    body: 'Electrical, plumbing and drainage installed to coordinated services drawings, every trade controlled through CB9 site management.',
     output: 'Coordinated MEP layouts',
   },
   {
@@ -53,7 +53,7 @@ const STAGES = [
   },
   {
     icon: Paintbrush, num: '08', title: 'Interior Execution',
-    body: 'Flooring, joinery, painting and fittings finished to the interior design — down to the shadow gaps.',
+    body: 'Flooring, joinery, painting and fittings finished to the interior design, down to the shadow gaps.',
     output: 'Finish schedule with material records',
   },
   {
@@ -95,13 +95,13 @@ export default function BuildProcessPage() {
           'Engineering You',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Can Audit.</span>,
         ]}
-        intro="Twelve stages between approved drawings and handed-over keys — each one inspected, photographed and filed. This is how a CB9 design survives contact with the real world, intact."
+        intro="Twelve stages between approved drawings and handed-over keys, each one inspected, photographed and filed. This is how a CB9 design survives contact with the real world, intact."
         meta={['IS 1888 Soil Testing', 'IS 456 Concrete', 'CB9 Site Management', 'Documented Handover']}
         image="/heroes/build-process.jpg"
         imageAlt="A concrete mixer being charged with water on a CB9 site, with aggregate stacked alongside"
       />
 
-      {/* Stages — pinned, scroll-driven walkthrough */}
+      {/* Stages, pinned, scroll-driven walkthrough */}
       <StepSequence
         steps={STAGES}
         eyebrow="How We Build"
@@ -146,7 +146,7 @@ export default function BuildProcessPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Every figure above is backed by a document in a client&apos;s project file — ask any of them.
+            Every figure above is backed by a document in a client&apos;s project file, ask any of them.
           </motion.p>
         </div>
       </section>
@@ -156,7 +156,7 @@ export default function BuildProcessPage() {
           'Watch Your Home',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Being Proven.</span>,
         ]}
-        body="Walk a live CB9 site with us before you decide anything — see the drawings, the tests, and the people doing the work."
+        body="Walk a live CB9 site with us before you decide anything: see the drawings, the tests, and the people doing the work."
         ctaLabel="Book a Site Visit"
       />
     </>

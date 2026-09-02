@@ -15,8 +15,8 @@ const PHONE_RAW = '919876543210'
 const EMAIL = 'hello@cornerbrick9.com'
 
 const OFFICE = [
-  { icon: MapPin, label: 'Studio',  value: 'Avadi, Chennai — Tamil Nadu' },
-  { icon: Clock,  label: 'Hours',   value: 'Mon–Sat · 9:30 AM – 6:30 PM' },
+  { icon: MapPin, label: 'Studio',  value: 'Avadi, Chennai, Tamil Nadu' },
+  { icon: Clock,  label: 'Hours',   value: 'Mon to Sat · 9:30 AM to 6:30 PM' },
   { icon: Phone,  label: 'Phone',   value: PHONE_DISPLAY },
   { icon: Mail,   label: 'Email',   value: EMAIL },
 ] as const
@@ -39,14 +39,14 @@ const PROJECT_TYPES = [
 
 const INVESTMENT_RANGES = [
   'Under ₹2 crore',
-  '₹2 – 3 crore',
-  '₹3 – 5 crore',
+  '₹2 to 3 crore',
+  '₹3 to 5 crore',
   '₹5 crore +',
   'Not yet decided',
 ] as const
 
 const START_TIMES = [
-  'Within 3 months', '3 – 6 months', '6 – 12 months', 'Exploring only',
+  'Within 3 months', '3 to 6 months', '6 to 12 months', 'Exploring only',
 ] as const
 
 const INPUT =
@@ -181,7 +181,7 @@ export default function ContactPage() {
                   <input
                     id="plotLocation" type="text" value={fields.plotLocation}
                     onChange={e => setFields(f => ({ ...f, plotLocation: e.target.value }))}
-                    placeholder="Area, city — e.g. Thiruvallur, Chennai" className={INPUT} style={INPUT_STYLE}
+                    placeholder="Area, city, e.g. Thiruvallur, Chennai" className={INPUT} style={INPUT_STYLE}
                   />
                 </Field>
 
@@ -289,14 +289,14 @@ export default function ContactPage() {
                     : 'Start a Project'}
                 </button>
                 <p className="text-xs" style={{ color: L.textFaint }}>
-                  Name, phone and plot location are all we need to begin — the rest helps us prepare
+                  Name, phone and plot location are all we need to begin. The rest helps us prepare
                   properly for the first conversation.
                 </p>
               </form>
             )}
           </div>
 
-          {/* Right column — direct channels */}
+          {/* Right column, direct channels */}
           <div className="flex flex-col gap-5">
             {/* Book a site visit */}
             <motion.div
@@ -316,7 +316,7 @@ export default function ContactPage() {
               <h2 className="font-bold text-2xl" style={{ color: D.text }}>Book a Site Visit</h2>
               <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>
                 The most useful first step: we walk your plot together, talk soil, setbacks, and
-                orientation — free, and without obligation.
+                orientation, free, and without obligation.
               </p>
               <a
                 href={`tel:+${PHONE_RAW}`}
@@ -383,7 +383,7 @@ export default function ContactPage() {
               transition={{ duration: 0.65, delay: 0.24, ease: EASE }}
             >
               <iframe
-                title="Corner Brick 9 studio location — Avadi, Chennai"
+                title="Corner Brick 9 studio location, Avadi, Chennai"
                 src="https://www.google.com/maps?q=Avadi%2C+Chennai%2C+Tamil+Nadu&output=embed"
                 className="w-full h-72 grayscale hover:grayscale-0 transition-all duration-700"
                 style={{ border: 'none', borderRadius: 0 }}

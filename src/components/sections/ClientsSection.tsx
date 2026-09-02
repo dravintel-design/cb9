@@ -19,17 +19,17 @@ const STATS = [
 const VIDEOS: readonly VideoItem[] = [
   {
     videoId: 'J29BaR9hESc',
-    client: 'Client Review — Avadi',
+    client: 'Client Review, Avadi',
     detail: 'Turnkey G+1 Home · CB9 Build',
   },
   {
     videoId: 'TScl3sVpoT4',
-    client: 'Client Review — Thiruvallur',
+    client: 'Client Review, Thiruvallur',
     detail: 'New Construction · IS-Tested',
   },
   {
     videoId: 'qbwyn7jD9V0',
-    client: 'Client Review — Pattibiram',
+    client: 'Client Review, Pattibiram',
     detail: 'Video Handover Documented',
   },
 ] as const
@@ -84,7 +84,7 @@ export default function ClientsSection() {
               ]}
             />
             <p className="text-sm max-w-xs" style={{ color: T.textFaint }}>
-              Real homeowners, on camera. Hover to preview — click any story to play.
+              Real homeowners, on camera. Hover to preview, click any story to play.
             </p>
           </motion.div>
 

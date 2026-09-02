@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import ProjectsPage from '@/components/pages/ProjectsPage'
 
 export const metadata: Metadata = {
-  title: 'Projects — Corner Brick 9 | Homes & Concept Studies',
-  description: 'Completed homes and honest concept studies across Chennai — residential, villas, farmhouses, interiors, and renovations, all fully documented.',
+  title: 'Projects: Homes & Concept Residences',
+  description: 'Completed homes and honest concept studies across Chennai: residential, villas, farmhouses, interiors, and renovations, all fully documented.',
 }
 
 export default function Page() {

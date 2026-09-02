@@ -11,9 +11,9 @@ const T = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const CREDENTIALS = [
-  { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering — Anna University Affiliated' },
+  { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering, Anna University Affiliated' },
   { icon: Award,         text: '10+ Years Active in Chennai, Avadi, Thiruvallur & Pattibiram' },
-  { icon: Youtube,       text: 'Educational YouTube Channel — Real Construction Insights' },
+  { icon: Youtube,       text: 'Educational YouTube Channel, Real Construction Insights' },
 ] as const
 
 export default function FounderSection() {
@@ -94,10 +94,10 @@ export default function FounderSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering, Sathish leads the studio’s engineering and site management, and coordinates the architects and specialists who shape each residence. He also runs an educational YouTube channel documenting real construction lessons — because an informed client builds a better home.
+              With a B.E. and M.Tech in Civil Engineering, Sathish leads the studio’s engineering and site management, and coordinates the architects and specialists who shape each residence. He also runs an educational YouTube channel documenting real construction lessons, because an informed client builds a better home.
             </motion.p>
 
-            {/* Credentials — staggered slide-in */}
+            {/* Credentials, staggered slide-in */}
             <div className="flex flex-col gap-4">
               {CREDENTIALS.map(({ icon: Icon, text }, i) => (
                 <motion.div

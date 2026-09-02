@@ -5,33 +5,21 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import TextReveal from '@/components/ui/TextReveal'
+import PhotoStrip from '@/components/ui/PhotoStrip'
 
 const T = DARK_SECTION
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
-const PROJECTS = [
-  {
-    id: 'p1',
-    label: 'Residential · Avadi',
-    title: 'Lakshmi Villa — 3BHK',
-    spec: '2,200 sq.ft · Ground + 1 Floor · 3BHK',
-    tags: ['IS-Tested', 'Documented Handover', 'CB9 Site Management'],
-  },
-  {
-    id: 'p2',
-    label: 'Residential · Thiruvallur',
-    title: 'Murugan Nagar Duplex',
-    spec: '1,850 sq.ft · Duplex · Open-Cost Contract',
-    tags: ['Concrete Cube Tested', 'Open-Cost', 'On-Time Delivery'],
-  },
-  {
-    id: 'p3',
-    label: 'Residential · Pattibiram',
-    title: 'Priya Enclave — G+2',
-    spec: '4,100 sq.ft · 3 Floors · Stage-Wise Payments',
-    tags: ['Structural Drawings', 'All Permits Handled', 'Full Handover Pack'],
-  },
+/** Real site photography only. Captions describe what is in the frame. */
+const SHOTS = [
+  { src: '/work/w1.jpg', caption: 'Brick and plinth walls going up',      location: 'Thiruvallur' },
+  { src: '/work/w2.jpg', caption: 'Excavation and levelling at plinth',   location: 'Avadi, Chennai' },
+  { src: '/work/w3.jpg', caption: 'Concrete mixed on site under control', location: 'Chennai' },
+  { src: '/work/w4.jpg', caption: 'Plaster work reviewed with the team',  location: 'Avadi, Chennai' },
+  { src: '/work/w5.jpg', caption: 'Face tiles set by hand and by eye',    location: 'Chennai' },
+  { src: '/work/w6.jpg', caption: 'Brick cut to size for a clean course', location: 'Chennai' },
+  { src: '/work/w7.jpg', caption: 'Structural steel frame in progress',   location: 'Chennai' },
 ] as const
 
 export default function WorkSection() {
@@ -83,69 +71,9 @@ export default function WorkSection() {
           </motion.div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PROJECTS.map(({ id, label, title, spec, tags }, i) => (
-            <motion.div
-              key={id}
-              initial={{ opacity: 0, y: 48 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              whileHover={{ y: -10 }}
-              transition={{ duration: 0.7, delay: i * 0.12, ease: EASE, y: { duration: 0.35, ease: EASE, delay: 0 } }}
-              className="rounded-2xl group flex flex-col overflow-hidden cursor-pointer border border-transparent transition-[border-color,box-shadow] duration-500 hover:border-white/10 hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.8)]"
-              style={{ backgroundColor: T.cardBg }}
-            >
-              {/* Image placeholder with hover zoom */}
-              <div className="rounded-2xl aspect-[4/3] relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-                <div
-                  className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110"
-                  style={{ background: `radial-gradient(120% 100% at 30% 100%, ${BRAND_ORANGE}18 0%, transparent 55%), #1a1a1a` }}
-                />
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(135deg, ${BRAND_ORANGE}25, transparent)` }}
-                />
-                {/* Ghost project number */}
-                <span
-                  className="absolute -right-1 -bottom-5 font-bold leading-none select-none pointer-events-none transition-transform duration-700 group-hover:-translate-y-2"
-                  style={{ fontSize: '6rem', color: 'rgba(232,72,28,0.08)' }}
-                >
-                  0{i + 1}
-                </span>
-                <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 bg-black/60" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                    {label}
-                  </span>
-                </div>
-                {/* Hover arrow */}
-                <div
-                  className="rounded-xl absolute bottom-4 right-4 w-9 h-9 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400"
-                  style={{ backgroundColor: BRAND_ORANGE }}
-                >
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </div>
-              </div>
+        {/* Photo strip */}
+        <PhotoStrip shots={SHOTS} />
 
-              {/* Info */}
-              <div className="p-6 flex flex-col gap-4 flex-1" style={{ backgroundColor: T.cardBg }}>
-                <h3 className="font-bold text-lg" style={{ color: T.text }}>{title}</h3>
-                <p className="text-xs tracking-wide" style={{ color: T.textFaint }}>{spec}</p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="rounded-lg text-[10px] tracking-wide font-medium px-2.5 py-1 border"
-                      style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}30` }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   )

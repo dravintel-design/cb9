@@ -13,7 +13,7 @@ const STEPS = [
     num: '01',
     icon: MapPin,
     title: 'Site Visit & Honest Scope',
-    body: 'We walk the site, run soil checks, and give you a realistic scope — no inflated estimates to win the deal.',
+    body: 'We walk the site, run soil checks, and give you a realistic scope, no inflated estimates to win the deal.',
     badge: 'Stage-wise payment schedule locked upfront',
   },
   {
@@ -59,7 +59,7 @@ export default function ProcessSection() {
       <div className="mx-auto max-w-7xl w-full px-6 lg:px-16 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
 
-          {/* Left — copy + live step index */}
+          {/* Left, copy + live step index */}
           <div className="max-w-xl">
             <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
               How We Build
@@ -75,11 +75,11 @@ export default function ProcessSection() {
               ]}
             />
             <p className="text-base leading-relaxed mb-8" style={{ color: T.textMuted }}>
-              Five stages, one accountable team. Scroll through each stage — from the first
+              Five stages, one accountable team. Scroll through each stage, from the first
               soil test to the final walkthrough on video.
             </p>
 
-            {/* Step index list — highlights the active card */}
+            {/* Step index list, highlights the active card */}
             <ul className="flex flex-col gap-2">
               {STEPS.map(({ num, title }, i) => {
                 const isActive = i === active
@@ -111,7 +111,7 @@ export default function ProcessSection() {
             </ul>
           </div>
 
-          {/* Right — scroll-driven swapping cards */}
+          {/* Right, scroll-driven swapping cards */}
           <div className="relative h-[420px] lg:h-[520px] w-full">
             <CardSwapScroll
               pinTargetRef={sectionRef}

@@ -22,7 +22,7 @@ const SERVICES = [
   {
     num: '02',
     title: 'Architecture',
-    body: 'An individual architectural response to your site — massing, zoning, light and circulation, developed with our architect partners under CB9 coordination.',
+    body: 'An individual architectural response to your site: massing, zoning, light and circulation, developed with our architect partners under CB9 coordination.',
     scope: ['Concept & massing', 'Plans, sections, elevations', '3D visualisation'],
   },
   {
@@ -34,13 +34,13 @@ const SERVICES = [
   {
     num: '04',
     title: 'Interior Design',
-    body: 'Interiors conceived with the architecture — light, storage, joinery and material palettes planned as one continuous idea, not applied afterwards.',
+    body: 'Interiors conceived with the architecture: light, storage, joinery and material palettes planned as one continuous idea, not applied afterwards.',
     scope: ['Space planning', 'Material palettes', 'Joinery detailing'],
   },
   {
     num: '05',
     title: 'Landscape',
-    body: 'Courtyards, gardens and boundaries designed with the house — shade, drainage and planting that mature alongside the architecture.',
+    body: 'Courtyards, gardens and boundaries designed with the house, shade, drainage and planting that mature alongside the architecture.',
     scope: ['Courtyards & gardens', 'Hardscape detailing', 'Rainwater planning'],
   },
   {
@@ -52,7 +52,7 @@ const SERVICES = [
   {
     num: '07',
     title: 'Project Management',
-    body: 'One accountable team running programme, procurement, cost and quality — with photographic reporting so you always know where your residence stands.',
+    body: 'One accountable team running programme, procurement, cost and quality, with photographic reporting so you always know where your residence stands.',
     scope: ['Programme control', 'Procurement', 'Weekly reporting'],
   },
 ] as const
@@ -66,7 +66,7 @@ export default function ServicesPage() {
           'One Bespoke Service.',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Every Discipline.</span>,
         ]}
-        intro="Corner Brick 9 exists to deliver complete bespoke residences. Architecture, engineering, interiors, landscape and construction are the disciplines we bring to that one outcome — coordinated by a single accountable team."
+        intro="Corner Brick 9 exists to deliver complete bespoke residences. Architecture, engineering, interiors, landscape and construction are the disciplines we bring to that one outcome, coordinated by a single accountable team."
         meta={['Design', 'Engineering', 'Interiors', 'Landscape', 'Build']}
         image="/heroes/services.jpg"
         imageAlt="Workers excavating and levelling at plinth height beside a finished plinth beam and rebar cages"
@@ -139,14 +139,14 @@ export default function ServicesPage() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
             >
-              Most families engage us end to end — discovery through handover — because that is
+              Most families engage us end to end, discovery through handover, because that is
               where a bespoke residence works best. If you are further along and already hold an
               approved design, we can take it from there.
             </motion.p>
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build — one contract, one accountable team.' },
+              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build, one contract, one accountable team.' },
               { label: 'Design & Engineering',    note: 'The full design and engineering package, developed to construction documentation.' },
               { label: 'Build to Approved Design', note: 'You already have drawings you believe in; we engineer, manage and build them.' },
             ].map(({ label, note }, i) => (
@@ -182,7 +182,7 @@ export default function ServicesPage() {
           'Tell Us What',
           <span key="l2" style={{ color: BRAND_ORANGE }}>You Need.</span>,
         ]}
-        body="Describe your project in a few lines — we'll reply with how we'd approach it and what engaging us would look like."
+        body="Describe your project in a few lines, we'll reply with how we'd approach it and what engaging us would look like."
       />
     </>
   )

@@ -114,7 +114,7 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Headline — masked line reveal */}
+          {/* Headline, masked line reveal */}
           <TextReveal
             as="h1"
             show={visible}
@@ -136,7 +136,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
           >
             Corner Brick 9 is a residential design, engineering and build studio. We begin with your
-            family, your plot and the way you want to live — and take responsibility for everything
+            family, your plot and the way you want to live, and take responsibility for everything
             from the first sketch to the finished residence.
           </motion.p>
 

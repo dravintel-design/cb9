@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import AboutPage from '@/components/pages/AboutPage'
 
 export const metadata: Metadata = {
-  title: 'About — Corner Brick 9 | Design + Engineering + Build Studio, Chennai',
-  description: 'A residential architecture, engineering, and build studio in Chennai. One family, one site, one story — designed and built by our own hands.',
+  title: 'The Studio: Design, Engineering & Build, Chennai',
+  description: 'A residential architecture, engineering, and build studio in Chennai. One family, one site, one story, designed and built by our own hands.',
 }
 
 export default function Page() {

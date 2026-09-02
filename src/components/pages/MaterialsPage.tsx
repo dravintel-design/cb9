@@ -15,14 +15,14 @@ const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const MATERIALS = [
-  { icon: Mountain,   name: 'Stone',        note: 'Granite, Kota and limestone selected slab by slab for grain and tone — sealed, edge-finished and laid to a drawing, not to a pattern book.' },
-  { icon: TreePine,   name: 'Wood',         note: 'Seasoned teak and engineered timber for joinery, screens and ceilings — moisture-checked before a single piece is cut.' },
+  { icon: Mountain,   name: 'Stone',        note: 'Granite, Kota and limestone selected slab by slab for grain and tone: sealed, edge-finished and laid to a drawing, not to a pattern book.' },
+  { icon: TreePine,   name: 'Wood',         note: 'Seasoned teak and engineered timber for joinery, screens and ceilings, moisture-checked before a single piece is cut.' },
   { icon: Wrench,     name: 'Metal',        note: 'Steel, brass and blackened iron for railings, screens and slender structural moments where the detail should read as intentional.' },
-  { icon: AppWindow,  name: 'Glass',        note: 'Glazing specified for Chennai light and heat — sightlines, spans and shading resolved with the elevation, not after it.' },
-  { icon: Lightbulb,  name: 'Lighting',     note: 'Layered light — task, ambient and accent — planned on the reflected ceiling plan so fittings sit where the architecture wants them.' },
+  { icon: AppWindow,  name: 'Glass',        note: 'Glazing specified for Chennai light and heat: sightlines, spans and shading resolved with the elevation, not after it.' },
+  { icon: Lightbulb,  name: 'Lighting',     note: 'Layered light, task, ambient and accent, planned on the reflected ceiling plan so fittings sit where the architecture wants them.' },
   { icon: DoorOpen,   name: 'Hardware',     note: 'Handles, hinges and closers chosen for how they feel in the hand and how they behave a decade in.' },
   { icon: Droplets,   name: 'Sanitaryware', note: 'Fixtures and fittings coordinated with the bathroom layout and pressure-tested on installation.' },
-  { icon: Paintbrush, name: 'Finishes',     note: 'Plaster, paint, microtopping and textured surfaces — sampled on site under your own light before anything is approved.' },
+  { icon: Paintbrush, name: 'Finishes',     note: 'Plaster, paint, microtopping and textured surfaces, sampled on site under your own light before anything is approved.' },
 ] as const
 
 export default function MaterialsPage() {
@@ -34,7 +34,7 @@ export default function MaterialsPage() {
           'Materials That',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Age Beautifully.</span>,
         ]}
-        intro="Eight material families, one standard: everything specified in a CB9 residence is chosen for how it feels in the hand and how it looks in year ten — sampled with you, and logged in your project file."
+        intro="Eight material families, one standard: everything specified in a CB9 residence is chosen for how it feels in the hand and how it looks in year ten, sampled with you, and logged in your project file."
         meta={['Curated by the Studio', 'Sampled On Site', 'Logged per Residence']}
         image="/heroes/materials.jpg"
         imageAlt="A mason setting a run of face tiles with a trowel, checking the line by eye"
@@ -66,7 +66,7 @@ export default function MaterialsPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              We do not keep a brand list to earn dealer margins — we keep a standard. Materials are
+              We do not keep a brand list to earn dealer margins, we keep a standard. Materials are
               chosen for the residence in front of us: sampled under your own light, checked against
               the specification on delivery, and photographed into the project record before use.
             </motion.p>
@@ -128,7 +128,7 @@ export default function MaterialsPage() {
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
           >
-            Your project file lists what went into your home — brand, batch, certificate, and the
+            Your project file lists what went into your home: brand, batch, certificate, and the
             date it was used. Ten years from now, when you renovate or repair, you will know exactly
             what you are working with.
           </motion.p>
@@ -140,7 +140,7 @@ export default function MaterialsPage() {
           'See the Palettes',
           <span key="l2" style={{ color: BRAND_ORANGE }}>in Person.</span>,
         ]}
-        body="Visit the studio to handle the samples — stone, wood, and tile read differently in your hands than on a screen."
+        body="Visit the studio to handle the samples: stone, wood, and tile read differently in your hands than on a screen."
         ctaLabel="Visit the Studio"
       />
     </>

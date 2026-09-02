@@ -14,7 +14,7 @@ const DIFFERENTIATORS = [
     icon: ShieldCheck,
     tag: 'Our #1 Differentiator',
     title: 'One Accountable Team',
-    body: 'Architecture, engineering and construction answer to a single project team. Every trade on your site is controlled through CB9’s site management — you never chase a vendor we appointed.',
+    body: 'Architecture, engineering and construction answer to a single project team. Every trade on your site is controlled through CB9’s site management. You never chase a vendor we appointed.',
     stat: 'One',
     statLabel: 'Point of accountability',
     span: 'lg:col-span-3',
@@ -23,7 +23,7 @@ const DIFFERENTIATORS = [
     icon: FlaskConical,
     tag: 'Engineering Rigour',
     title: 'IS-Standard Testing',
-    body: 'Soil tests, concrete cube tests, and structural checks at foundation, slab, and roof — documented every pour.',
+    body: 'Soil tests, concrete cube tests, and structural checks at foundation, slab, and roof, documented every pour.',
     stat: '100%',
     statLabel: 'Batches tested',
     span: 'lg:col-span-2',
@@ -41,7 +41,7 @@ const DIFFERENTIATORS = [
     icon: Video,
     tag: 'Post-Completion Proof',
     title: 'Video-Documented Handover',
-    body: 'A full walkthrough of every completed system — plumbing, wiring, structure — recorded and handed over with the keys, test records and warranty pack.',
+    body: 'A full walkthrough of every completed system: plumbing, wiring, structure, recorded and handed over with the keys, test records and warranty pack.',
     stat: 'Every',
     statLabel: 'Home handed over on video',
     span: 'lg:col-span-3',
@@ -96,7 +96,7 @@ export default function ServicesSection() {
                   style={{ background: `linear-gradient(135deg, ${BRAND_ORANGE} 0%, transparent 70%)` }}
                 />
 
-                {/* Content — sits above spotlight */}
+                {/* Content, sits above spotlight */}
                 <div className="relative z-10 flex flex-col h-full p-8 lg:p-10">
                   {/* Top row */}
                   <div className="flex items-start justify-between gap-4" style={{ transform: 'translateZ(45px)' }}>

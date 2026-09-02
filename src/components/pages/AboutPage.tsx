@@ -15,7 +15,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 const BELIEFS = [
   { num: '01', title: 'No Template Homes',            body: 'We do not repeat plans. A floor plan drawn for another family, on another plot, has no business shaping yours.' },
-  { num: '02', title: 'Every Site Deserves a Unique Response', body: 'Sun path, soil, neighbours, breeze — the design begins with what the land already knows.' },
+  { num: '02', title: 'Every Site Deserves a Unique Response', body: 'Sun path, soil, neighbours and breeze: the design begins with what the land already knows.' },
   { num: '03', title: 'Engineering Before Aesthetics', body: 'Structure is resolved first. Beauty that ignores load paths is decoration, not architecture.' },
   { num: '04', title: 'Quality Backed by Documentation', body: 'Every soil test, cube test, and inspection is recorded and shared. Claims are cheap; records are not.' },
   { num: '05', title: 'Honest Cost Transparency',      body: 'Itemised estimates before sign-off. The number we agree on is the number you pay.' },
@@ -23,14 +23,14 @@ const BELIEFS = [
 ] as const
 
 const TEAM = [
-  { icon: Compass,      role: 'Design Partners',    detail: 'We work with architects and specialist designers whose work suits your site and brief — coordinated by CB9, so you deal with one team.' },
+  { icon: Compass,      role: 'Design Partners',    detail: 'We work with architects and specialist designers whose work suits your site and brief, coordinated by CB9, so you deal with one team.' },
   { icon: FlaskConical, role: 'Engineering',        detail: 'Civil and structural engineering, soil testing, rebar verification and concrete cube testing at every pour.' },
-  { icon: Users,        role: 'Site Management',    detail: 'Every trade on your site — mason, electrician, plumber, finisher — is controlled and inspected through CB9 site management.' },
+  { icon: Users,        role: 'Site Management',    detail: 'Every trade on your site: mason, electrician, plumber, finisher, is controlled and inspected through CB9 site management.' },
   { icon: FileCheck,    role: 'Documentation Cell', detail: 'Photographs, test reports and handover records maintained for every stage of every residence.' },
 ] as const
 
 const VALUES = [
-  { title: 'Integrity of Structure', body: 'What holds the house up is never compromised — not for speed, not for cost, not for looks.' },
+  { title: 'Integrity of Structure', body: 'What holds the house up is never compromised, not for speed, not for cost, not for looks.' },
   { title: 'Transparency of Cost',   body: 'You see every line item before you sign, and the record of every rupee after.' },
   { title: 'Proof Over Promises',    body: 'We publish what we test. Trust is earned in documents, not slogans.' },
   { title: 'Longevity by Design',    body: 'Homes planned for the family you will be in twenty years, not just the one you are today.' },
@@ -58,7 +58,7 @@ export default function AboutPage() {
         imageAlt="A CB9 supervisor reviewing plaster work on site with the mason and site team"
       />
 
-      {/* Vision — editorial statement */}
+      {/* Vision, editorial statement */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
@@ -78,8 +78,8 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-6 justify-center">
             {[
-              'Most construction in Chennai is copied — the same elevation, the same plan, the same shortcuts, sold plot after plot. We started Corner Brick 9 to do the opposite: to treat every home as a piece of architecture that answers to its site and its family, and to back that design with engineering you can audit.',
-              'We are not a contractor with a portfolio. We are a studio that shapes the design, engineers it, and then stands behind its execution on site — because a drawing is only honoured when the people who drew it are still answerable when it is built.',
+              'Most construction in Chennai is copied: the same elevation, the same plan, the same shortcuts, sold plot after plot. We started Corner Brick 9 to do the opposite: to treat every home as a piece of architecture that answers to its site and its family, and to back that design with engineering you can audit.',
+              'We are not a contractor with a portfolio. We are a studio that shapes the design, engineers it, and then stands behind its execution on site, because a drawing is only honoured when the people who drew it are still answerable when it is built.',
             ].map((p, i) => (
               <motion.p
                 key={i}
@@ -97,7 +97,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Design philosophy — six beliefs */}
+      {/* Design philosophy, six beliefs */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
           <div className="max-w-2xl mb-16">
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families in Avadi and Thiruvallur hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence — for who designs it, who builds it, what gets tested, and why.
+                Sathish grew up watching families in Avadi and Thiruvallur hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence: for who designs it, who builds it, what gets tested, and why.
               </motion.p>
             </div>
             <motion.p
@@ -189,14 +189,14 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence — and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
+              With a B.E. and M.Tech in Civil Engineering, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence, and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
             </motion.p>
 
             <div className="flex flex-col gap-4">
               {[
-                { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering — Anna University Affiliated' },
+                { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering, Anna University Affiliated' },
                 { icon: Award,         text: '10+ years building across Chennai, Avadi, Thiruvallur & Pattibiram' },
-                { icon: Youtube,       text: 'Educational YouTube channel — real construction insights' },
+                { icon: Youtube,       text: 'Educational YouTube channel, real construction insights' },
               ].map(({ icon: Icon, text }, i) => (
                 <motion.div
                   key={text}
@@ -220,7 +220,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team — honest, role-based */}
+      {/* Team, honest, role-based */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -353,7 +353,7 @@ export default function AboutPage() {
           'A Home Designed',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Only for You.</span>,
         ]}
-        body="Tell us about your site and your family. The first conversation — and the first site visit — costs nothing."
+        body="Tell us about your site and your family. The first conversation, and the first site visit, costs nothing."
       />
     </>
   )
