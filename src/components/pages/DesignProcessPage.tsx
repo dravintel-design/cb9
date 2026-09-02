@@ -16,15 +16,15 @@ const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const STAGES = [
-  { num: '01', title: 'Discover',                    body: 'Family, lifestyle, aspirations and future needs. Long conversations before any drawing — the brief starts from how you actually live.' },
+  { num: '01', title: 'Discover',                    body: 'Family, lifestyle, aspirations and future needs. Long conversations before any drawing: the brief starts from how you actually live.' },
   { num: '02', title: 'Understand the Site',         body: 'Plot, orientation, sunlight, wind, access, views, neighbours and regulations, measured and mapped before a line is drawn.' },
-  { num: '03', title: 'Define the Brief',            body: 'Needs translated into a clear spatial and functional brief — room by room, with the trade-offs made explicit.' },
+  { num: '03', title: 'Define the Brief',            body: 'Needs translated into a clear spatial and functional brief, room by room, with the trade-offs made explicit.' },
   { num: '04', title: 'Zoning',                      body: 'Public, semi-private, private, service, recreation and outdoor relationships resolved before form is considered.' },
   { num: '05', title: 'Concept Architecture',        body: 'Massing, circulation, light, ventilation and the relationship to the site. Two or three honest directions, each explained.' },
-  { num: '06', title: 'Design Development',          body: 'Plans, elevations, sections, 3D and materials — iterated with you in the room for every major decision.' },
+  { num: '06', title: 'Design Development',          body: 'Plans, elevations, sections, 3D and materials, iterated with you in the room for every major decision.' },
   { num: '07', title: 'Engineering',                 body: 'Soil testing, structural design and MEP coordination, running alongside the architecture rather than after it.' },
   { num: '08', title: 'Documentation & Approvals',   body: 'Construction documentation and specifications prepared, and every approval filed and tracked on your behalf.' },
-  { num: '09', title: 'Elevation, Interiors & Landscape', body: 'The complete residence developed beyond the building shell — finishes, joinery, light, planting and outdoor rooms.' },
+  { num: '09', title: 'Elevation, Interiors & Landscape', body: 'The complete residence developed beyond the building shell: finishes, joinery, light, planting and outdoor rooms.' },
   { num: '10', title: 'Build',                       body: 'The approved design translated into reality, with one team accountable for every trade on site.' },
   { num: '11', title: 'Handover',                    body: 'Testing, snagging, documentation and a recorded walkthrough before the keys change hands.' },
 ] as const
@@ -34,10 +34,10 @@ const DNA = [
   { num: '02', principle: 'Privacy before aesthetics',      note: 'The street never looks into your living room, however good the elevation.' },
   { num: '03', principle: 'Cross ventilation first',        note: 'Every habitable room breathes from two sides. Chennai demands it.' },
   { num: '04', principle: 'Engineering before decoration',  note: 'Structure is designed, never disguised.' },
-  { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone, and timber that gain character — not cladding that peels.' },
+  { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone, and timber that gain character, not cladding that peels.' },
   { num: '06', principle: 'Function before trends',         note: 'We skip what Instagram loves this year for what your family needs for thirty.' },
   { num: '07', principle: 'Timeless architecture',          note: 'Proportion and shadow over ornament. Homes that will not date.' },
-  { num: '08', principle: 'Homes built around families',    note: 'The plan follows your rituals — morning coffee to festival cooking.' },
+  { num: '08', principle: 'Homes built around families',    note: 'The plan follows your rituals, morning coffee to festival cooking.' },
 ] as const
 
 /** Degrees of helix twist between one principle and the next (nodes sit 72° apart). */
@@ -122,13 +122,13 @@ export default function DesignProcessPage() {
           'Eleven Stages.',
           <span key="l2" style={{ color: BRAND_ORANGE }}>No Shortcuts.</span>,
         ]}
-        intro="Every CB9 residence moves through the same sequence: understand the family, understand the site, then design — with engineering, interiors and landscape developed as one complete residence rather than bolted on."
+        intro="Every CB9 residence moves through the same sequence: understand the family, understand the site, then design, with engineering, interiors and landscape developed as one complete residence rather than bolted on."
         meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
         image="/heroes/design-process.jpg"
         imageAlt="A design lead walking a team through a design process laid out on a whiteboard"
       />
 
-      {/* Eleven stages — editorial list */}
+      {/* Eleven stages, editorial list */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>
         <div className="mx-auto max-w-5xl px-6 lg:px-16">
           {STAGES.map(({ num, title, body }, i) => (
@@ -185,7 +185,7 @@ export default function DesignProcessPage() {
               />
             </div>
             <p className="text-sm max-w-xs" style={{ color: D.textFaint }}>
-              Keep scrolling — the strand turns and each principle reveals itself in order.
+              Keep scrolling, the strand turns and each principle reveals itself in order.
             </p>
           </div>
 
@@ -205,7 +205,7 @@ export default function DesignProcessPage() {
           )}
 
           <div className={printing ? 'hidden' : 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center'}>
-            {/* 3D helix — twists on scroll, nodes are clickable */}
+            {/* 3D helix, twists on scroll, nodes are clickable */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -253,7 +253,7 @@ export default function DesignProcessPage() {
                 </AnimatePresence>
               </div>
 
-              {/* All eight — click to reveal */}
+              {/* All eight, click to reveal */}
               <div className="grid grid-cols-2 gap-2">
                 {DNA.map(({ num, principle }, i) => {
                   const isActive = i === activeDna
@@ -295,7 +295,7 @@ export default function DesignProcessPage() {
           'Begin at',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Stage One.</span>,
         ]}
-        body="Discovery starts with a conversation about your family and your site — no fees, no commitment, no sales script."
+        body="Discovery starts with a conversation about your family and your site, no fees, no commitment, no sales script."
         ctaLabel="Book a Discovery Call"
       />
     </>
