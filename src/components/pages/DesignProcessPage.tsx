@@ -124,8 +124,8 @@ export default function DesignProcessPage() {
         ]}
         intro="Every CB9 residence moves through the same sequence: understand the family, understand the site, then design — with engineering, interiors and landscape developed as one complete residence rather than bolted on."
         meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
-        image="/heroes/design-process.svg"
-        imageAlt="Floor plan sketch with door swing arcs, furniture layout, dimensions, and a north arrow"
+        image="/heroes/design-process.jpg"
+        imageAlt="A craftsman marking and measuring joinery against a straight edge during interior fit-out"
       />
 
       {/* Eleven stages — editorial list */}

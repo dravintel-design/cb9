@@ -68,8 +68,8 @@ export default function ServicesPage() {
         ]}
         intro="Corner Brick 9 exists to deliver complete bespoke residences. Architecture, engineering, interiors, landscape and construction are the disciplines we bring to that one outcome — coordinated by a single accountable team."
         meta={['Design', 'Engineering', 'Interiors', 'Landscape', 'Build']}
-        image="/heroes/services.svg"
-        imageAlt="Isometric wireframe drawing of a house with discipline nodes orbiting around it"
+        image="/heroes/services.jpg"
+        imageAlt="Workers excavating and levelling at plinth height beside a finished plinth beam and rebar cages"
       />
 
       {/* Editorial service rows */}

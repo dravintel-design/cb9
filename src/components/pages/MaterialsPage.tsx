@@ -36,8 +36,8 @@ export default function MaterialsPage() {
         ]}
         intro="Eight material families, one standard: everything specified in a CB9 residence is chosen for how it feels in the hand and how it looks in year ten — sampled with you, and logged in your project file."
         meta={['Curated by the Studio', 'Sampled On Site', 'Logged per Residence']}
-        image="/heroes/materials.svg"
-        imageAlt="Material sample board with twelve swatches showing brick coursing, stone, wood grain, steel section, and tile hatch patterns"
+        image="/heroes/materials.jpg"
+        imageAlt="A mason setting a run of face tiles with a trowel, checking the line by eye"
       />
 
       {/* Curation philosophy */}

@@ -1,8 +1,11 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { isPrintMode } from '@/components/ui/PrintMode'
 import TextReveal from '@/components/ui/TextReveal'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -27,8 +30,66 @@ interface PageHeroProps {
 }
 
 /** Shared minimal page hero — dark, editorial, large type. */
+/** Scroll distance the hero holds before releasing to the page. */
+const PIN_DISTANCE = 700
+
 export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt }: PageHeroProps) {
   const accent = image ? ORANGE_ON_IMAGE : BRAND_ORANGE
+
+  const sectionRef = useRef<HTMLElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const scrimRef = useRef<HTMLDivElement>(null)
+
+  // Pin the hero, scrub the image and copy against scroll, then release
+  // into the page. Skipped for static capture and reduced motion, where a
+  // pinned section would either print half-built or fight the user.
+  useEffect(() => {
+    if (!image) return
+    if (isPrintMode()) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const section = sectionRef.current
+    if (!section) return
+
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: `+=${PIN_DISTANCE}`,
+      pin: section,
+      pinSpacing: true,
+      scrub: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: self => {
+        const p = self.progress
+        if (imgRef.current) {
+          gsap.set(imgRef.current, { scale: 1 + p * 0.16, yPercent: p * 6, force3D: true })
+        }
+        if (contentRef.current) {
+          // Copy lifts and fades out over the first three-quarters of the pin.
+          gsap.set(contentRef.current, {
+            y: -p * 120,
+            opacity: Math.max(0, 1 - p / 0.75),
+            force3D: true,
+          })
+        }
+        if (scrimRef.current) {
+          gsap.set(scrimRef.current, { opacity: 0.45 + p * 0.4 })
+        }
+      },
+    })
+
+    // Layout above can settle after hydration (fonts, media) — re-measure.
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    document.fonts?.ready.then(refresh).catch(() => {})
+
+    return () => {
+      window.removeEventListener('load', refresh)
+      st.kill()
+    }
+  }, [image])
 
   const content = (
     <>
@@ -92,21 +153,23 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
   if (image) {
     return (
       <section
+        ref={sectionRef}
         className="relative min-h-[100svh] flex items-end overflow-hidden"
         style={{ backgroundColor: '#101010' }}
       >
         {/* Full-page hero image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          ref={imgRef}
           src={image}
           alt={imageAlt ?? ''}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
           fetchPriority="high"
         />
 
         {/* Contrast scrims — base wash + dense gradient behind the text.
             White copy sits over >= ~85% black, comfortably past WCAG AA. */}
-        <div aria-hidden className="absolute inset-0 bg-black/45" />
+        <div ref={scrimRef} aria-hidden className="absolute inset-0 bg-black" style={{ opacity: 0.45 }} />
         <div
           aria-hidden
           className="absolute inset-x-0 bottom-0 h-[80%]"
@@ -114,7 +177,10 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
         />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-16 pt-44 pb-20 lg:pb-24">
+        <div
+          ref={contentRef}
+          className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-16 pt-44 pb-20 lg:pb-24 will-change-transform"
+        >
           {content}
         </div>
 

@@ -97,8 +97,8 @@ export default function BuildProcessPage() {
         ]}
         intro="Twelve stages between approved drawings and handed-over keys — each one inspected, photographed and filed. This is how a CB9 design survives contact with the real world, intact."
         meta={['IS 1888 Soil Testing', 'IS 456 Concrete', 'CB9 Site Management', 'Documented Handover']}
-        image="/heroes/build-process.svg"
-        imageAlt="Structural section drawing with column grid, slabs, rebar lines, and footings"
+        image="/heroes/build-process.jpg"
+        imageAlt="A concrete mixer being charged with water on a CB9 site, with aggregate stacked alongside"
       />
 
       {/* Stages — pinned, scroll-driven walkthrough */}

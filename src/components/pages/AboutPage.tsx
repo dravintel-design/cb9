@@ -54,8 +54,8 @@ export default function AboutPage() {
         ]}
         intro="Corner Brick 9 is a bespoke residential design, engineering and build studio in Chennai. We take a family, a plot and a way of living, develop an individual architectural response to it, and stay accountable for building it."
         meta={['Architecture', 'Engineering', 'Construction', 'Chennai']}
-        image="/heroes/about.svg"
-        imageAlt="Site plan drawing showing plot boundary, setbacks, house footprint with central courtyard, trees, and a north arrow"
+        image="/heroes/about.jpg"
+        imageAlt="A CB9 supervisor reviewing plaster work on site with the mason and site team"
       />
 
       {/* Vision — editorial statement */}
