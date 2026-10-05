@@ -16,15 +16,15 @@ const EASE = [0.22, 1, 0.36, 1] as const
 const BELIEFS = [
   { num: '01', title: 'No Template Homes',            body: 'We do not repeat plans. A floor plan drawn for another family, on another plot, has no business shaping yours.' },
   { num: '02', title: 'Every Site Deserves a Unique Response', body: 'Sun path, soil, neighbours and breeze: the design begins with what the land already knows.' },
-  { num: '03', title: 'Engineering Before Aesthetics', body: 'Structure is resolved first. Beauty that ignores load paths is decoration, not architecture.' },
-  { num: '04', title: 'Quality Backed by Documentation', body: 'Every soil test, cube test, and inspection is recorded and shared. Claims are cheap; records are not.' },
-  { num: '05', title: 'Honest Cost Transparency',      body: 'Itemised estimates before sign-off. The number we agree on is the number you pay.' },
+  { num: '03', title: 'Architecture Led, Engineering Integrated', body: 'The architecture leads and the engineering makes it real. Structure, services and detail are resolved with the design, never bolted on afterwards.' },
+  { num: '04', title: 'Quality Backed by Documentation', body: 'Soil tests, cube tests and stage inspections are recorded and shared with you. Claims are cheap; records are not.' },
+  { num: '05', title: 'Honest Cost Transparency',      body: 'Itemised estimates before sign-off, and any variation priced and approved by you in writing before the work happens.' },
   { num: '06', title: 'Design That Ages Gracefully',   body: 'We choose materials and proportions that look better at year ten than at handover.' },
 ] as const
 
 const TEAM = [
   { icon: Compass,      role: 'Design Partners',    detail: 'We work with architects and specialist designers whose work suits your site and brief, coordinated by CB9, so you deal with one team.' },
-  { icon: FlaskConical, role: 'Engineering',        detail: 'Civil and structural engineering, soil testing, rebar verification and concrete cube testing at every pour.' },
+  { icon: FlaskConical, role: 'Engineering',        detail: 'Structural engineering and MEP coordination, with soil testing, rebar verification and concrete cube testing to IS standards.' },
   { icon: Users,        role: 'Site Management',    detail: 'Every trade on your site: mason, electrician, plumber, finisher, is controlled and inspected through CB9 site management.' },
   { icon: FileCheck,    role: 'Documentation Cell', detail: 'Photographs, test reports and handover records maintained for every stage of every residence.' },
 ] as const
@@ -39,7 +39,7 @@ const VALUES = [
 const DNA_PREVIEW = [
   'Light before luxury',
   'Cross ventilation first',
-  'Engineering before decoration',
+  'Design and engineering together',
   'Homes built around families',
 ] as const
 
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families in Avadi and Thiruvallur hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence: for who designs it, who builds it, what gets tested, and why.
+                Sathish grew up watching families across Chennai hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence: for who designs it, who builds it, what gets tested, and why.
               </motion.p>
             </div>
             <motion.p
@@ -189,13 +189,13 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence, and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
+              With a B.E. and an M.Tech behind him, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence, and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
             </motion.p>
 
             <div className="flex flex-col gap-4">
               {[
-                { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering, Anna University Affiliated' },
-                { icon: Award,         text: '10+ years building across Chennai, Avadi, Thiruvallur & Pattibiram' },
+                { icon: GraduationCap, text: 'B.E. + M.Tech qualified engineer' },
+                { icon: Award,         text: '10+ years designing and building across Tamil Nadu' },
                 { icon: Youtube,       text: 'Educational YouTube channel, real construction insights' },
               ].map(({ icon: Icon, text }, i) => (
                 <motion.div

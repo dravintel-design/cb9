@@ -11,15 +11,15 @@ const T = LIGHT_SECTION
 /** Defensible proof points only — no unverified project counts. */
 const STATS = [
   { value: '10+',   label: 'Years Active',        sub: 'Designing and building in Chennai'        },
-  { value: '100%',  label: 'IS-Standard Tested',  sub: 'Every batch, every pour, documented'      },
+  { value: 'IS',    label: 'Standard Testing',    sub: 'Concrete and steel tested to IS standards' },
   { value: 'One',   label: 'Accountable Team',    sub: 'Every trade under CB9 site management'    },
-  { value: 'Every', label: 'Handover Documented', sub: 'Walkthrough, test records and warranty'   },
+  { value: 'Full',  label: 'Handover Documented', sub: 'Walkthrough, test records and warranty'   },
 ] as const
 
 const VIDEOS: readonly VideoItem[] = [
   {
     videoId: 'J29BaR9hESc',
-    client: 'Client Review, Avadi',
+    client: 'Client Review, Chennai',
     detail: 'Turnkey G+1 Home · CB9 Build',
   },
   {
@@ -29,7 +29,7 @@ const VIDEOS: readonly VideoItem[] = [
   },
   {
     videoId: 'qbwyn7jD9V0',
-    client: 'Client Review, Pattibiram',
+    client: 'Client Review, Chennai',
     detail: 'Video Handover Documented',
   },
 ] as const

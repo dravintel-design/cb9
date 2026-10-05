@@ -20,19 +20,19 @@ const TIERS = [
   },
   {
     icon: Download,
-    label: 'Comparing Builders',
-    heading: 'Download the Checklist',
-    body: '12 questions every Chennai home buyer should ask their builder, before signing anything.',
-    cta: 'Download Free Checklist',
+    label: 'Planning a Bespoke Residence',
+    heading: 'Questions to Answer First',
+    body: 'The questions worth answering before you begin designing your home, from brief and site to budget and zoning.',
+    cta: 'Download the Guide',
     href: '/checklist',
     variant: 'outline',
   },
   {
     icon: ArrowRight,
-    label: 'Ready to Build',
-    heading: 'Book a Free Consultation',
-    body: 'Speak directly with Sathish. Site visit included. No pressure, no sales team.',
-    cta: 'Book Consultation',
+    label: 'Ready to Design',
+    heading: 'Book a Discovery Conversation',
+    body: 'Speak directly with Sathish about your site, your brief and how the studio would approach it.',
+    cta: 'Discuss Your Site',
     href: '/contact',
     variant: 'filled',
   },
@@ -51,7 +51,7 @@ export default function CTASection() {
           className="text-center mb-10"
         >
           <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: BRAND_ORANGE }}>
-            Chennai · Avadi · Thiruvallur · Pattibiram
+            Chennai · Tamil Nadu
           </p>
           <TextReveal
             as="h2"

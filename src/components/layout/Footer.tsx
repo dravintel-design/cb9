@@ -22,7 +22,7 @@ const SERVICE_LINKS = [
 const CONTACT = [
   { icon: Phone,  text: '+91 98765 43210'            },
   { icon: Mail,   text: 'hello@cornerbrick9.com'     },
-  { icon: MapPin, text: 'Chennai · Avadi · Thiruvallur' },
+  { icon: MapPin, text: 'Chennai · Tamil Nadu' },
 ]
 
 export default function Footer() {

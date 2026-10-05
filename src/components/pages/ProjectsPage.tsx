@@ -7,12 +7,13 @@ import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
+import BeforeAfter from '@/components/ui/BeforeAfter'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
-const FILTERS = ['All', 'Residential', 'Luxury Villas', 'Farmhouses', 'Interiors', 'Renovations'] as const
+const FILTERS = ['All', 'Residences', 'Concept Studies', 'Interiors'] as const
 type Filter = (typeof FILTERS)[number]
 
 interface Project {
@@ -31,47 +32,37 @@ const PROJECTS: readonly Project[] = [
     id: 'lakshmi-villa',
     title: 'Lakshmi Villa',
     location: 'Avadi, Chennai',
-    category: 'Residential',
+    category: 'Residences',
     status: 'Completed',
     spec: '2,200 sq.ft · G+1 · 3BHK',
-    note: 'A corner-plot family home designed around a central light well. Cube-tested at all nine pours; handed over on video.',
+    note: 'A corner-plot family home designed around a central light well, with concrete cube-tested at each pour and a recorded handover walkthrough.',
     year: '2024',
   },
   {
     id: 'murugan-nagar-duplex',
     title: 'Murugan Nagar Duplex',
     location: 'Thiruvallur',
-    category: 'Residential',
+    category: 'Residences',
     status: 'Completed',
     spec: '1,850 sq.ft · Duplex',
-    note: 'Stage-wise contract with an open cost sheet. The final invoice matched the signed estimate to the rupee.',
+    note: 'A stage-wise contract with an open cost sheet, so every line item was visible before it was approved.',
     year: '2024',
   },
   {
     id: 'priya-enclave',
     title: 'Priya Enclave',
     location: 'Pattibiram, Chennai',
-    category: 'Residential',
+    category: 'Residences',
     status: 'Completed',
     spec: '4,100 sq.ft · G+2',
     note: 'Three floors engineered on a narrow footprint, structural drawings, permits and handover pack coordinated end to end by CB9.',
     year: '2023',
   },
   {
-    id: 'ambattur-renovation',
-    title: 'Ambattur Gut Renovation',
-    location: 'Ambattur, Chennai',
-    category: 'Renovations',
-    status: 'Completed',
-    spec: '1,200 sq.ft · Full MEP reroute',
-    note: 'The family stayed in the house through phase one. Every wall opened was photographed and logged.',
-    year: '2022',
-  },
-  {
     id: 'courtyard-villa-concept',
     title: 'Courtyard Villa Study',
     location: 'Poonamallee corridor',
-    category: 'Luxury Villas',
+    category: 'Concept Studies',
     status: 'Concept Study',
     spec: '5,400 sq.ft · Single family',
     note: 'A west-facing plot answered with a shaded central courtyard: sun-path study, massing model, and material palette.',
@@ -81,7 +72,7 @@ const PROJECTS: readonly Project[] = [
     id: 'mango-farmhouse-concept',
     title: 'Mango Orchard Farmhouse',
     location: 'Thiruvallur outskirts',
-    category: 'Farmhouses',
+    category: 'Concept Studies',
     status: 'Concept Study',
     spec: '2,800 sq.ft · Weekend home',
     note: 'Load-bearing brick, deep verandahs, and rainwater capture, designed to sit quietly inside an existing orchard.',
@@ -125,7 +116,7 @@ export default function ProjectsPage() {
           <span key="l2" style={{ color: BRAND_ORANGE }}>at a Time.</span>,
         ]}
         intro="Completed homes and honest concept studies, never staged luxury. What you see here is real work and real thinking: site analysis, detailing, documentation, and the houses that came out of them."
-        meta={['Residential', 'Luxury Villas', 'Farmhouses', 'Interiors', 'Renovations']}
+        meta={['Residences', 'Concept Studies', 'Interiors', 'Chennai']}
         image="/heroes/projects.jpg"
         imageAlt="Two workers lifting a pan of mortar as the brick and plinth walls of a CB9 residence rise"
       />
@@ -234,6 +225,60 @@ export default function ProjectsPage() {
           >
             Showing {filtered.length} of {PROJECTS.length}. Concept studies are marked honestly. We never present renders as built work.
           </motion.p>
+        </div>
+      </section>
+
+      {/* Site to residence, drag to compare */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: D.bgDeep }}>
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">
+            <div className="max-w-2xl">
+              <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+                Site to Residence
+              </p>
+              <TextReveal
+                as="h2"
+                className="font-bold leading-tight text-display-lg"
+                style={{ color: D.text }}
+                lines={[
+                  'What the Plot Was.',
+                  <span key="l2" style={{ color: BRAND_ORANGE }}>What It Became.</span>,
+                ]}
+              />
+            </div>
+            <motion.p
+              className="leading-relaxed text-base max-w-sm"
+              style={{ color: D.textMuted }}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
+            >
+              Every CB9 residence begins as bare ground and a set of constraints. Drag the handle to
+              see how the site was read, and what the finished architecture made of it.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
+            <BeforeAfter
+              before={{
+                src: '/work/w2.jpg',
+                alt: 'The plot at excavation and plinth-levelling stage before construction began',
+                label: 'Site',
+              }}
+              after={{
+                src: '/heroes/projects.jpg',
+                alt: 'The completed residence on the same plot after handover',
+                label: 'Residence',
+              }}
+              caption="Lakshmi Villa, Chennai. Corner plot, read for sun path and street privacy, then built around a central light well."
+            />
+          </motion.div>
         </div>
       </section>
 

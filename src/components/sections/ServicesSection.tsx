@@ -23,9 +23,9 @@ const DIFFERENTIATORS = [
     icon: FlaskConical,
     tag: 'Engineering Rigour',
     title: 'IS-Standard Testing',
-    body: 'Soil tests, concrete cube tests, and structural checks at foundation, slab, and roof, documented every pour.',
-    stat: '100%',
-    statLabel: 'Batches tested',
+    body: 'Soil tests, concrete cube tests and structural checks at foundation, slab and roof, with the reports shared with you.',
+    stat: 'IS',
+    statLabel: 'Standard tested',
     span: 'lg:col-span-2',
   },
   {

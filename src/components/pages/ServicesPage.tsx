@@ -146,7 +146,7 @@ export default function ServicesPage() {
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build, one contract, one accountable team.' },
+              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build. One coordinated journey, one accountable project team.' },
               { label: 'Design & Engineering',    note: 'The full design and engineering package, developed to construction documentation.' },
               { label: 'Build to Approved Design', note: 'You already have drawings you believe in; we engineer, manage and build them.' },
             ].map(({ label, note }, i) => (

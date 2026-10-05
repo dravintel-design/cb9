@@ -11,8 +11,8 @@ const T = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const CREDENTIALS = [
-  { icon: GraduationCap, text: 'B.E. + M.Tech Civil Engineering, Anna University Affiliated' },
-  { icon: Award,         text: '10+ Years Active in Chennai, Avadi, Thiruvallur & Pattibiram' },
+  { icon: GraduationCap, text: 'B.E. + M.Tech Qualified Engineer' },
+  { icon: Award,         text: '10+ Years Active Across Chennai and Tamil Nadu' },
   { icon: Youtube,       text: 'Educational YouTube Channel, Real Construction Insights' },
 ] as const
 
@@ -82,7 +82,7 @@ export default function FounderSection() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families in Avadi, Thiruvallur and Pattibiram hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your home from the first sketch to the final handover.
+                Sathish grew up watching families across Chennai hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your home from the first sketch to the final handover.
               </motion.p>
             </div>
 
@@ -94,7 +94,7 @@ export default function FounderSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              With a B.E. and M.Tech in Civil Engineering, Sathish leads the studio’s engineering and site management, and coordinates the architects and specialists who shape each residence. He also runs an educational YouTube channel documenting real construction lessons, because an informed client builds a better home.
+              With a B.E. and an M.Tech behind him, Sathish leads the studio’s engineering and site management, and coordinates the architects and specialists who shape each residence. He also runs an educational YouTube channel documenting real construction lessons, because an informed client builds a better home.
             </motion.p>
 
             {/* Credentials, staggered slide-in */}

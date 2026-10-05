@@ -6,7 +6,7 @@ import ContactPage from '@/components/pages/ContactPage'
 
 export const metadata: Metadata = {
   title: 'Start a Project',
-  description: 'Tell us about your plot, your family and your brief. A founder-led conversation and a free first site visit: Corner Brick 9, Avadi, Chennai.',
+  description: 'Tell us about your plot, your family and your brief. A founder-led conversation and an initial site discussion: Corner Brick 9, Chennai, Tamil Nadu.',
 }
 
 export default function Page() {

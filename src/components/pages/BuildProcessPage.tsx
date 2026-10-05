@@ -33,8 +33,8 @@ const STAGES = [
   },
   {
     icon: FlaskConical, num: '04', title: 'Rebar & Concrete Quality Control',
-    body: 'Rebar layouts checked against drawings before every pour, and concrete cube-tested to IS 456.',
-    output: 'Cube test certificates, every batch',
+    body: 'Rebar layouts checked against the structural drawings before pouring, and concrete cube-tested to IS 456.',
+    output: 'Cube test certificates',
   },
   {
     icon: Blocks, num: '05', title: 'Masonry & Envelope',
@@ -80,9 +80,9 @@ const STAGES = [
 
 /** Defensible proof points only — no unverified project counts. */
 const STATS = [
-  { value: '100%', label: 'Concrete batches cube-tested' },
+  { value: 'IS',   label: 'Concrete cube-tested to IS 456' },
   { value: 'One',  label: 'Team accountable for every trade' },
-  { value: 'Every',label: 'Handover recorded and documented' },
+  { value: 'Full', label: 'Handover recorded and documented' },
   { value: '10+',  label: 'Years building in Chennai' },
 ] as const
 

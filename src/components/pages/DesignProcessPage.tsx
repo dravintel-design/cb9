@@ -33,7 +33,7 @@ const DNA = [
   { num: '01', principle: 'Light before luxury',            note: 'A well-lit modest room beats a dark expensive one.' },
   { num: '02', principle: 'Privacy before aesthetics',      note: 'The street never looks into your living room, however good the elevation.' },
   { num: '03', principle: 'Cross ventilation first',        note: 'Every habitable room breathes from two sides. Chennai demands it.' },
-  { num: '04', principle: 'Engineering before decoration',  note: 'Structure is designed, never disguised.' },
+  { num: '04', principle: 'Design and engineering together', note: 'Structure is resolved with the architecture, never disguised afterwards.' },
   { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone, and timber that gain character, not cladding that peels.' },
   { num: '06', principle: 'Function before trends',         note: 'We skip what Instagram loves this year for what your family needs for thirty.' },
   { num: '07', principle: 'Timeless architecture',          note: 'Proportion and shadow over ornament. Homes that will not date.' },

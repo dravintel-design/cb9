@@ -31,10 +31,8 @@ const SPECIAL_REQUIREMENTS = [
 
 const PROJECT_TYPES = [
   'New Bespoke Residence',
-  'Luxury Villa',
-  'Farmhouse',
   'Full Interior',
-  'Renovation / Extension',
+  'Concept / Feasibility Study',
 ] as const
 
 const INVESTMENT_RANGES = [
@@ -114,8 +112,8 @@ export default function ContactPage() {
           'Tell Us About',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Your Site.</span>,
         ]}
-        intro="We take on a small number of bespoke residences each year so each one gets the studio’s full attention. The more you can tell us about your plot and your family, the more useful the first conversation will be."
-        meta={['Reply within 24 hours', 'Free First Site Visit', 'Founder-Led Conversation']}
+        intro="Every CB9 residence is designed from scratch for one family and one site, so the first conversation matters. The more you can tell us about your plot and how you want to live, the more useful it will be."
+        meta={['Reply within 24 hours', 'Initial Site Discussion', 'Founder-Led Conversation']}
       />
 
       <section className="py-24 lg:py-32" style={{ backgroundColor: L.bg }}>

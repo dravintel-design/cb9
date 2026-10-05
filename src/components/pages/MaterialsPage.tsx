@@ -34,8 +34,8 @@ export default function MaterialsPage() {
           'Materials That',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Age Beautifully.</span>,
         ]}
-        intro="Eight material families, one standard: everything specified in a CB9 residence is chosen for how it feels in the hand and how it looks in year ten, sampled with you, and logged in your project file."
-        meta={['Curated by the Studio', 'Sampled On Site', 'Logged per Residence']}
+        intro="Eight material families, one standard. Everything specified in a CB9 residence is chosen for how it feels in the hand, how it catches light, and how it will look in year ten, selected with you rather than from a catalogue."
+        meta={['Curated by the Studio', 'Sampled in Your Light', 'Chosen per Residence']}
         image="/heroes/materials.jpg"
         imageAlt="A mason setting a run of face tiles with a trowel, checking the line by eye"
       />
@@ -66,9 +66,9 @@ export default function MaterialsPage() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              We do not keep a brand list to earn dealer margins, we keep a standard. Materials are
-              chosen for the residence in front of us: sampled under your own light, checked against
-              the specification on delivery, and photographed into the project record before use.
+              We do not keep a brand list. We keep a standard, and a growing library of materials we
+              have worked with, watched age, and would use again. Each one is chosen for the residence
+              in front of us, sampled under your own light, and matched to the hands that will work it.
             </motion.p>
           </div>
         </div>
@@ -109,15 +109,15 @@ export default function MaterialsPage() {
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bg }}>
         <div className="mx-auto max-w-4xl px-6 lg:px-16 text-center">
           <p className="text-sm font-bold tracking-[0.2em] uppercase mb-6" style={{ color: BRAND_ORANGE }}>
-            The Material Record
+            Craft and Provenance
           </p>
           <TextReveal
             as="h2"
             className="font-bold leading-tight text-display-md"
             style={{ color: D.text }}
             lines={[
-              'Every Delivery Certified.',
-              <span key="l2" style={{ color: BRAND_ORANGE }}>Every Batch Logged.</span>,
+              'Chosen With Care.',
+              <span key="l2" style={{ color: BRAND_ORANGE }}>Made by Hand.</span>,
             ]}
           />
           <motion.p
@@ -128,9 +128,9 @@ export default function MaterialsPage() {
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
           >
-            Your project file lists what went into your home: brand, batch, certificate, and the
-            date it was used. Ten years from now, when you renovate or repair, you will know exactly
-            what you are working with.
+            Behind every material is a maker: the stone yard that cut your slabs, the carpenter who
+            seasoned your teak, the fabricator who blackened your railing. We keep that record with
+            your drawings, so years from now you know not only what your home is made of, but who made it.
           </motion.p>
         </div>
       </section>

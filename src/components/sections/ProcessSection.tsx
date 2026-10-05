@@ -27,7 +27,7 @@ const STEPS = [
     num: '03',
     icon: Building2,
     title: 'Foundation & Structure',
-    body: 'Concrete is cube-tested to IS standards. Every pour is recorded. Nothing is skipped for speed.',
+    body: 'Concrete is cube-tested to IS standards and the results are recorded. Nothing is skipped for speed.',
     badge: 'Soil test + concrete cube tested to IS standards',
   },
   {
