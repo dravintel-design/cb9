@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
@@ -14,10 +15,37 @@ const T = DARK_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 /**
- * Finished-home photography, shown first. Empty until the client supplies it;
- * the section then leads with the homes and keeps site work below.
+ * Finished-home photography, shown first with site work below. The first
+ * photograph is featured large. Captions describe what is in the frame.
  */
-const FINISHED: readonly { src: string; caption: string; location: string }[] = []
+const FINISHED: readonly { src: string; alt: string; caption: string; focus?: string }[] = [
+  {
+    src: '/finished/exterior.jpg',
+    alt: 'A finished two-storey CB9 home, its pale yellow facade broken by a wood-clad feature panel framed in grey',
+    caption: 'Wood-clad feature panel, framed in grey',
+    focus: '55% 45%',
+  },
+  {
+    src: '/finished/living-hall.jpg',
+    alt: 'The living hall of a finished CB9 home, with a white cut-pattern partition screen in a timber frame and a polished floor',
+    caption: 'Living hall with a cut-pattern partition screen',
+  },
+  {
+    src: '/finished/kitchen.jpg',
+    alt: 'A finished kitchen with a granite counter, pendant lights and a tiled backsplash',
+    caption: 'Kitchen: granite counter and pendant lighting',
+  },
+  {
+    src: '/finished/living-wall.jpg',
+    alt: 'Three framed prints on a living-room wall, each lit by its own spotlight',
+    caption: 'Spotlit picture wall',
+  },
+  {
+    src: '/finished/terrace.jpg',
+    alt: 'The terrace of a finished CB9 home at dusk, its stair headroom lit by a row of cove lights',
+    caption: 'Terrace headroom with cove lighting at dusk',
+  },
+]
 
 /** Real site photography only. Captions describe what is in the frame. */
 const SITE_SHOTS = [
@@ -84,7 +112,43 @@ export default function WorkSection() {
         {/* Finished homes first */}
         {hasFinished ? (
           <>
-            <PhotoStrip shots={FINISHED} />
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: T.textMuted }}>
+              Finished Homes
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[220px] lg:auto-rows-[260px] gap-3 lg:gap-4">
+              {FINISHED.map((f, i) => (
+                <motion.figure
+                  key={f.src}
+                  className={`group relative overflow-hidden rounded-2xl border ${
+                    i === 0 ? 'col-span-2 md:row-span-2 aspect-[3/2] md:aspect-auto' : 'aspect-square md:aspect-auto'
+                  }`}
+                  style={{ borderColor: T.border, backgroundColor: T.cardBg }}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.7, delay: i * 0.07, ease: EASE }}
+                >
+                  <Image
+                    src={f.src}
+                    alt={f.alt}
+                    fill
+                    sizes={i === 0 ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'}
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
+                    style={f.focus ? { objectPosition: f.focus } : undefined}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+                    style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.85), transparent)' }}
+                  />
+                  <figcaption className={`absolute inset-x-0 bottom-0 ${i === 0 ? 'p-5 lg:p-7' : 'p-4'}`}>
+                    <p className={`text-white font-semibold leading-snug ${i === 0 ? 'text-base lg:text-lg' : 'text-xs sm:text-sm'}`}>
+                      {f.caption}
+                    </p>
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
             <p className="text-sm font-bold tracking-[0.2em] uppercase mt-16 mb-6" style={{ color: BRAND_ORANGE }}>
               From Our Sites
             </p>

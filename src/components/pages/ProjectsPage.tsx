@@ -45,8 +45,8 @@ export default function ProjectsPage() {
         ]}
         intro="Completed homes and clearly labelled concept studies. See our selected homes and how we approach design and construction."
         meta={['Residences', 'Concept Studies', 'Interiors', 'Chennai']}
-        image="/heroes/projects.jpg"
-        imageAlt="Two workers lifting a pan of mortar as the brick and plinth walls of a CB9 residence rise"
+        image="/heroes/projects-finished.jpg"
+        imageAlt="A finished two-storey CB9 home, its pale yellow facade broken by a wood-clad feature panel framed in grey"
       />
 
       {/* Grid with filters */}

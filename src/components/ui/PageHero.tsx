@@ -172,7 +172,7 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt,
 
         {/* Contrast scrims, base wash + dense gradient behind the text.
             White copy sits over >= ~85% black, comfortably past WCAG AA. */}
-        <div ref={scrimRef} aria-hidden className="absolute inset-0 bg-black" style={{ opacity: 0.45 }} />
+        <div ref={scrimRef} aria-hidden data-scrim className="absolute inset-0 bg-black" style={{ opacity: 0.45 }} />
         <div
           aria-hidden
           className="absolute inset-x-0 bottom-0 h-[80%]"

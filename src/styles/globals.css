@@ -123,6 +123,12 @@ html.lenis {
   print-color-adjust: exact;
 }
 
+/* The blanket opacity reset above would turn the hero's black scrim fully
+   opaque and hide the photograph; keep it at its resting strength. */
+[data-print] [data-scrim] {
+  opacity: 0.45 !important;
+}
+
 /* Masked line reveals need their overflow released, or the lines stay clipped. */
 [data-print] .overflow-hidden {
   overflow: visible !important;
