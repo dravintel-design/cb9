@@ -10,6 +10,7 @@ import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
 import DnaHelix from '@/components/ui/DnaHelix'
+import { enquiryHref } from '@/lib/site'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
@@ -23,7 +24,7 @@ const STAGES = [
   { num: '05', title: 'Concept Architecture',        body: 'Massing, circulation, light, ventilation and the relationship to the site. Two or three honest directions, each explained.' },
   { num: '06', title: 'Design Development',          body: 'Plans, elevations, sections, 3D and materials, iterated with you in the room for every major decision.' },
   { num: '07', title: 'Engineering',                 body: 'Soil testing, structural design and MEP coordination, running alongside the architecture rather than after it.' },
-  { num: '08', title: 'Documentation & Approvals',   body: 'Construction documentation and specifications prepared, and every approval filed and tracked on your behalf.' },
+  { num: '08', title: 'Documentation & Approvals',   body: 'Construction documentation and specifications prepared. We help coordinate the approvals included in our agreed scope of work, with fees and responsibilities set out in the project proposal.' },
   { num: '09', title: 'Elevation, Interiors & Landscape', body: 'The complete residence developed beyond the building shell: finishes, joinery, light, planting and outdoor rooms.' },
   { num: '10', title: 'Build',                       body: 'The approved design translated into reality, with one team accountable for every trade on site.' },
   { num: '11', title: 'Handover',                    body: 'Testing, snagging, documentation and a recorded walkthrough before the keys change hands.' },
@@ -34,8 +35,8 @@ const DNA = [
   { num: '02', principle: 'Privacy before aesthetics',      note: 'The street never looks into your living room, however good the elevation.' },
   { num: '03', principle: 'Cross ventilation first',        note: 'Every habitable room breathes from two sides. Chennai demands it.' },
   { num: '04', principle: 'Design and engineering together', note: 'Structure is resolved with the architecture, never disguised afterwards.' },
-  { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone, and timber that gain character, not cladding that peels.' },
-  { num: '06', principle: 'Function before trends',         note: 'We skip what Instagram loves this year for what your family needs for thirty.' },
+  { num: '05', principle: 'Materials that age beautifully', note: 'Brick, stone and timber chosen to gain character over the years.' },
+  { num: '06', principle: 'Function before trends',         note: 'Planned around what your family will need for the next thirty years.' },
   { num: '07', principle: 'Timeless architecture',          note: 'Proportion and shadow over ornament. Homes that will not date.' },
   { num: '08', principle: 'Homes built around families',    note: 'The plan follows your rituals, morning coffee to festival cooking.' },
 ] as const
@@ -120,12 +121,13 @@ export default function DesignProcessPage() {
         eyebrow="Design Process"
         lines={[
           'Eleven Stages.',
-          <span key="l2" style={{ color: BRAND_ORANGE }}>No Shortcuts.</span>,
+          <span key="l2" style={{ color: BRAND_ORANGE }}>One Process.</span>,
         ]}
-        intro="Every CB9 residence moves through the same sequence: understand the family, understand the site, then design, with engineering, interiors and landscape developed as one complete residence rather than bolted on."
-        meta={['Discovery → Handover', 'Engineering-led', 'Fully Documented']}
+        intro="We plan each home around the family and the site, with design and engineering developed together. Every CB9 residence moves through the same eleven stages, from understanding your family to handing over the keys."
+        meta={['Discovery → Handover', 'Design and Engineering Together', 'Fully Documented']}
         image="/heroes/design-process.jpg"
         imageAlt="A design lead walking a team through a design process laid out on a whiteboard"
+        imageLabel="Example image"
       />
 
       {/* Eleven stages, editorial list */}
@@ -270,7 +272,7 @@ export default function DesignProcessPage() {
                       }}
                     >
                       <span
-                        className="text-[10px] font-bold tabular-nums shrink-0"
+                        className="text-xs font-bold tabular-nums shrink-0"
                         style={{ color: BRAND_ORANGE }}
                       >
                         {num}
@@ -295,8 +297,9 @@ export default function DesignProcessPage() {
           'Begin at',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Stage One.</span>,
         ]}
-        body="Discovery starts with a conversation about your family and your site, no fees, no commitment, no sales script."
-        ctaLabel="Book a Discovery Call"
+        body="Discovery starts with a conversation about your family and your site."
+        ctaLabel="Request a Site Visit"
+        href={enquiryHref({ visit: true })}
       />
     </>
   )

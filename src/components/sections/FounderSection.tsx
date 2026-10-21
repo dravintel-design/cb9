@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { Youtube, Award, GraduationCap } from 'lucide-react'
 import { BRAND_ORANGE, LIGHT_SECTION } from '@/lib/utils'
 import TextReveal from '@/components/ui/TextReveal'
-import Parallax from '@/components/ui/Parallax'
+import FounderPortrait from '@/components/ui/FounderPortrait'
+import FounderAward from '@/components/ui/FounderAward'
 
 const T = LIGHT_SECTION
 
@@ -23,34 +24,7 @@ export default function FounderSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-          {/* Portrait with parallax drift + clip reveal */}
-          <motion.div
-            initial={{ clipPath: 'inset(8% 8% 8% 8%)', opacity: 0 }}
-            whileInView={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.1, ease: EASE }}
-          >
-            <Parallax speed={6} className="rounded-2xl relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: T.bgDeep }}>
-              <div className="absolute inset-0 flex items-end p-8">
-                <motion.div
-                  className="h-1 origin-left"
-                  style={{ backgroundColor: BRAND_ORANGE }}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 64 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-                />
-              </div>
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[40%]"
-                style={{ background: `linear-gradient(to top, ${T.bgDeep}, transparent)` }}
-              />
-              <div className="absolute bottom-8 left-8 right-8">
-                <p className="font-bold text-2xl" style={{ color: T.text }}>M. Sathish Kumar</p>
-                <p className="text-sm mt-1" style={{ color: T.textMuted }}>Founder &amp; Chief Engineer</p>
-              </div>
-            </Parallax>
-          </motion.div>
+          <FounderPortrait />
 
           {/* Text */}
           <div className="flex flex-col gap-8">
@@ -82,7 +56,7 @@ export default function FounderSection() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               >
-                Sathish grew up watching families across Chennai hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your home from the first sketch to the final handover.
+                Sathish founded Corner Brick 9 around a single principle: one team stays accountable for your home, from the first sketch to the final handover.
               </motion.p>
             </div>
 
@@ -128,10 +102,12 @@ export default function FounderSection() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
             >
-              &ldquo;If you can&apos;t explain what was tested and why, you haven&apos;t earned the client&apos;s trust. Every report we file, we publish.&rdquo;
+              &ldquo;A client should always know what was tested on their home, and why. We record project test results and share them with the client.&rdquo;
             </motion.blockquote>
           </div>
         </div>
+
+        <FounderAward />
       </div>
     </section>
   )

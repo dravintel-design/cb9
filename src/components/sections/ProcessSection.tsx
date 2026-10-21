@@ -12,16 +12,16 @@ const STEPS = [
   {
     num: '01',
     icon: MapPin,
-    title: 'Site Visit & Honest Scope',
-    body: 'We walk the site, run soil checks, and give you a realistic scope, no inflated estimates to win the deal.',
-    badge: 'Stage-wise payment schedule locked upfront',
+    title: 'Site Visit & Clear Scope',
+    body: 'We walk the site, arrange soil checks and give you a clear, realistic scope of work.',
+    badge: 'Detailed estimate before work begins',
   },
   {
     num: '02',
     icon: PencilRuler,
     title: 'Design & Permits',
-    body: 'Our engineering team and design partners produce structural drawings, and we handle every government approval on your behalf.',
-    badge: 'Structural drawings + all approvals handled',
+    body: 'Our engineering team and design partners produce the structural drawings. We help coordinate the approvals included in our agreed scope of work.',
+    badge: 'Structural drawings + approval coordination',
   },
   {
     num: '03',
@@ -148,7 +148,7 @@ export default function ProcessSection() {
 
                     {/* Output badge */}
                     <span
-                      className="rounded-lg inline-block self-start text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border mt-4"
+                      className="rounded-lg inline-block self-start text-xs font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border mt-4"
                       style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}35`, backgroundColor: `${BRAND_ORANGE}08` }}
                     >
                       Output → {badge}

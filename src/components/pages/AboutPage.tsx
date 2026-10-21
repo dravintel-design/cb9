@@ -7,18 +7,19 @@ import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
-import Parallax from '@/components/ui/Parallax'
+import FounderPortrait from '@/components/ui/FounderPortrait'
+import FounderAward from '@/components/ui/FounderAward'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const BELIEFS = [
-  { num: '01', title: 'No Template Homes',            body: 'We do not repeat plans. A floor plan drawn for another family, on another plot, has no business shaping yours.' },
+  { num: '01', title: 'Homes Designed Around You',    body: 'Each plan is drawn for one family and one plot, starting from how you live.' },
   { num: '02', title: 'Every Site Deserves a Unique Response', body: 'Sun path, soil, neighbours and breeze: the design begins with what the land already knows.' },
   { num: '03', title: 'Architecture Led, Engineering Integrated', body: 'The architecture leads and the engineering makes it real. Structure, services and detail are resolved with the design, never bolted on afterwards.' },
-  { num: '04', title: 'Quality Backed by Documentation', body: 'Soil tests, cube tests and stage inspections are recorded and shared with you. Claims are cheap; records are not.' },
-  { num: '05', title: 'Honest Cost Transparency',      body: 'Itemised estimates before sign-off, and any variation priced and approved by you in writing before the work happens.' },
+  { num: '04', title: 'Quality Backed by Documentation', body: 'We record project test results and share them with the client.' },
+  { num: '05', title: 'Honest Cost Transparency',      body: 'We give you a detailed estimate and get your written approval before carrying out extra work.' },
   { num: '06', title: 'Design That Ages Gracefully',   body: 'We choose materials and proportions that look better at year ten than at handover.' },
 ] as const
 
@@ -31,8 +32,8 @@ const TEAM = [
 
 const VALUES = [
   { title: 'Integrity of Structure', body: 'What holds the house up is never compromised, not for speed, not for cost, not for looks.' },
-  { title: 'Transparency of Cost',   body: 'You see every line item before you sign, and the record of every rupee after.' },
-  { title: 'Proof Over Promises',    body: 'We publish what we test. Trust is earned in documents, not slogans.' },
+  { title: 'Transparency of Cost',   body: 'We give you a detailed estimate and get your written approval before carrying out extra work.' },
+  { title: 'Proof Over Promises',    body: 'We record project test results and share them with the client.' },
   { title: 'Longevity by Design',    body: 'Homes planned for the family you will be in twenty years, not just the one you are today.' },
 ] as const
 
@@ -78,8 +79,8 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-6 justify-center">
             {[
-              'Most construction in Chennai is copied: the same elevation, the same plan, the same shortcuts, sold plot after plot. We started Corner Brick 9 to do the opposite: to treat every home as a piece of architecture that answers to its site and its family, and to back that design with engineering you can audit.',
-              'We are not a contractor with a portfolio. We are a studio that shapes the design, engineers it, and then stands behind its execution on site, because a drawing is only honoured when the people who drew it are still answerable when it is built.',
+              'We plan each home around the family and the site, with design and engineering developed together. Every Corner Brick 9 residence is an individual piece of architecture that answers to its plot and to the people who will live in it, backed by engineering you can review.',
+              'We are a studio that shapes the design, engineers it and then stands behind its execution on site, because a drawing is best honoured when the people who drew it remain answerable while it is built.',
             ].map((p, i) => (
               <motion.p
                 key={i}
@@ -109,8 +110,8 @@ export default function AboutPage() {
               className="font-bold leading-tight text-display-lg"
               style={{ color: D.text }}
               lines={[
-                'What We Refuse',
-                <span key="l2" style={{ color: BRAND_ORANGE }}>to Compromise.</span>,
+                'What We',
+                <span key="l2" style={{ color: BRAND_ORANGE }}>Stand For.</span>,
               ]}
             />
           </div>
@@ -137,86 +138,74 @@ export default function AboutPage() {
 
       {/* Founder story */}
       <section className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: L.bg }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <motion.div
-            initial={{ clipPath: 'inset(8% 8% 8% 8%)', opacity: 0 }}
-            whileInView={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.1, ease: EASE }}
-          >
-            <Parallax speed={6} className="rounded-2xl relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: L.bgDeep }}>
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[40%]"
-                style={{ background: `linear-gradient(to top, ${L.bgDeep}, transparent)` }}
-              />
-              <div className="absolute bottom-8 left-8 right-8">
-                <p className="font-bold text-2xl" style={{ color: L.text }}>M. Sathish Kumar</p>
-                <p className="text-sm mt-1" style={{ color: L.textMuted }}>Founder · Chief Engineer</p>
-              </div>
-            </Parallax>
-          </motion.div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <FounderPortrait />
 
-          <div className="flex flex-col gap-8">
-            <div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
-                The Founder
-              </p>
-              <TextReveal
-                as="h2"
-                className="font-bold leading-tight text-display-md mb-6"
-                style={{ color: L.text }}
-                lines={[
-                  'Built From the',
-                  <span key="l2" style={{ color: BRAND_ORANGE }}>Ground Up.</span>,
-                ]}
-              />
+            <div className="flex flex-col gap-8">
+              <div>
+                <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
+                  The Founder
+                </p>
+                <TextReveal
+                  as="h2"
+                  className="font-bold leading-tight text-display-md mb-6"
+                  style={{ color: L.text }}
+                  lines={[
+                    'Built From the',
+                    <span key="l2" style={{ color: BRAND_ORANGE }}>Ground Up.</span>,
+                  ]}
+                />
+                <motion.p
+                  className="leading-relaxed"
+                  style={{ color: L.textMuted }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+                >
+                  Sathish founded Corner Brick 9 around a single principle: one team stays accountable for your residence, for who designs it, who builds it, what gets tested, and why.
+                </motion.p>
+              </div>
               <motion.p
                 className="leading-relaxed"
                 style={{ color: L.textMuted }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+                transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
               >
-                Sathish grew up watching families across Chennai hand their savings to a chain of people none of them had met. He founded Corner Brick 9 around a single principle: one team stays accountable for your residence: for who designs it, who builds it, what gets tested, and why.
+                With a B.E. and an M.Tech behind him, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence, and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
               </motion.p>
-            </div>
-            <motion.p
-              className="leading-relaxed"
-              style={{ color: L.textMuted }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-            >
-              With a B.E. and an M.Tech behind him, he leads the studio’s engineering and site management and coordinates the architects and specialists behind each residence, and documents real construction lessons on an educational YouTube channel, because an informed client builds a better home.
-            </motion.p>
 
-            <div className="flex flex-col gap-4">
-              {[
-                { icon: GraduationCap, text: 'B.E. + M.Tech qualified engineer' },
-                { icon: Award,         text: '10+ years designing and building across Tamil Nadu' },
-                { icon: Youtube,       text: 'Educational YouTube channel, real construction insights' },
-              ].map(({ icon: Icon, text }, i) => (
-                <motion.div
-                  key={text}
-                  className="flex items-start gap-4"
-                  initial={{ opacity: 0, x: -24 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: i * 0.12, ease: EASE }}
-                >
-                  <div
-                    className="rounded-xl w-8 h-8 flex-shrink-0 flex items-center justify-center border"
-                    style={{ borderColor: L.border, color: BRAND_ORANGE }}
+              <div className="flex flex-col gap-4">
+                {[
+                  { icon: GraduationCap, text: 'B.E. + M.Tech qualified engineer' },
+                  { icon: Award,         text: '10+ years designing and building across Tamil Nadu' },
+                  { icon: Youtube,       text: 'Educational YouTube channel, real construction insights' },
+                ].map(({ icon: Icon, text }, i) => (
+                  <motion.div
+                    key={text}
+                    className="flex items-start gap-4"
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, delay: i * 0.12, ease: EASE }}
                   >
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <p className="text-sm leading-relaxed" style={{ color: L.textMuted }}>{text}</p>
-                </motion.div>
-              ))}
+                    <div
+                      className="rounded-xl w-8 h-8 flex-shrink-0 flex items-center justify-center border"
+                      style={{ borderColor: L.border, color: BRAND_ORANGE }}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: L.textMuted }}>{text}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
+
+          <FounderAward />
         </div>
       </section>
 
@@ -353,7 +342,7 @@ export default function AboutPage() {
           'A Home Designed',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Only for You.</span>,
         ]}
-        body="Tell us about your site and your family. The first conversation, and the first site visit, costs nothing."
+        body="Tell us about your site and your family, and request a site visit when you are ready."
       />
     </>
   )

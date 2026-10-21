@@ -16,21 +16,22 @@ const STATS = [
   { value: 'Full',  label: 'Handover Documented', sub: 'Walkthrough, test records and warranty'   },
 ] as const
 
+/** Titles and descriptions follow what each video on the CB9 channel actually shows. */
 const VIDEOS: readonly VideoItem[] = [
   {
     videoId: 'J29BaR9hESc',
-    client: 'Client Review, Chennai',
-    detail: 'Turnkey G+1 Home · CB9 Build',
+    title: 'Client Testimonial',
+    description: 'A homeowner talks through their finished home and working with CB9.',
   },
   {
     videoId: 'TScl3sVpoT4',
-    client: 'Client Review, Thiruvallur',
-    detail: 'New Construction · IS-Tested',
+    title: 'Completing a Stalled Build',
+    description: 'A construction project that had stopped, picked up and completed by CB9.',
   },
   {
     videoId: 'qbwyn7jD9V0',
-    client: 'Client Review, Chennai',
-    detail: 'Video Handover Documented',
+    title: 'Material Testing on Site',
+    description: 'A live recording of materials being tested on a client’s site.',
   },
 ] as const
 
@@ -79,12 +80,14 @@ export default function ClientsSection() {
               className="font-bold leading-tight"
               style={{ color: T.text, fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
               lines={[
-                'What Clients Say',
-                <span key="l2" style={{ color: BRAND_ORANGE }}>After Moving In.</span>,
+                'Clients and Sites,',
+                <span key="l2" style={{ color: BRAND_ORANGE }}>On Camera.</span>,
               ]}
             />
             <p className="text-sm max-w-xs" style={{ color: T.textFaint }}>
-              Real homeowners, on camera. Hover to preview, click any story to play.
+              A client testimonial and real CB9 site work, recorded on camera.{' '}
+              <span className="[@media(hover:hover)]:hidden">Tap to watch.</span>
+              <span className="hidden [@media(hover:hover)]:inline">Click to watch.</span>
             </p>
           </motion.div>
 

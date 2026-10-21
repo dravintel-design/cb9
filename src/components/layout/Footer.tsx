@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
 import { BRAND_ORANGE } from '@/lib/utils'
+import { CONTACT } from '@/lib/site'
 
 const COMPANY_LINKS = [
   { label: 'The Studio',       href: '/about'    },
@@ -19,9 +20,9 @@ const SERVICE_LINKS = [
   { label: 'Materials & Craft', href: '/materials'      },
 ]
 
-const CONTACT = [
-  { icon: Phone,  text: '+91 98765 43210'            },
-  { icon: Mail,   text: 'hello@cornerbrick9.com'     },
+const CONTACT_LINES = [
+  { icon: Phone,  text: CONTACT.phoneDisplay, href: `tel:+${CONTACT.phoneRaw}` },
+  { icon: Mail,   text: CONTACT.email,        href: `mailto:${CONTACT.email}` },
   { icon: MapPin, text: 'Chennai · Tamil Nadu' },
 ]
 
@@ -71,12 +72,19 @@ export default function Footer() {
               A residential architecture, engineering &amp; build studio. Every home designed for one family, one site, one story.
             </p>
             <div className="flex flex-col gap-3 mt-2">
-              {CONTACT.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-3 text-white/50 text-sm">
-                  <Icon className="w-4 h-4 shrink-0" style={{ color: BRAND_ORANGE }} />
-                  {text}
-                </div>
-              ))}
+              {CONTACT_LINES.map(({ icon: Icon, text, href }) => {
+                const inner = (
+                  <>
+                    <Icon className="w-4 h-4 shrink-0" style={{ color: BRAND_ORANGE }} aria-hidden="true" />
+                    {text}
+                  </>
+                )
+                return href ? (
+                  <a key={text} href={href} className="flex items-center gap-3 text-white/60 text-sm hover:text-white transition-colors">{inner}</a>
+                ) : (
+                  <div key={text} className="flex items-center gap-3 text-white/60 text-sm">{inner}</div>
+                )
+              })}
             </div>
           </div>
 
@@ -130,8 +138,8 @@ export default function Footer() {
                 </motion.span>
               ))}
             </p>
-            <p className="text-white/25 text-xs tracking-widest uppercase mt-auto pt-8">
-              Licensed &amp; Insured<br />IS-Standard Compliant
+            <p className="text-white/60 text-xs tracking-widest uppercase mt-auto pt-8">
+              IS-Standard Compliant
             </p>
           </div>
         </div>
@@ -140,14 +148,14 @@ export default function Footer() {
       {/* Bottom */}
       <div className="py-6">
         <div className="mx-auto max-w-7xl px-6 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/30 text-xs">
+          <p className="text-white/60 text-xs">
             © {new Date().getFullYear()} Corner Brick 9. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {['Privacy Policy', 'Terms of Service'].map(t => (
-              <a key={t} href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors">
+            {[['Privacy Policy', '/privacy'], ['Terms of Use', '/terms']].map(([t, href]) => (
+              <Link key={t} href={href!} className="text-white/60 text-xs hover:text-white transition-colors">
                 {t}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

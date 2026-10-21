@@ -6,13 +6,21 @@ import { ArrowRight } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import TextReveal from '@/components/ui/TextReveal'
 import PhotoStrip from '@/components/ui/PhotoStrip'
+import PreviewNote, { PhotoSlot } from '@/components/ui/PreviewNote'
+import { SITE_LIVE } from '@/lib/site'
 
 const T = DARK_SECTION
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
+/**
+ * Finished-home photography, shown first. Empty until the client supplies it;
+ * the section then leads with the homes and keeps site work below.
+ */
+const FINISHED: readonly { src: string; caption: string; location: string }[] = []
+
 /** Real site photography only. Captions describe what is in the frame. */
-const SHOTS = [
+const SITE_SHOTS = [
   { src: '/work/w1.jpg', caption: 'Brick and plinth walls going up',      location: 'Thiruvallur' },
   { src: '/work/w2.jpg', caption: 'Excavation and levelling at plinth',   location: 'Avadi, Chennai' },
   { src: '/work/w3.jpg', caption: 'Concrete mixed on site under control', location: 'Chennai' },
@@ -23,6 +31,7 @@ const SHOTS = [
 ] as const
 
 export default function WorkSection() {
+  const hasFinished = FINISHED.length > 0
 
   return (
     <section className="py-24 lg:py-32" style={{ backgroundColor: T.bg }}>
@@ -39,16 +48,17 @@ export default function WorkSection() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
-              Selected Built Work
+              {hasFinished || !SITE_LIVE ? 'Our Work' : 'From Our Sites'}
             </motion.p>
             <TextReveal
               as="h2"
               className="font-bold leading-tight text-display-lg"
               style={{ color: T.text }}
-              lines={[
-                'Homes We’ve Built.',
-                <span key="l2" style={{ color: BRAND_ORANGE }}>Stories We&apos;re Proud Of.</span>,
-              ]}
+              lines={
+                hasFinished
+                  ? ['Homes We’ve Built.', <span key="l2" style={{ color: BRAND_ORANGE }}>And How They Were Made.</span>]
+                  : ['Work in Progress.', <span key="l2" style={{ color: BRAND_ORANGE }}>On Our Sites.</span>]
+              }
             />
           </div>
 
@@ -65,14 +75,41 @@ export default function WorkSection() {
               onMouseEnter={e => { e.currentTarget.style.color = T.text; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
               onMouseLeave={e => { e.currentTarget.style.color = T.textMuted; e.currentTarget.style.borderColor = T.border }}
             >
-              View All Residences
+              View Projects
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
             </Link>
           </motion.div>
         </div>
 
-        {/* Photo strip */}
-        <PhotoStrip shots={SHOTS} />
+        {/* Finished homes first */}
+        {hasFinished ? (
+          <>
+            <PhotoStrip shots={FINISHED} />
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mt-16 mb-6" style={{ color: BRAND_ORANGE }}>
+              From Our Sites
+            </p>
+          </>
+        ) : !SITE_LIVE && (
+          <div className="mb-14">
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: T.textMuted }}>
+              Finished Homes
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {['Finished home: exterior', 'Finished home: living space', 'Finished home: detail'].map(l => (
+                <PhotoSlot key={l} label={l} tone="dark" className="aspect-square" />
+              ))}
+            </div>
+            <PreviewNote tone="dark" className="mt-5">
+              Finished-home photographs will lead this section once supplied. Site photographs then follow below.
+            </PreviewNote>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mt-14 mb-6" style={{ color: BRAND_ORANGE }}>
+              From Our Sites
+            </p>
+          </div>
+        )}
+
+        {/* Site work */}
+        <PhotoStrip shots={SITE_SHOTS} />
 
       </div>
     </section>

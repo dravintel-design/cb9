@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import LenisProvider from '@/components/providers/LenisProvider'
 import PrintMode from '@/components/ui/PrintMode'
+import { SITE_LIVE, SITE_URL } from '@/lib/site'
 
 // Inter as fallback; Stack is loaded via @import in globals.css
 const inter = Inter({
@@ -25,11 +26,11 @@ export const metadata: Metadata = {
     'design engineering build studio',
     'Corner Brick 9',
   ],
-  authors: [{ name: 'M. Sathish Kumar', url: 'https://cornerbrick9.com' }],
+  authors: [{ name: 'M. Sathish Kumar', url: SITE_URL }],
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://cornerbrick9.com',
+    url: SITE_URL,
     siteName: 'Corner Brick 9',
     title: 'Corner Brick 9 | Bespoke Residential Design, Engineering & Build Studio',
     description:
@@ -41,8 +42,9 @@ export const metadata: Metadata = {
     description:
       'Bespoke homes designed around a family and a site, engineered and built under one accountable team.',
   },
-  robots: { index: true, follow: true },
-  metadataBase: new URL('https://cornerbrick9.com'),
+  // Kept out of search results until the client approves the site for launch.
+  robots: SITE_LIVE ? { index: true, follow: true } : { index: false, follow: false },
+  metadataBase: new URL(SITE_URL),
 }
 
 export const viewport: Viewport = {

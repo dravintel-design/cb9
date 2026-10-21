@@ -7,6 +7,7 @@ import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
+import { SERVICES as ENGAGEMENTS, enquiryHref } from '@/lib/site'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
@@ -104,7 +105,7 @@ export default function ServicesPage() {
                 {scope.map(s => (
                   <span
                     key={s}
-                    className="rounded-lg text-[10px] font-semibold tracking-[0.14em] uppercase px-3 py-1.5 border self-start transition-colors duration-500 text-[#E8481C] border-[rgba(232,72,28,0.19)] bg-[rgba(232,72,28,0.02)] group-hover:border-[rgba(232,72,28,0.55)] group-hover:bg-[rgba(232,72,28,0.14)]"
+                    className="rounded-lg text-xs font-semibold tracking-[0.14em] uppercase px-3 py-1.5 border self-start transition-colors duration-500 text-[#E8481C] border-[rgba(232,72,28,0.19)] bg-[rgba(232,72,28,0.02)] group-hover:border-[rgba(232,72,28,0.55)] group-hover:bg-[rgba(232,72,28,0.14)]"
                   >
                     {s}
                   </span>
@@ -145,11 +146,7 @@ export default function ServicesPage() {
             </motion.p>
           </div>
           <div className="flex flex-col gap-4">
-            {[
-              { label: 'Complete Residence',      note: 'Design, engineering, interiors, landscape and build. One coordinated journey, one accountable project team.' },
-              { label: 'Design & Engineering',    note: 'The full design and engineering package, developed to construction documentation.' },
-              { label: 'Build to Approved Design', note: 'You already have drawings you believe in; we engineer, manage and build them.' },
-            ].map(({ label, note }, i) => (
+            {ENGAGEMENTS.map(({ id, label, note }, i) => (
               <motion.div
                 key={label}
                 className="rounded-2xl border p-6 lg:p-8 flex items-start justify-between gap-6"
@@ -164,7 +161,7 @@ export default function ServicesPage() {
                   <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>{note}</p>
                 </div>
                 <Link
-                  href="/contact"
+                  href={enquiryHref({ service: id })}
                   aria-label={`Enquire about ${label}`}
                   className="rounded-xl w-10 h-10 shrink-0 flex items-center justify-center border transition-all duration-300 hover:bg-[#E8481C] hover:border-[#E8481C] group/arrow"
                   style={{ borderColor: D.border }}

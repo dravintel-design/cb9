@@ -30,11 +30,11 @@ const DIFFERENTIATORS = [
   },
   {
     icon: DollarSign,
-    tag: 'No Hidden Charges',
-    title: 'Open-Cost Transparency',
-    body: 'Itemised estimates shared before sign-off. Stage-wise payment locked upfront. No surprise bills at handover.',
-    stat: '₹0',
-    statLabel: 'Surprise costs',
+    tag: 'Clear Costs',
+    title: 'Detailed Estimates',
+    body: 'We give you a detailed estimate and get your written approval before carrying out extra work.',
+    stat: 'Written',
+    statLabel: 'Approval before extra work',
     span: 'lg:col-span-2',
   },
   {
@@ -107,7 +107,7 @@ export default function ServicesSection() {
                       <Icon className="w-6 h-6" />
                     </div>
                     <span
-                      className="rounded-lg text-[10px] font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
+                      className="rounded-lg text-xs font-semibold tracking-[0.2em] uppercase border px-2.5 py-1 mt-1"
                       style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}40`, backgroundColor: `${BRAND_ORANGE}06` }}
                     >
                       {tag}

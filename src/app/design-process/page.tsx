@@ -5,8 +5,8 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import DesignProcessPage from '@/components/pages/DesignProcessPage'
 
 export const metadata: Metadata = {
-  title: 'Design Process: Eleven Stages, No Shortcuts',
-  description: 'From discovery to handover: the ten-stage CB9 design process and the eight-principle Design DNA behind every drawing.',
+  title: 'Design Process: Eleven Stages from Discovery to Handover',
+  description: 'From discovery to handover: the eleven-stage CB9 design process and the eight-principle Design DNA behind every drawing.',
 }
 
 export default function Page() {

@@ -6,7 +6,7 @@ import ProjectsPage from '@/components/pages/ProjectsPage'
 
 export const metadata: Metadata = {
   title: 'Projects: Homes & Concept Residences',
-  description: 'Completed homes and honest concept studies across Chennai: residential, villas, farmhouses, interiors, and renovations, all fully documented.',
+  description: 'Completed homes and clearly labelled concept studies across Chennai and Tamil Nadu. See our selected homes and how we approach design and construction.',
 }
 
 export default function Page() {

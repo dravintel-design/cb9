@@ -40,7 +40,8 @@ export default function HeroSection() {
   const videoScale     = useTransform(scrollYProgress, [0, 1], [1, 1.18])
   const videoY         = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
   const contentY       = useTransform(scrollYProgress, [0, 0.8], [0, -90])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0])
+  // Hold the headline at full strength until the hero is well on its way out.
+  const contentOpacity = useTransform(scrollYProgress, [0.35, 0.85], [1, 0])
 
   useEffect(() => {
     const video = videoRef.current
@@ -106,10 +107,6 @@ export default function HeroSection() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <span className="text-sm font-bold tracking-[0.2em] uppercase" style={{ color: BRAND_ORANGE }}>
-              Chennai
-            </span>
-            <span className="text-white/30 text-xs">·</span>
-            <span className="text-white/50 text-xs tracking-widest uppercase">
               Chennai · Tamil Nadu
             </span>
           </motion.div>
@@ -177,7 +174,7 @@ export default function HeroSection() {
             {TRUST.map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
                 <span className="font-bold text-white text-base lg:text-lg">{value}</span>
-                <span className="text-white/40 text-xs tracking-wide">{label}</span>
+                <span className="text-white/75 text-xs tracking-wide">{label}</span>
               </div>
             ))}
           </motion.div>
@@ -192,7 +189,7 @@ export default function HeroSection() {
         transition={{ delay: 0.9, duration: 0.6 }}
         aria-hidden="true"
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase text-white/50 rotate-90 origin-center">Scroll</span>
+        <span className="text-xs tracking-[0.2em] uppercase text-white/50 rotate-90 origin-center">Scroll</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
           <ChevronDown className="w-5 h-5 text-white/50" />
         </motion.div>

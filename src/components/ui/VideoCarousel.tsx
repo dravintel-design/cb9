@@ -4,11 +4,14 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react'
 import { BRAND_ORANGE } from '@/lib/utils'
+import { getLenis } from '@/lib/lenis'
 
 export interface VideoItem {
   videoId: string
-  client: string
-  detail: string
+  /** What the video is, matching its content. */
+  title: string
+  /** One accurate line on what the viewer will see. */
+  description: string
 }
 
 function PosterCard({
@@ -18,7 +21,7 @@ function PosterCard({
 }: {
   item: VideoItem
   index: number
-  onPlay: () => void
+  onPlay: (trigger: HTMLButtonElement) => void
 }) {
   const [src, setSrc] = useState(
     `https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`
@@ -27,7 +30,8 @@ function PosterCard({
   return (
     <motion.button
       type="button"
-      onClick={onPlay}
+      onClick={e => onPlay(e.currentTarget)}
+      aria-label={`Play video: ${item.title}`}
       initial={{ opacity: 0, x: 40 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -39,10 +43,10 @@ function PosterCard({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
-        alt={item.client}
+        alt="" 
         loading="lazy"
         onError={() => setSrc(`https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg`)}
-        className="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+        className="absolute inset-0 w-full h-full object-cover [@media(hover:hover)]:grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110 group-focus-visible:grayscale-0"
       />
 
       {/* Bottom gradient scrim */}
@@ -60,7 +64,7 @@ function PosterCard({
       {/* Play button */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
-          className="w-14 h-14 rounded-full flex items-center justify-center border-2 backdrop-blur-sm transition-all duration-500 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
+          className="w-14 h-14 rounded-full flex items-center justify-center border-2 backdrop-blur-sm transition-all duration-500 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:scale-75 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
           style={{ borderColor: '#ffffff', backgroundColor: 'rgba(232,72,28,0.85)' }}
         >
           <Play className="w-5 h-5 text-white translate-x-0.5" fill="white" />
@@ -69,12 +73,12 @@ function PosterCard({
 
       {/* Caption */}
       <div className="absolute bottom-0 left-0 right-0 p-5">
-        <p className="font-semibold text-sm text-white leading-snug">{item.client}</p>
+        <p className="font-semibold text-sm text-white leading-snug">{item.title}</p>
         <p
-          className="text-xs mt-1 transition-colors duration-300"
-          style={{ color: 'rgba(255,255,255,0.6)' }}
+          className="text-xs mt-1 leading-relaxed"
+          style={{ color: 'rgba(255,255,255,0.78)' }}
         >
-          {item.detail}
+          {item.description}
         </p>
         <div
           className="mt-3 h-[2px] w-0 transition-all duration-500 group-hover:w-12"
@@ -88,6 +92,9 @@ function PosterCard({
 export default function VideoCarousel({ items }: { items: readonly VideoItem[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState<VideoItem | null>(null)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
   const [canLeft, setCanLeft] = useState(false)
   const [canRight, setCanRight] = useState(false)
 
@@ -104,14 +111,30 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
     return () => window.removeEventListener('resize', updateArrows)
   }, [updateArrows])
 
-  // Close modal on Escape
+  // While the player is open: focus the close button, keep Tab inside the
+  // dialog, close on Escape, pause page scrolling, and hand focus back after.
   useEffect(() => {
     if (!playing) return
+    const lenis = getLenis()
+    lenis?.stop()
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeRef.current?.focus()
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setPlaying(null)
+      if (e.key === 'Tab' && dialogRef.current && !dialogRef.current.contains(document.activeElement)) {
+        e.preventDefault()
+        closeRef.current?.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+      lenis?.start()
+      triggerRef.current?.focus({ preventScroll: true })
+    }
   }, [playing])
 
   const scrollByDir = (dir: 1 | -1) => {
@@ -125,8 +148,9 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
       {/* Left arrow */}
       <button
         type="button"
-        aria-label="Scroll left"
+        aria-label="Previous videos"
         onClick={() => scrollByDir(-1)}
+        disabled={!canLeft}
         className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-11 h-11 items-center justify-center rounded-full border transition-all duration-300"
         style={{
           backgroundColor: '#171717',
@@ -142,8 +166,9 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
       {/* Right arrow */}
       <button
         type="button"
-        aria-label="Scroll right"
+        aria-label="More videos"
         onClick={() => scrollByDir(1)}
+        disabled={!canRight}
         className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-30 w-11 h-11 items-center justify-center rounded-full border transition-all duration-300"
         style={{
           backgroundColor: '#171717',
@@ -164,7 +189,7 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
         style={{ scrollbarWidth: 'none' }}
       >
         {items.map((item, i) => (
-          <PosterCard key={item.videoId} item={item} index={i} onPlay={() => setPlaying(item)} />
+          <PosterCard key={item.videoId} item={item} index={i} onPlay={el => { triggerRef.current = el; setPlaying(item) }} />
         ))}
       </div>
 
@@ -185,18 +210,23 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="video-dialog-title"
               className="relative w-full max-w-4xl"
               onClick={e => e.stopPropagation()}
             >
               {/* Header */}
               <div className="flex items-end justify-between mb-3">
                 <div>
-                  <p className="text-white font-semibold">{playing.client}</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>{playing.detail}</p>
+                  <h3 id="video-dialog-title" className="text-white font-semibold">{playing.title}</h3>
+                  <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.75)' }}>{playing.description}</p>
                 </div>
                 <button
                   type="button"
-                  aria-label="Close"
+                  ref={closeRef}
+                  aria-label="Close video"
                   onClick={() => setPlaying(null)}
                   className="rounded-xl w-10 h-10 flex items-center justify-center border transition-colors duration-200 hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}
@@ -208,8 +238,8 @@ export default function VideoCarousel({ items }: { items: readonly VideoItem[] }
               {/* Video */}
               <div className="rounded-2xl overflow-hidden relative w-full aspect-video border" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${playing.videoId}?autoplay=1&rel=0&modestbranding=1&color=white`}
-                  title={playing.client}
+                  src={`https://www.youtube-nocookie.com/embed/${playing.videoId}?autoplay=1&rel=0&modestbranding=1&color=white&cc_load_policy=1&cc_lang_pref=en&hl=en`}
+                  title={playing.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   className="absolute inset-0 w-full h-full"

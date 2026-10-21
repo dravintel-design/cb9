@@ -27,13 +27,15 @@ interface PageHeroProps {
    *  hero with a dark scrim sized for WCAG AA text contrast. */
   image?: string
   imageAlt?: string
+  /** Shown on the image when it is not a photograph of CB9's own work, e.g. 'Example image'. */
+  imageLabel?: string
 }
 
 /** Shared minimal page hero — dark, editorial, large type. */
 /** Scroll distance the hero holds before releasing to the page. */
 const PIN_DISTANCE = 700
 
-export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt }: PageHeroProps) {
+export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt, imageLabel }: PageHeroProps) {
   const accent = image ? ORANGE_ON_IMAGE : BRAND_ORANGE
 
   const sectionRef = useRef<HTMLElement>(null)
@@ -67,10 +69,11 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
           gsap.set(imgRef.current, { scale: 1 + p * 0.16, yPercent: p * 6, force3D: true })
         }
         if (contentRef.current) {
-          // Copy lifts and fades out over the first three-quarters of the pin.
+          // Copy stays fully readable for the first half of the pin, then lifts
+          // away as the section releases, so it never fades while being read.
           gsap.set(contentRef.current, {
             y: -p * 120,
-            opacity: Math.max(0, 1 - p / 0.75),
+            opacity: p < 0.5 ? 1 : Math.max(0, 1 - (p - 0.5) / 0.5),
             force3D: true,
           })
         }
@@ -135,7 +138,7 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
           {meta.map(m => (
             <span
               key={m}
-              className="rounded-lg text-[10px] font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border"
+              className="rounded-lg text-xs font-semibold tracking-[0.18em] uppercase px-3 py-1.5 border"
               style={{
                 color: accent,
                 borderColor: image ? 'rgba(255,138,92,0.45)' : `${BRAND_ORANGE}45`,
@@ -175,6 +178,15 @@ export default function PageHero({ eyebrow, lines, intro, meta, image, imageAlt 
           className="absolute inset-x-0 bottom-0 h-[80%]"
           style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.72) 40%, rgba(8,8,8,0.25) 75%, transparent 100%)' }}
         />
+
+        {imageLabel && (
+          <span
+            className="rounded-lg absolute top-28 right-6 lg:right-16 z-10 text-xs font-bold tracking-[0.14em] uppercase px-3 py-1.5"
+            style={{ backgroundColor: 'rgba(255,255,255,0.92)', color: '#171717' }}
+          >
+            {imageLabel}
+          </span>
+        )}
 
         {/* Content */}
         <div

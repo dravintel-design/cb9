@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer'
 import ScrollProgress  from '@/components/ui/ScrollProgress'
 import HeroSection     from '@/components/sections/HeroSection'
 import ServicesSection from '@/components/sections/ServicesSection'
+import DesignSection   from '@/components/sections/DesignSection'
 import ProcessSection  from '@/components/sections/ProcessSection'
 import FounderSection  from '@/components/sections/FounderSection'
 import WorkSection     from '@/components/sections/WorkSection'
@@ -17,6 +18,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ServicesSection />
+        <DesignSection />
         <ProcessSection />
         <FounderSection />
         <WorkSection />

@@ -93,7 +93,7 @@ export default function MaterialsPage() {
                   >
                     <Icon className="w-5 h-5 transition-colors duration-300 group-hover:text-white" />
                   </div>
-                  <span className="text-[10px] font-bold tabular-nums" style={{ color: L.textFaint }}>
+                  <span className="text-xs font-bold tabular-nums" style={{ color: L.textFaint }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>

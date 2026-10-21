@@ -2,41 +2,45 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Download, Eye } from 'lucide-react'
+import { BookOpen, CalendarCheck, Eye } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION } from '@/lib/utils'
 import TextReveal from '@/components/ui/TextReveal'
+import { GUIDE_URL, enquiryHref } from '@/lib/site'
 
 const T = DARK_SECTION
 
-const TIERS = [
+const ALL_TIERS = [
   {
     icon: Eye,
     label: 'Just Exploring',
     heading: "See What We've Built",
-    body: 'Browse completed projects with specs, materials, and costs, no sign-up required.',
-    cta: 'View Portfolio',
-    href: '/work',
+    body: 'See our selected homes and how we approach design and construction.',
+    cta: 'View Projects',
+    href: '/projects',
     variant: 'ghost',
   },
   {
-    icon: Download,
+    icon: BookOpen,
     label: 'Planning a Bespoke Residence',
     heading: 'Questions to Answer First',
     body: 'The questions worth answering before you begin designing your home, from brief and site to budget and zoning.',
-    cta: 'Download the Guide',
-    href: '/checklist',
+    cta: 'Read the Guide',
+    href: GUIDE_URL ?? '',
     variant: 'outline',
   },
   {
-    icon: ArrowRight,
+    icon: CalendarCheck,
     label: 'Ready to Design',
-    heading: 'Book a Discovery Conversation',
-    body: 'Speak directly with Sathish about your site, your brief and how the studio would approach it.',
-    cta: 'Discuss Your Site',
-    href: '/contact',
+    heading: 'Request a Site Visit',
+    body: 'Tell us about your plot and your brief, and we will call you to arrange a visit with Sathish.',
+    cta: 'Request a Site Visit',
+    href: enquiryHref({ visit: true }),
     variant: 'filled',
   },
 ] as const
+
+// The guide card appears only once the guide exists, so no button leads to a missing page.
+const TIERS = ALL_TIERS.filter(t => t.href)
 
 export default function CTASection() {
 
@@ -64,7 +68,7 @@ export default function CTASection() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className={`grid grid-cols-1 gap-6 ${TIERS.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-4xl mx-auto'}`}>
           {TIERS.map(({ icon: Icon, label, heading, body, cta, href, variant }, i) => (
             <motion.div
               key={label}
@@ -80,7 +84,7 @@ export default function CTASection() {
               }}
             >
               <div>
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase" style={{ color: BRAND_ORANGE }}>
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: BRAND_ORANGE }}>
                   {label}
                 </span>
                 <h3 className="font-bold text-xl mt-3 mb-3" style={{ color: T.text }}>{heading}</h3>

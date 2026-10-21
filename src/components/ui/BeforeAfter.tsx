@@ -187,7 +187,7 @@ export default function BeforeAfter({ before, after, caption, start = 50 }: Befo
           {caption}
         </p>
       )}
-      <p className="text-[11px] tracking-wide" style={{ color: D.textFaint }} aria-hidden="true">
+      <p className="text-xs tracking-wide" style={{ color: D.textFaint }} aria-hidden="true">
         Drag the handle to compare
       </p>
     </div>

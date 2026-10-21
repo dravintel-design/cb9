@@ -100,6 +100,7 @@ export default function PhotoStrip({ shots }: { shots: readonly Shot[] }) {
           type="button"
           aria-label={side === 'left' ? 'Scroll to previous photographs' : 'Scroll to more photographs'}
           onClick={() => step(dir)}
+          disabled={!enabled}
           className={`hidden md:flex absolute ${side === 'left' ? 'left-0 -translate-x-1/2' : 'right-0 translate-x-1/2'} top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center rounded-full border transition-all duration-300`}
           style={{
             backgroundColor: '#171717',
@@ -121,7 +122,14 @@ export default function PhotoStrip({ shots }: { shots: readonly Shot[] }) {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        className="flex gap-3 lg:gap-4 overflow-x-auto snap-x snap-mandatory py-2 -my-2 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+        tabIndex={0}
+        role="region"
+        aria-label="Photographs. Use the left and right arrow keys to scroll."
+        onKeyDown={e => {
+          if (e.key === 'ArrowRight') { e.preventDefault(); step(1) }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1) }
+        }}
+        className="rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E8481C] flex gap-3 lg:gap-4 overflow-x-auto snap-x snap-mandatory py-2 -my-2 cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none', touchAction: 'pan-y' }}
       >
         {shots.map((s, i) => (
@@ -146,12 +154,12 @@ export default function PhotoStrip({ shots }: { shots: readonly Shot[] }) {
             {/* Caption scrim, only as strong as the caption needs */}
             <div
               aria-hidden
-              className="absolute inset-x-0 bottom-0 h-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              className="absolute inset-x-0 bottom-0 h-1/2 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.92), transparent)' }}
             />
-            <figcaption className="absolute inset-x-0 bottom-0 p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+            <figcaption className="absolute inset-x-0 bottom-0 p-5 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
               <p className="text-white font-semibold text-sm leading-snug">{s.caption}</p>
-              <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.62)' }}>{s.location}</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.78)' }}>{s.location}</p>
               <div className="mt-2 h-[2px] w-0 group-hover:w-10 transition-all duration-500" style={{ backgroundColor: BRAND_ORANGE }} />
             </figcaption>
           </motion.figure>

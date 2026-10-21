@@ -11,6 +11,7 @@ import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
 import CountUp from '@/components/ui/CountUp'
 import StepSequence from '@/components/ui/StepSequence'
+import { enquiryHref } from '@/lib/site'
 
 const D = DARK_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -156,8 +157,9 @@ export default function BuildProcessPage() {
           'Watch Your Home',
           <span key="l2" style={{ color: BRAND_ORANGE }}>Being Proven.</span>,
         ]}
-        body="Walk a live CB9 site with us before you decide anything: see the drawings, the tests, and the people doing the work."
-        ctaLabel="Book a Site Visit"
+        body="Request a site visit and we will walk your plot with you, and talk through how the build would run."
+        ctaLabel="Request a Site Visit"
+        href={enquiryHref({ visit: true })}
       />
     </>
   )

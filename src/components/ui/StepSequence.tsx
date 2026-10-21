@@ -147,7 +147,7 @@ export default function StepSequence({
                     <p className="text-sm leading-relaxed" style={{ color: D.textMuted }}>{s.body}</p>
                   </div>
                   <span
-                    className="rounded-lg inline-block self-start text-[10px] font-semibold tracking-[0.16em] uppercase px-3 py-1.5 border mt-auto"
+                    className="rounded-lg inline-block self-start text-xs font-semibold tracking-[0.16em] uppercase px-3 py-1.5 border mt-auto"
                     style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}45`, backgroundColor: `${BRAND_ORANGE}0d` }}
                   >
                     Output → {s.output}
@@ -193,7 +193,7 @@ export default function StepSequence({
             {steps.map((s, i) => (
               <span
                 key={s.num}
-                className="text-[10px] font-bold tabular-nums transition-colors duration-300 hidden sm:block"
+                className="text-xs font-bold tabular-nums transition-colors duration-300 hidden sm:block"
                 style={{ color: i === active ? BRAND_ORANGE : D.textFaint }}
               >
                 {s.num}
@@ -264,7 +264,7 @@ export default function StepSequence({
                   {step.body}
                 </p>
                 <span
-                  className="rounded-lg inline-block text-[10px] font-semibold tracking-[0.16em] uppercase px-3 py-1.5 border"
+                  className="rounded-lg inline-block text-xs font-semibold tracking-[0.16em] uppercase px-3 py-1.5 border"
                   style={{ color: BRAND_ORANGE, borderColor: `${BRAND_ORANGE}45`, backgroundColor: `${BRAND_ORANGE}0d` }}
                 >
                   Output → {step.output}
@@ -290,7 +290,7 @@ export default function StepSequence({
                   borderColor: isActive ? BRAND_ORANGE : D.border,
                 }}
               >
-                <span className="text-[10px] font-bold tabular-nums shrink-0" style={{ color: BRAND_ORANGE }}>
+                <span className="text-xs font-bold tabular-nums shrink-0" style={{ color: BRAND_ORANGE }}>
                   {s.num}
                 </span>
                 <span

@@ -22,8 +22,8 @@ export const DARK_SECTION = {
   bg:          CB9_DARK,
   bgDeep:      CB9_DARKEST,
   text:        '#ffffff',
-  textMuted:   'rgba(255,255,255,0.55)',
-  textFaint:   'rgba(255,255,255,0.30)',
+  textMuted:   'rgba(255,255,255,0.68)',   // 8.4:1 on #171717
+  textFaint:   'rgba(255,255,255,0.50)',   // 5.26:1 on #171717, AA
   border:      'rgba(255,255,255,0.08)',
   cardBg:      CB9_DARKEST,
 } as const
@@ -32,8 +32,8 @@ export const LIGHT_SECTION = {
   bg:          CB9_LIGHT,
   bgDeep:      '#ede9e2',
   text:        '#171717',
-  textMuted:   'rgba(23,23,23,0.58)',
-  textFaint:   'rgba(23,23,23,0.32)',
+  textMuted:   'rgba(23,23,23,0.70)',      // 5.9:1 on #F5F1EC, AA
+  textFaint:   'rgba(23,23,23,0.62)',      // 4.8:1 on #F5F1EC, AA
   border:      'rgba(0,0,0,0.08)',
   cardBg:      '#ffffff',
 } as const

@@ -2,93 +2,21 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, FileText, Compass, Ruler, Layers, Camera, Clock, Wrench, Boxes, Lightbulb } from 'lucide-react'
+import { ArrowRight, MapPin, FileText, Compass, Ruler, Layers, Camera, Clock, Wrench, Boxes, Lightbulb } from 'lucide-react'
 import { BRAND_ORANGE, DARK_SECTION, LIGHT_SECTION } from '@/lib/utils'
 import PageHero from '@/components/ui/PageHero'
 import PageCTA from '@/components/ui/PageCTA'
 import TextReveal from '@/components/ui/TextReveal'
 import BeforeAfter from '@/components/ui/BeforeAfter'
+import PreviewNote from '@/components/ui/PreviewNote'
+import { FILTERS, PROJECTS, projectHref, statusLabel, type Filter } from '@/data/projects'
+import Image from 'next/image'
+import Link from 'next/link'
+import { SITE_LIVE } from '@/lib/site'
 
 const D = DARK_SECTION
 const L = LIGHT_SECTION
 const EASE = [0.22, 1, 0.36, 1] as const
-
-const FILTERS = ['All', 'Residences', 'Concept Studies', 'Interiors'] as const
-type Filter = (typeof FILTERS)[number]
-
-interface Project {
-  id: string
-  title: string
-  location: string
-  category: Exclude<Filter, 'All'>
-  status: 'Completed' | 'Concept Study'
-  spec: string
-  note: string
-  year: string
-}
-
-const PROJECTS: readonly Project[] = [
-  {
-    id: 'lakshmi-villa',
-    title: 'Lakshmi Villa',
-    location: 'Avadi, Chennai',
-    category: 'Residences',
-    status: 'Completed',
-    spec: '2,200 sq.ft · G+1 · 3BHK',
-    note: 'A corner-plot family home designed around a central light well, with concrete cube-tested at each pour and a recorded handover walkthrough.',
-    year: '2024',
-  },
-  {
-    id: 'murugan-nagar-duplex',
-    title: 'Murugan Nagar Duplex',
-    location: 'Thiruvallur',
-    category: 'Residences',
-    status: 'Completed',
-    spec: '1,850 sq.ft · Duplex',
-    note: 'A stage-wise contract with an open cost sheet, so every line item was visible before it was approved.',
-    year: '2024',
-  },
-  {
-    id: 'priya-enclave',
-    title: 'Priya Enclave',
-    location: 'Pattibiram, Chennai',
-    category: 'Residences',
-    status: 'Completed',
-    spec: '4,100 sq.ft · G+2',
-    note: 'Three floors engineered on a narrow footprint, structural drawings, permits and handover pack coordinated end to end by CB9.',
-    year: '2023',
-  },
-  {
-    id: 'courtyard-villa-concept',
-    title: 'Courtyard Villa Study',
-    location: 'Poonamallee corridor',
-    category: 'Concept Studies',
-    status: 'Concept Study',
-    spec: '5,400 sq.ft · Single family',
-    note: 'A west-facing plot answered with a shaded central courtyard: sun-path study, massing model, and material palette.',
-    year: '2025',
-  },
-  {
-    id: 'mango-farmhouse-concept',
-    title: 'Mango Orchard Farmhouse',
-    location: 'Thiruvallur outskirts',
-    category: 'Concept Studies',
-    status: 'Concept Study',
-    spec: '2,800 sq.ft · Weekend home',
-    note: 'Load-bearing brick, deep verandahs, and rainwater capture, designed to sit quietly inside an existing orchard.',
-    year: '2025',
-  },
-  {
-    id: 'avadi-interior-study',
-    title: 'Heritage-Modern Interior',
-    location: 'Avadi, Chennai',
-    category: 'Interiors',
-    status: 'Concept Study',
-    spec: '3BHK · Full interior',
-    note: 'Athangudi tile, cane, and teak against clean white volumes, a palette study for a completed CB9 shell.',
-    year: '2025',
-  },
-] as const
 
 const ANATOMY = [
   { icon: FileText,  label: 'Client Brief' },
@@ -115,7 +43,7 @@ export default function ProjectsPage() {
           'Built One Story',
           <span key="l2" style={{ color: BRAND_ORANGE }}>at a Time.</span>,
         ]}
-        intro="Completed homes and honest concept studies, never staged luxury. What you see here is real work and real thinking: site analysis, detailing, documentation, and the houses that came out of them."
+        intro="Completed homes and clearly labelled concept studies. See our selected homes and how we approach design and construction."
         meta={['Residences', 'Concept Studies', 'Interiors', 'Chennai']}
         image="/heroes/projects.jpg"
         imageAlt="Two workers lifting a pan of mortar as the brick and plinth walls of a CB9 residence rise"
@@ -137,7 +65,8 @@ export default function ProjectsPage() {
               <button
                 key={f}
                 onClick={() => setActive(f)}
-                className="rounded-xl text-[11px] font-semibold tracking-[0.16em] uppercase px-4 py-2 border transition-all duration-200"
+                aria-pressed={active === f}
+                className="rounded-xl text-xs font-semibold tracking-[0.16em] uppercase px-4 py-2 border transition-all duration-200"
                 style={{
                   backgroundColor: active === f ? BRAND_ORANGE : 'transparent',
                   color:           active === f ? '#ffffff' : L.textMuted,
@@ -148,6 +77,10 @@ export default function ProjectsPage() {
               </button>
             ))}
           </motion.div>
+
+          <PreviewNote className="mb-8">
+            Project names, details and photographs are temporary. The final projects will replace them once supplied.
+          </PreviewNote>
 
           {/* Cards */}
           <AnimatePresence mode="wait">
@@ -166,49 +99,77 @@ export default function ProjectsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.55, delay: (i % 3) * 0.08, ease: EASE, y: { duration: 0.3, ease: EASE, delay: 0 } }}
-                  className="rounded-2xl group flex flex-col overflow-hidden border transition-shadow duration-500 hover:shadow-[0_28px_60px_-28px_rgba(23,23,23,0.35)]"
+                  className="rounded-2xl group relative flex flex-col overflow-hidden border transition-shadow duration-500 hover:shadow-[0_28px_60px_-28px_rgba(23,23,23,0.35)] focus-within:ring-2 focus-within:ring-[#E8481C]"
                   style={{ backgroundColor: L.cardBg, borderColor: L.border }}
                 >
-                  {/* Visual */}
-                  <div className="relative h-44 overflow-hidden" style={{ backgroundColor: p.status === 'Completed' ? '#171717' : '#e8e3da' }}>
-                    <span
-                      className="absolute -right-2 -bottom-5 font-bold leading-none select-none pointer-events-none transition-transform duration-700 group-hover:-translate-y-1"
-                      style={{ fontSize: '5.5rem', color: 'rgba(232,72,28,0.10)' }}
-                    >
-                      {p.year}
-                    </span>
-                    <div className="absolute top-4 left-4 flex gap-2">
+                  {/* Visual: the project photograph, or a labelled slot until it is supplied */}
+                  <div className="relative aspect-[4/3] overflow-hidden" style={{ backgroundColor: p.status === 'Completed' ? '#171717' : '#e8e3da' }}>
+                    {p.cover ? (
+                      <Image
+                        src={p.cover.src}
+                        alt={p.cover.alt}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <>
+                        <span
+                          className="absolute -right-2 -bottom-5 font-bold leading-none select-none pointer-events-none"
+                          style={{ fontSize: '5.5rem', color: 'rgba(232,72,28,0.10)' }}
+                          aria-hidden="true"
+                        >
+                          {p.year}
+                        </span>
+                        {!SITE_LIVE && (
+                          <span
+                            className="absolute inset-0 flex items-center justify-center text-xs font-semibold tracking-wide"
+                            style={{ color: p.status === 'Completed' ? 'rgba(255,255,255,0.7)' : 'rgba(23,23,23,0.65)' }}
+                          >
+                            {p.status === 'Completed' ? 'Project photograph to be added' : 'Concept image to be added'}
+                          </span>
+                        )}
+                      </>
+                    )}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                       <span
-                        className="rounded-lg text-[9px] font-bold tracking-[0.18em] uppercase px-2.5 py-1"
+                        className="rounded-lg text-xs font-bold tracking-[0.14em] uppercase px-2.5 py-1"
                         style={{
-                          backgroundColor: p.status === 'Completed' ? BRAND_ORANGE : 'rgba(23,23,23,0.85)',
+                          backgroundColor: p.status === 'Completed' ? BRAND_ORANGE : 'rgba(23,23,23,0.88)',
                           color: '#ffffff',
                         }}
                       >
-                        {p.status}
+                        {statusLabel(p)}
                       </span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 flex items-center gap-1.5">
-                      <MapPin className="w-3 h-3" style={{ color: BRAND_ORANGE }} />
-                      <span
-                        className="text-xs tracking-wide"
-                        style={{ color: p.status === 'Completed' ? 'rgba(255,255,255,0.65)' : 'rgba(23,23,23,0.6)' }}
-                      >
-                        {p.location}
-                      </span>
+                      {p.cover && p.cover.kind !== 'photo' && (
+                        <span className="rounded-lg text-xs font-bold tracking-[0.14em] uppercase px-2.5 py-1" style={{ backgroundColor: 'rgba(255,255,255,0.92)', color: '#171717' }}>
+                          {p.cover.kind === 'concept' ? 'Concept Image' : 'Example Image'}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   {/* Body */}
                   <div className="flex flex-col gap-3 p-6 flex-1">
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-bold text-lg leading-snug" style={{ color: L.text }}>{p.title}</h3>
-                      <span className="text-[10px] font-semibold tracking-[0.14em] uppercase shrink-0" style={{ color: L.textFaint }}>
+                      <h3 className="font-bold text-lg leading-snug" style={{ color: L.text }}>
+                        {/* Stretched link: the whole card opens the project */}
+                        <Link href={projectHref(p.id)} className="outline-none after:absolute after:inset-0 after:content-['']">
+                          {p.title}
+                        </Link>
+                      </h3>
+                      <span className="text-xs font-semibold tracking-[0.12em] uppercase shrink-0" style={{ color: L.textFaint }}>
                         {p.category}
                       </span>
                     </div>
-                    <p className="text-xs tracking-wide" style={{ color: L.textFaint }}>{p.spec}</p>
+                    <p className="flex items-center gap-1.5 text-xs tracking-wide" style={{ color: L.textFaint }}>
+                      <MapPin className="w-3 h-3 shrink-0" style={{ color: BRAND_ORANGE }} aria-hidden="true" />
+                      {p.location} · {p.spec}
+                    </p>
                     <p className="text-sm leading-relaxed flex-1" style={{ color: L.textMuted }}>{p.note}</p>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] uppercase mt-1" style={{ color: BRAND_ORANGE }} aria-hidden="true">
+                      View Project <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
                   </div>
                 </motion.article>
               ))}
@@ -223,26 +184,26 @@ export default function ProjectsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Showing {filtered.length} of {PROJECTS.length}. Concept studies are marked honestly. We never present renders as built work.
+            Showing {filtered.length} of {PROJECTS.length}. Unbuilt concept studies are labelled on every card and project page.
           </motion.p>
         </div>
       </section>
 
-      {/* Site to residence, drag to compare */}
+      {/* Construction progress, drag to compare */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: D.bgDeep }}>
         <div className="mx-auto max-w-[1600px] px-6 lg:px-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">
             <div className="max-w-2xl">
               <p className="text-sm font-bold tracking-[0.2em] uppercase mb-5" style={{ color: BRAND_ORANGE }}>
-                Site to Residence
+                Construction Progress
               </p>
               <TextReveal
                 as="h2"
                 className="font-bold leading-tight text-display-lg"
                 style={{ color: D.text }}
                 lines={[
-                  'What the Plot Was.',
-                  <span key="l2" style={{ color: BRAND_ORANGE }}>What It Became.</span>,
+                  'From Ground',
+                  <span key="l2" style={{ color: BRAND_ORANGE }}>to Structure.</span>,
                 ]}
               />
             </div>
@@ -254,8 +215,8 @@ export default function ProjectsPage() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
             >
-              Every CB9 residence begins as bare ground and a set of constraints. Drag the handle to
-              see how the site was read, and what the finished architecture made of it.
+              Drag the handle to compare two stages of construction on a CB9 site, from levelling at
+              plinth to the walls rising.
             </motion.p>
           </div>
 
@@ -268,16 +229,19 @@ export default function ProjectsPage() {
             <BeforeAfter
               before={{
                 src: '/work/w2.jpg',
-                alt: 'The plot at excavation and plinth-levelling stage before construction began',
-                label: 'Site',
+                alt: 'Excavation and levelling at plinth stage on a CB9 site',
+                label: 'Plinth Stage',
               }}
               after={{
                 src: '/heroes/projects.jpg',
-                alt: 'The completed residence on the same plot after handover',
-                label: 'Residence',
+                alt: 'Brick walls rising above the plinth on a CB9 site',
+                label: 'Walls Rising',
               }}
-              caption="Lakshmi Villa, Chennai. Corner plot, read for sun path and street privacy, then built around a central light well."
             />
+            <PreviewNote tone="dark" className="mt-5">
+              These two photographs are not confirmed as the same home. Replace them with two stages of one home, or
+              add a finished photograph of that home to make this a true before and after.
+            </PreviewNote>
           </motion.div>
         </div>
       </section>
@@ -318,7 +282,7 @@ export default function ProjectsPage() {
               >
                 <div className="flex items-center justify-between">
                   <Icon className="w-4 h-4" style={{ color: BRAND_ORANGE }} />
-                  <span className="text-[10px] font-bold tabular-nums" style={{ color: D.textFaint }}>
+                  <span className="text-xs font-bold tabular-nums" style={{ color: D.textFaint }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>

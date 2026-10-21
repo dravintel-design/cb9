@@ -6,7 +6,7 @@ import ServicesPage from '@/components/pages/ServicesPage'
 
 export const metadata: Metadata = {
   title: 'Services: Bespoke Residential Design + Build',
-  description: 'Architecture, interior design, construction, project management, structural engineering, renovation, landscape, and consultation, one studio.',
+  description: 'Architecture, engineering, interiors, landscape and construction from one studio: Complete Residence, Design and Engineering, or Build to Approved Design.',
 }
 
 export default function Page() {
